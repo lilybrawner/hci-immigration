@@ -20,7 +20,7 @@ jobs:
       uses: google-github-actions/setup-gcloud@v2
       with:
         project_id: scenic-comfort-459705-m2  # Replace with your Google Cloud project ID
-        credentials_json: ${ secrets.GOOGLE_CLOUD_SECRET }  # Use the secret for credentials
+        credentials_json: ${{ secrets.GOOGLE_CLOUD_SECRET }}  # Use the secret for credentials
 
     - name: Configure Google Cloud SDK
       run: gcloud config set project scenic-comfort-459705-m2 # Ensure the correct project is selected
