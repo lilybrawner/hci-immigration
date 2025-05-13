@@ -1,0 +1,38 @@
+name: Deploy to Google Cloud Run
+
+on:
+  push:
+    branches:
+      - main  # Trigger on push to main branch (change if you're using another branch)
+  pull_request:
+    branches:
+      - main  # Trigger on PRs to main branch (optional)
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2  # Checks out your code in the workflow
+
+    - name: Set up Google Cloud SDK
+      uses: google-github-actions/setup-gcloud@v2
+      with:
+        project_id: scenic-comfort-459705-m2  # Replace with your Google Cloud project ID
+        credentials_json: ${ secrets.GOOGLE_CLOUD_SECRET }  # Use the secret for credentials
+
+    - name: Configure Google Cloud SDK
+      run: gcloud config set project scenic-comfort-459705-m2 # Ensure the correct project is selected
+
+    - name: Build the Docker image
+      run: |
+        gcloud builds submit --tag gcr.io/scenic-comfort-459705-m2/google-cloud-test
+
+    - name: Deploy to Cloud Run
+      run: |
+        gcloud run deploy google-cloud-api-demo \
+          --image gcr.io/scenic-comfort-459705-m2/google-cloud-test \
+          --platform managed \
+          --region us-central1\  # Replace with your preferred region
+          --allow-unauthenticated
