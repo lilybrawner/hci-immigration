@@ -38,5 +38,5 @@ jobs:
         gcloud run deploy google-cloud-api-demo \
           --image gcr.io/scenic-comfort-459705-m2/google-cloud-test \
           --platform managed \
-          --region us-central1\  # Replace with your preferred region
+          --region us-central1 \
           --allow-unauthenticated
