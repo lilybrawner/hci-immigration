@@ -11,7 +11,6 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/Results" element={<Results />} />
         </Routes>
-        <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'></link>
       </Router>
   );
 }

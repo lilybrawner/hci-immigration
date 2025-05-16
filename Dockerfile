@@ -1,30 +1,35 @@
-# Use official Node.js image
-FROM node:18
+# === Stage 1: Build Vite frontend ===
+FROM node:18 AS build-frontend
+WORKDIR /app
 
-# Create app directory
+# Copy only the package files first (faster rebuilds if only code changes)
+COPY frontend/package*.json ./frontend/
+
+# Install frontend dependencies
+RUN cd frontend && npm install
+
+# Copy the rest of the frontend code
+COPY frontend ./frontend
+
+# Build the frontend (Vite will output to `dist/`)
+RUN cd frontend && npm run build
+
+# === Stage 2: Backend and serving built frontend ===
+FROM node:18
 WORKDIR /usr/src/app
 
-# Copy backend package.json and package-lock.json and install dependencies
+# Copy backend package files and install dependencies
 COPY package*.json ./
 RUN npm install
 
-# Copy backend source code
+# Copy backend code
 COPY . .
 
-# Build React app inside frontend folder
-WORKDIR /usr/src/app/frontend
-RUN npm install
-RUN npm run build
+# Copy built frontend from stage 1 to public directory
+COPY --from=build-frontend /app/frontend/dist ./public
 
-# Move React build files to backend public directory
-RUN mkdir -p /usr/src/app/public
-RUN cp -a /usr/src/app/frontend/build/. /usr/src/app/public/
-
-# Change back to backend root
-WORKDIR /usr/src/app
-
-# Expose the port your Express app listens on
+# Expose port
 EXPOSE 8080
 
-# Start the backend server
+# Run backend server
 CMD ["node", "server.js"]
