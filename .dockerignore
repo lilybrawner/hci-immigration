@@ -1,0 +1,21 @@
+# Node dependencies (avoid copying local node_modules)
+node_modules
+frontend/node_modules
+
+# Logs
+*.log
+
+# Build artifacts (Vite output is copied explicitly in Dockerfile)
+dist
+build
+
+# Git and system files
+.git
+.gitignore
+.DS_Store
+
+# Environment variables
+.env
+
+# Frontend dev/build cache
+frontend/.vite
