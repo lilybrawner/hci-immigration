@@ -10,10 +10,10 @@ function Home() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (answer !== "Select") {
-            navigate("/results");
+        if (answer) {  
+          navigate("/results");
         }
-    }
+      };
     return (
         <div>
             <div>
@@ -31,12 +31,12 @@ function Home() {
                     <label onSubmit>
                         Hi! I am a  
                         <select id="user" value={answer} onChange={(e) => setAnswer(e.target.value)}>
-                            <option value="DefaultValue">Select</option>
-                            <option value="Spouse">U.S. citizen looking to sponsor my spouse</option>
-                            <option value="Parent">U.S. citizen looking to sponsor my parents </option>
-                            <option value="Visa">International student looking to study in the U.S. </option>
-                            <option value="Greencard">Green card holder looking to apply for citizenship </option>
-                        </select>
+  <option value="">Select</option>
+  <option value="Spouse">U.S. citizen looking to sponsor my spouse</option>
+  <option value="Parent">U.S. citizen looking to sponsor my parents </option>
+  <option value="Visa">International student looking to study in the U.S. </option>
+  <option value="Greencard">Green card holder looking to apply for citizenship </option>
+</select>
                     </label>
                     <br />
                         <div class="btn-holder">
