@@ -11,7 +11,7 @@ function Home() {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (answer !== "Select") {
-            navigate("Results");
+            navigate("/results");
         }
     }
     return (
