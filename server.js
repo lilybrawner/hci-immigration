@@ -7,11 +7,11 @@ const app = express();
 app.use(express.json());
 
 const path = require('path');
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'frontend', 'public')));
 
 // Serve React app for any unknown routes (to enable client side routing)
 app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, 'public', 'index.html'));
+  res.sendFile(path.resolve(__dirname, 'frontend', 'public', 'index.html'));
 });
 
 // Initialize the Google Cloud clients
