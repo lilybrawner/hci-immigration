@@ -9,11 +9,6 @@ app.use(express.json());
 const path = require('path');
 app.use(express.static(path.join(__dirname, 'frontend', 'public')));
 
-// Serve React app for any unknown routes (to enable client side routing)
-//app.get('*', (req, res) => {
-  //res.sendFile(path.resolve(__dirname, 'frontend', 'public', 'index.html'));
-//});
-
 // Initialize the Google Cloud clients
 const ttsClient = new TextToSpeechClient();
 const translateClient = new Translate();
@@ -91,6 +86,11 @@ app.post('/api/speak', async (req, res) => {
     console.error('TTS failed:', err);
     res.status(500).send('Text-to-Speech failed');
   }
+});
+
+// Serve React app for any unknown routes (to enable client side routing)
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, 'frontend', 'public', 'index.html'));
 });
 
 // Start the server on the appropriate port
