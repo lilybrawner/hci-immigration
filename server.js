@@ -10,9 +10,9 @@ const path = require('path');
 app.use(express.static(path.join(__dirname, 'frontend', 'public')));
 
 // Serve React app for any unknown routes (to enable client side routing)
-app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, 'frontend', 'public', 'index.html'));
-});
+//app.get('*', (req, res) => {
+  //res.sendFile(path.resolve(__dirname, 'frontend', 'public', 'index.html'));
+//});
 
 // Initialize the Google Cloud clients
 const ttsClient = new TextToSpeechClient();
