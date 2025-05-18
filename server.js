@@ -90,7 +90,7 @@ app.post('/api/speak', async (req, res) => {
 
 // Serve React app for any unknown routes (to enable client side routing)
 app.get('/{*any}', (req, res) => {
-  res.sendFile(path.resolve(__dirname, 'frontend', 'public', 'index.html'));
+  res.sendFile(path.resolve(__dirname, 'public', 'index.html'));
 });
 
 // Start the server on the appropriate port
