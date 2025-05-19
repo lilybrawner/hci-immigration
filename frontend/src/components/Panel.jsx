@@ -39,6 +39,7 @@ export default function Panel({ step, checklist, onChecklistChange, onSetTransla
         <Box sx={{ ml: { xs: 0, sm: 2 }, flexShrink: 0, width: { xs: '100%', sm: 'auto' } }}>
         <AccessibilityBar
   stepText={stepText}
+  checklist={checklist}
   onSetTranslation={onSetTranslation}
 />
         </Box>

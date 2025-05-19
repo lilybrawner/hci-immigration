@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { Box, Button, FormControl, InputLabel, MenuItem, Select, Typography, Stack, Paper } from '@mui/material';
 
-export default function AccessibilityBar({ stepText, onSetTranslation}) {
+export default function AccessibilityBar({ stepText, checklist, onSetTranslation }) {
   const [translatedText, setTranslatedText] = useState('');
-  const [langCode, setLangCode] = useState('es'); // default target language (Spanish)
+  const [langCode, setLangCode] = useState('es');
   const [loading, setLoading] = useState(false);
 
   const handleTranslate = async () => {
+    if (!checklist) return;
     setLoading(true);
     try {
       const translatedItems = await Promise.all(
@@ -61,7 +62,6 @@ export default function AccessibilityBar({ stepText, onSetTranslation}) {
             <MenuItem value="fr">French</MenuItem>
             <MenuItem value="zh">Chinese</MenuItem>
             <MenuItem value="en">English</MenuItem>
-            {/* Add more supported languages here */}
           </Select>
         </FormControl>
   
