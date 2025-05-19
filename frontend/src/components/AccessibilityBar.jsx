@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { Box, Button, FormControl, InputLabel, MenuItem, Select, Typography, Stack, Paper } from '@mui/material';
 
-export default function AccessibilityBar({ stepText }) {
+export default function AccessibilityBar({ stepText, onSetTranslation}) {
   const [translatedText, setTranslatedText] = useState('');
   const [langCode, setLangCode] = useState('es'); // default target language (Spanish)
   const [loading, setLoading] = useState(false);
