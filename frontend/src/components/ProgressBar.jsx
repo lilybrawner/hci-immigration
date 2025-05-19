@@ -1,14 +1,18 @@
 import * as React from 'react';
 import MobileStepper from '@mui/material/MobileStepper';
 
-export default function Progress (steps, completedSteps) {
-    return(
-        <MobileStepper
-            variant="progress"
-            steps={steps.length}
-            position="static"
-            activeStep={completedSteps}
-            sx={{ maxWidth: 400, flexGrow: 1 }}
-        />
-    )
-}
+export default function Progress({ totalSteps, completedSteps }) {
+    return (
+      <MobileStepper
+        variant="progress"
+        steps={totalSteps}
+        activeStep={completedSteps}
+        position="static"
+        sx={{
+            maxWidth: 400, 
+            flexGrow: 1,
+            marginLeft: '60%',
+        }}
+      />
+    );
+  }

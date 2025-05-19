@@ -1,7 +1,8 @@
 import React from 'react';
-import { Box, Tabs, Tab, Typography, Checkbox, FormControlLabel, Stack  } from '@mui/material';
+import { Box, Tabs, Tab, Typography, Checkbox, FormControlLabel, Stack, IconButton } from '@mui/material';
 import '../App.css'
 import FAQAccordion from './Accordion';
+import DownloadIcon from '@mui/icons-material/Download';
 
 export default function Panel({ step, checklist, onChecklistChange }) {
   const [tab, setTab] = React.useState(0);
@@ -12,7 +13,6 @@ export default function Panel({ step, checklist, onChecklistChange }) {
     );
     onChecklistChange(step.id, updated);
   };
-  console.log(step.id);
 
   return (
     <Box sx={{ width: '100%' }}>
@@ -54,7 +54,13 @@ export default function Panel({ step, checklist, onChecklistChange }) {
         <Box p={2}>
           <FAQAccordion step={step.id}/>
         </Box>
-      )}
+      )
+      }
+      <IconButton
+            type="submit">
+        <DownloadIcon />
+          </IconButton>
+      
     </Box>
   );
 }

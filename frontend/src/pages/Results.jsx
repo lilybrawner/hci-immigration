@@ -3,7 +3,7 @@ import BasicTimeline from '../components/Timeline';
 import Panel from '../components/Panel';
 import { Box } from '@mui/material';
 import Link from '@mui/material/Link';
-// import Progress from '../components/ProgressBar';
+import Progress from '../components/ProgressBar';
 
 
 const steps = [
@@ -241,16 +241,17 @@ const steps = [
       .filter(i => !i.textOnly)
         .every(item => item.checked))
       .map(([stepId]) => Number(stepId));
+    const completedCount = completedSteps.length;
 
     let changeWidth = selectedStep ? "50%" : "100%";
   
     return (
       <Box sx={{ display: 'flex', height: '100vh'}}>
         <Box sx={{ width: changeWidth, overflowY: 'auto', ml: -20}}>
-          {/* <Progress 
-            steps={steps}
-            completedSteps={completedSteps}
-          /> */}
+          <Progress 
+            totalSteps={steps.length}
+            completedSteps={completedCount}
+          />
           
           <BasicTimeline
             steps={steps}
