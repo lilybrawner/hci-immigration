@@ -40,13 +40,6 @@ export default function AccessibilityBar({ stepText, onSetTranslation}) {
 
   return (
     <Paper elevation={3} sx={{ p: 1.5, mt: 1.5, backgroundColor: '#fafafa', width: 'auto', display: 'inline-flex'}}>
-      {/* Show translated text ABOVE the controls */}
-      {translatedText && (
-        <Typography variant="body1" sx={{ mb: 2, fontStyle: 'italic', color: 'text.secondary' }}>
-          <strong>Translated:</strong> {translatedText}
-        </Typography>
-      )}
-  
       <Stack spacing={1} direction="row" alignItems="center" sx={{ width: 'auto' }}>
         <FormControl size="small" sx={{ minWidth: 140 }}>
           <InputLabel id="lang-select-label">Language</InputLabel>
