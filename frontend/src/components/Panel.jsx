@@ -5,8 +5,10 @@ import AccessibilityBar from './AccessibilityBar';
 import { Box, Tabs, Tab, Typography, Checkbox, FormControlLabel, Stack, IconButton } from '@mui/material';
 import DownloadIcon from '@mui/icons-material/Download';
 
-export default function Panel({ step, checklist, onChecklistChange }) {
+export default function Panel({ step, checklist, onChecklistChange, onSetTranslation }) {
   const [tab, setTab] = React.useState(0);
+
+  const stepText = checklist.map(item => item.label).join('\n');
 
   const handleCheck = (index) => {
     const updated = checklist.map((item, i) =>
@@ -35,7 +37,10 @@ export default function Panel({ step, checklist, onChecklistChange }) {
         </Box>
   
         <Box sx={{ ml: { xs: 0, sm: 2 }, flexShrink: 0, width: { xs: '100%', sm: 'auto' } }}>
-          <AccessibilityBar stepText={step.description || ''} />
+        <AccessibilityBar
+  stepText={stepText}
+  onSetTranslation={onSetTranslation}
+/>
         </Box>
       </Box>
   

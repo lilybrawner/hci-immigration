@@ -15,12 +15,12 @@ export default function Results({ steps, initialChecklists }) {
   const handleSetTranslation = (translatedText) => {
     if (!selectedStep) return;
     const lines = translatedText.split('\n').map(line => line.trim());
-
+  
     const updated = checklists[selectedStep.id].map((item, idx) => ({
       ...item,
       translation: lines[idx] || item.label,
     }));
-
+  
     setChecklists(prev => ({ ...prev, [selectedStep.id]: updated }));
   };
 

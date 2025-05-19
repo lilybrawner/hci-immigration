@@ -9,7 +9,7 @@ export default function Progress({ totalSteps, completedSteps }) {
         activeStep={completedSteps}
         position="static"
         sx={{
-            maxWidth: 400, 
+            maxWidth: 700, 
             flexGrow: 1,
             marginLeft: '60%',
         }}

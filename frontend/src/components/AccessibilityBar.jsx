@@ -15,6 +15,7 @@ export default function AccessibilityBar({ stepText }) {
         targetLang: langCode,
       });
       setTranslatedText(data.translatedText);
+      onSetTranslation(data.translatedText);
     } catch (error) {
       console.error('Translation error:', error);
       setTranslatedText('Translation failed. Please try again.');
