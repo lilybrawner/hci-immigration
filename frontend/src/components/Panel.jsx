@@ -17,7 +17,7 @@ export default function Panel({ step, checklist, onChecklistChange }) {
   return (
     <Box sx={{ width: '100%' }}>
       <Tabs value={tab} onChange={(e, v) => setTab(v)}>
-        <Tab label="Checklist" />
+        <Tab label="Step-by-Step" />
         <Tab label="FAQ" />
       </Tabs>
 
