@@ -10,12 +10,18 @@ export default function AccessibilityBar({ stepText, onSetTranslation}) {
   const handleTranslate = async () => {
     setLoading(true);
     try {
-      const { data } = await axios.post('/api/translate', {
-        text: stepText,
-        targetLang: langCode,
-      });
-      setTranslatedText(data.translatedText);
-      onSetTranslation(data.translatedText);
+      const translatedItems = await Promise.all(
+        checklist.map(async (item) => {
+          const { data } = await axios.post('/api/translate', {
+            text: item.label,
+            targetLang: langCode,
+          });
+          return data.translatedText;
+        })
+      );
+      const translatedTextCombined = translatedItems.join('\n');
+      setTranslatedText(translatedTextCombined);
+      onSetTranslation(translatedTextCombined);
     } catch (error) {
       console.error('Translation error:', error);
       setTranslatedText('Translation failed. Please try again.');
