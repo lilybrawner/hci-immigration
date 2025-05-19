@@ -14,7 +14,11 @@ export default function Results({ steps, initialChecklists }) {
 
   const handleSetTranslation = (translatedText) => {
     if (!selectedStep) return;
-    const lines = translatedText.split('\n').map(line => line.trim());
+    console.log('Raw translatedText:', JSON.stringify(translatedText));
+    // Split by both \n and \r\n, just in case
+    const lines = translatedText.split(/\r?\n/).map(line => line.trim());
+  
+    console.log('Split lines:', lines);  // Debugging output
   
     const updated = checklists[selectedStep.id].map((item, idx) => ({
       ...item,
