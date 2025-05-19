@@ -1,8 +1,9 @@
 import React from 'react';
-import { Box, Tabs, Tab, Typography, Checkbox, FormControlLabel, Stack } from '@mui/material';
 import '../App.css';
 import FAQAccordion from './Accordion';
-import AccessibilityBar from './AccessibilityBar'; // Import your AccessibilityBar
+import AccessibilityBar from './AccessibilityBar';
+import { Box, Tabs, Tab, Typography, Checkbox, FormControlLabel, Stack, IconButton } from '@mui/material';
+import DownloadIcon from '@mui/icons-material/Download';
 
 export default function Panel({ step, checklist, onChecklistChange }) {
   const [tab, setTab] = React.useState(0);
@@ -75,7 +76,13 @@ export default function Panel({ step, checklist, onChecklistChange }) {
         <Box p={2}>
           <FAQAccordion step={step.id} />
         </Box>
-      )}
+      )
+      }
+      <Box sx={{ display: 'flex', justifyContent: 'flex-end', p: 2 }}>
+        <IconButton type="button">
+          <DownloadIcon />
+        </IconButton>
+      </Box>
     </>
   );
-}  
+}

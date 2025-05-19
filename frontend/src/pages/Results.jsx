@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import BasicTimeline from '../components/Timeline';
 import Panel from '../components/Panel';
+import Progress from '../components/Progress';
 import { Box } from '@mui/material';
-import AccessibilityBar from '../components/AccessibilityBar';
 
 export default function Results({ steps, initialChecklists }) {
   const [selectedStep, setSelectedStep] = useState(null);
@@ -30,11 +30,13 @@ export default function Results({ steps, initialChecklists }) {
     )
     .map(([stepId]) => Number(stepId));
 
+  const completedCount = completedSteps.length;
   const changeWidth = selectedStep ? '50%' : '100%';
 
   return (
     <Box sx={{ display: 'flex', height: '100vh' }}>
       <Box sx={{ width: changeWidth, overflowY: 'auto', ml: -20 }}>
+        <Progress totalSteps={steps.length} completedSteps={completedCount} />
         <BasicTimeline
           steps={steps}
           onStepClick={setSelectedStep}
@@ -48,6 +50,7 @@ export default function Results({ steps, initialChecklists }) {
             step={selectedStep}
             checklist={checklists[selectedStep.id] || []}
             onChecklistChange={handleChecklistChange}
+            onSetTranslation={handleSetTranslation}
           />
         </Box>
       )}
