@@ -4,6 +4,8 @@ import FAQAccordion from './Accordion';
 import AccessibilityBar from './AccessibilityBar';
 import { Box, Tabs, Tab, Typography, Checkbox, FormControlLabel, Stack, IconButton } from '@mui/material';
 import DownloadIcon from '@mui/icons-material/Download';
+import { pdf } from '@react-pdf/renderer';
+import ChecklistPDF from './ChecklistPDF'; 
 
 export default function Panel({ step, checklist, onChecklistChange, onSetTranslation }) {
   const [tab, setTab] = React.useState(0);
@@ -15,6 +17,21 @@ export default function Panel({ step, checklist, onChecklistChange, onSetTransla
       i === index ? { ...item, checked: !item.checked } : item
     );
     onChecklistChange(step.id, updated);
+  };
+
+  const handleDownloadPDF = async () => {
+    const doc = <ChecklistPDF step={step} checklist={checklist} />;
+    const asPdf = pdf([]);
+    asPdf.updateContainer(doc);
+    const blob = await asPdf.toBlob();
+
+    // Create a link and trigger download
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `Step-${step.id}-Checklist.pdf`;
+    a.click();
+    URL.revokeObjectURL(url);
   };
 
   return (
@@ -85,7 +102,7 @@ export default function Panel({ step, checklist, onChecklistChange, onSetTransla
       )
       }
       <Box sx={{ display: 'flex', justifyContent: 'flex-end', p: 2 }}>
-        <IconButton type="button">
+        <IconButton type="button" onClick={handleDownloadPDF}>
           <DownloadIcon />
         </IconButton>
       </Box>
