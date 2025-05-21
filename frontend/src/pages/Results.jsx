@@ -4,7 +4,7 @@ import Panel from '../components/Panel';
 import Progress from '../components/Progress';
 import { Box } from '@mui/material';
 
-export default function Results({ steps, initialChecklists }) {
+export default function Results({ steps, initialChecklists, page }) {
   const [selectedStep, setSelectedStep] = useState(null);
   const [checklists, setChecklists] = useState(initialChecklists || {});
 
@@ -55,6 +55,7 @@ export default function Results({ steps, initialChecklists }) {
             checklist={checklists[selectedStep.id] || []}
             onChecklistChange={handleChecklistChange}
             onSetTranslation={handleSetTranslation}
+            page={page}
           />
         </Box>
       )}

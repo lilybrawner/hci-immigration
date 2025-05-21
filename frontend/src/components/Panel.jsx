@@ -7,7 +7,7 @@ import DownloadIcon from '@mui/icons-material/Download';
 import { pdf } from '@react-pdf/renderer';
 import ChecklistPDF from './ChecklistPDF'; 
 
-export default function Panel({ step, checklist, onChecklistChange, onSetTranslation }) {
+export default function Panel({ step, checklist, onChecklistChange, onSetTranslation, page }) {
   const [tab, setTab] = React.useState(0);
 
   const stepText = checklist.map(item => item.label).join('\n');
@@ -97,7 +97,7 @@ export default function Panel({ step, checklist, onChecklistChange, onSetTransla
   
       {tab === 1 && (
         <Box p={2}>
-          <FAQAccordion step={step.id} />
+          <FAQAccordion step={step.id} page={page}/>
         </Box>
       )
       }
