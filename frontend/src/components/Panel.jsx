@@ -44,6 +44,8 @@ export default function Panel({ step, checklist, onChecklistChange, onSetTransla
           mb: 2,
           flexDirection: { xs: 'column', sm: 'row' },
           gap: { xs: 1, sm: 0 },
+          backgroundColor: '#E9EFFB', 
+          borderRadius: 3
         }}
       >
         <Box sx={{ flexShrink: 0 }}>

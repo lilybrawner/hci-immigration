@@ -45,6 +45,7 @@ export default function Results({ steps, initialChecklists, page }) {
           steps={steps}
           onStepClick={setSelectedStep}
           completedSteps={completedSteps}
+          selectedStep={selectedStep}
         />
       </Box>
 
