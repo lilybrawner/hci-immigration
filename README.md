@@ -10,3 +10,5 @@ Key implementation notes:
 - Backend: Node.js runtime environment
 - APIs and Server: Google Cloud
 - Deployment: Docker
+
+![Alt text](logo.png)
