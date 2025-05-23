@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import BasicTimeline from '../components/Timeline';
 import Panel from '../components/Panel';
 import Progress from '../components/Progress';
-import { Box } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 
 export default function Results({ steps, initialChecklists, page }) {
   const [selectedStep, setSelectedStep] = useState(null);
@@ -36,17 +36,25 @@ export default function Results({ steps, initialChecklists, page }) {
 
   const completedCount = completedSteps.length;
   const changeWidth = selectedStep ? '50%' : '100%';
+  const percentage = steps.length > 0 ? Math.round((completedCount / steps.length) * 100) : 0;
 
   return (
     <Box sx={{ display: 'flex', height: '100vh' }}>
-      <Box sx={{ width: changeWidth, overflowY: 'auto', ml: -20 }}>
-        <Progress totalSteps={steps.length} completedSteps={completedCount} />
-        <BasicTimeline
-          steps={steps}
-          onStepClick={setSelectedStep}
-          completedSteps={completedSteps}
-          selectedStep={selectedStep}
-        />
+      <Box sx={{ width: changeWidth, ml: -10}}>
+        <Box sx={{maxWidth: 600, mx: 'auto', mt: 2}}>
+          <Progress totalSteps={steps.length} completedSteps={completedCount} />
+          <Typography align="center" sx={{ mt: 1  }}>
+          {`${percentage}%`}
+          </Typography>
+        </Box>
+        <Box sx={{ml:-20}}>
+          <BasicTimeline
+            steps={steps}
+            onStepClick={setSelectedStep}
+            completedSteps={completedSteps}
+            selectedStep={selectedStep}  
+          />
+        </Box>
       </Box>
 
       {selectedStep && (

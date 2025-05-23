@@ -11,7 +11,7 @@ import { Typography, Box } from '@mui/material';
 
 function BasicTimeline({ steps, onStepClick, completedSteps = [], onToggleComplete, selectedStep }) {
   return (
-    <Timeline position='right'>
+    <Timeline>
       {steps.map((step, index) => {
         const isComplete = completedSteps.includes(step.id);
         return (
