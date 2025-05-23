@@ -7,16 +7,15 @@ import TimelineContent from '@mui/lab/TimelineContent';
 import TimelineDot from '@mui/lab/TimelineDot';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
-import { Typography } from '@mui/material';
+import { Typography, Box } from '@mui/material';
 
-function BasicTimeline({ steps, onStepClick, completedSteps = [], onToggleComplete }) {
+function BasicTimeline({ steps, onStepClick, completedSteps = [], onToggleComplete, selectedStep }) {
   return (
     <Timeline>
       {steps.map((step, index) => {
         const isComplete = completedSteps.includes(step.id);
-
         return (
-          <TimelineItem key={step.id} sx={{ cursor: 'pointer' }}>
+          <TimelineItem key={step.id} sx={{ cursor: 'pointer'}}>
             <TimelineSeparator>
               <TimelineDot
                 color={isComplete ? 'success' : 'grey'}
@@ -33,14 +32,25 @@ function BasicTimeline({ steps, onStepClick, completedSteps = [], onToggleComple
               </TimelineDot>
               {index < steps.length - 1 && <TimelineConnector />}
             </TimelineSeparator>
-            <TimelineContent onClick={() => onStepClick(step)}>
+
+            <TimelineContent onClick={() => onStepClick(step)} 
+            sx={{
+              backgroundColor: selectedStep?.id === step.id ? '#E9EFFB' : 'transparent',
+              borderRadius: 5,
+              padding: 4
+            }}>
+              
               <Typography variant="h6">{step.label}</Typography>
               <Typography variant="body2" color="text.secondary">{step.time}</Typography>
             </TimelineContent>
           </TimelineItem>
         );
-      })}
+        
+      }
+      
+      )}
     </Timeline>
+    
   );
 }
 
