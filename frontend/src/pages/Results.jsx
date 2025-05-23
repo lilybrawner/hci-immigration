@@ -30,7 +30,7 @@ export default function Results({ steps, initialChecklists }) {
 
   const completedSteps = Object.entries(checklists)
     .filter(([_, items]) =>
-      items.filter(i => !i.textOnly).every(item => item.checked)
+    items.filter(i => !i.textOnly && !i.section).every(item => item.checked)
     )
     .map(([stepId]) => Number(stepId));
 
