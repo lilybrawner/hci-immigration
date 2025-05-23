@@ -14,7 +14,7 @@ export default function AccessibilityBar({ stepText, checklist, onSetTranslation
       const translatedItems = await Promise.all(
         checklist.map(async (item) => {
           const { data } = await axios.post('/api/translate', {
-            text: item.label,
+            text: item.label || item.section,
             targetLang: langCode,
           });
           return data.translatedText;
