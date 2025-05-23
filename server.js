@@ -17,6 +17,11 @@ const translateClient = new Translate();
 app.post('/api/translate', async (req, res) => {
   const { text, targetLang } = req.body;
 
+  if (typeof text !== 'string') {
+    console.error('Invalid translation input: Expected a string but got', typeof text);
+    return res.status(400).json({ error: 'Invalid input: text must be a string.' });
+  }
+
   if (!text || !targetLang) {
     return res.status(400).json({ error: 'text and targetLang are required' });
   }
