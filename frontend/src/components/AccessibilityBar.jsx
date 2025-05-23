@@ -11,10 +11,15 @@ export default function AccessibilityBar({ stepText, checklist, onSetTranslation
     if (!checklist) return;
     setLoading(true);
     try {
+      // Filter only items with label or section as string
+      const textsToTranslate = checklist
+        .map(item => item.label || item.section)
+        .filter(text => typeof text === 'string');
+  
       const translatedItems = await Promise.all(
-        checklist.map(async (item) => {
+        textsToTranslate.map(async (text) => {
           const { data } = await axios.post('/api/translate', {
-            text: item.label || item.section,
+            text,
             targetLang: langCode,
           });
           return data.translatedText;
@@ -32,11 +37,21 @@ export default function AccessibilityBar({ stepText, checklist, onSetTranslation
 
   const handleSpeak = async () => {
     try {
+      // Ensure text is a string and not empty
+      const textToSpeak = typeof translatedText === 'string' && translatedText.trim()
+        ? translatedText
+        : (typeof stepText === 'string' ? stepText : '');
+  
+      if (!textToSpeak) {
+        console.warn('No valid text to speak');
+        return;
+      }
+  
       const response = await axios.post('/api/speak', {
-        text: translatedText || stepText,
+        text: textToSpeak,
         languageCode: langCode,
       }, { responseType: 'arraybuffer' });
-
+  
       const blob = new Blob([response.data], { type: 'audio/mpeg' });
       const audio = new Audio(URL.createObjectURL(blob));
       audio.play();
