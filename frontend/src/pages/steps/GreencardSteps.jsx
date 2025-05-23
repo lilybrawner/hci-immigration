@@ -90,6 +90,9 @@ export const gcchecklists = {
       { label: '(If your religion forbids military service, you must accept non‑military service)',  nested: true, textOnly: true },
       {  id: 2.23,label: '14. I will support the US Constitution', checked: false },
       { id: 2.24, label: '15. I am willing to take the Oath of Allegiance', checked: false },
+      { section: 'Sources' },
+      { label: <Link href="https://www.uscis.gov/citizenship/learn-about-citizenship/10-steps-to-naturalization" target="_blank" rel="noopener">10-Step Naturalization Process</Link>, textOnly: true },
+      { label: <Link href="https://id.uscourts.gov/Content_Fetcher/index.cfml/A_Guide_to_Naturalization_3814.pdf?Content_ID=3814" target="_blank" rel="noopener">A Guide To Naturalization (M-476)</Link>, textOnly: true },
     ],
   
     3: [
