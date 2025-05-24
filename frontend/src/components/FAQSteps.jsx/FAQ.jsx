@@ -27,5 +27,23 @@ export const FAQ = {
         9: [
             {question: 'What else will I have to do at this ceremony?', answer: 'You will have to turn in your Permanent Resident Card and receive a Certificate of Naturalization. Make sure you check the Certificate and identify any errors before you leave the ceremony, so they can be corrected.'}
         ]
+    }, 
+    "SFAQ":{
+        1: [
+            {}
+        ], 
+        2: [
+            {}
+        ],
+        3: [
+            { question: 'How can I check the status of my I-130 petition?', answer: 'You can enter your receipt number on the USCIS “Case Status Online” page to see updates. Initially, you’ll see “Case Received.” Later it might show “ actively being reviewed” and finally “Approved” or a notice if an RFE is issued. You can also call USCIS Contact Center, but online status is the quickest. Creating a USCIS online account (for paper-filed cases you can use the Online Access Code from your mailer) allows you to track and receive electronic updates.'},
+            { question: 'How long does it take for the I-130 to be approved?', answer: 'It varies. USCIS processing times fluctuate based on their backlog. As of early 2025, many spousal I-130s for immediate relatives are taking roughly 10–16 months to get approved. Some cases are faster (especially if filed online or if USCIS prioritizes them) and some slower. USCIS’s official stance is that case timelines cannot be guaranteed. You can monitor the USCIS processing times for the service center handling your case on the USCIS website. If your case exceeds normal processing times, you can submit an “outside normal processing time” service request.'},
+            { question: 'I received a Request for Evidence (RFE). Does this mean my case is in trouble?', answer: ' Not necessarily. An RFE simply means USCIS needs additional information before deciding. Common RFEs for spousal petitions include requests for missing documents (e.g. a properly certified marriage certificate, or proof of a legal name change) or more evidence of a bona fide marriage if what was provided was not sufficient. It’s important to respond by the deadline (usually 87 days) with everything requested. Once USCIS receives your response, your case will resume processing. Most RFEs are resolved by sending the needed info and do not indicate a denial, as long as you comply fully.'},
+            { question: 'What happens after my I-130 is approved?', answer: 'If your spouse will immigrate from overseas, USCIS will send the approved petition to the National Visa Center (NVC), which coordinates the next steps (fee payment and visa application). You will get a Notice of Approval (I-797) from USCIS and then, a few weeks later, a welcome communication from NVC with a case number. If your spouse is adjusting status in the U.S., there’s no NVC step – instead, your I-130 approval will be matched with the pending I-485 case. In either scenario, the approval of the petition is a big milestone: it means USCIS recognizes the qualifying relationship. The next steps will be either consular processing or adjustment of status, which we cover in the following steps.'},
+            { question: 'Will my spouse get any visa or travel document after the I-130 approval?', answer: 'Not from the I-130 alone. The approved I-130 is not a visa or green card – it’s the petition that allows your spouse to move forward in obtaining the immigrant visa/green card. If your spouse is abroad, they must wait for the NVC and consulate to issue an immigrant visa in their passport before they can travel to the U.S. as a resident. If your spouse is in the U.S. adjusting status, they can obtain work and travel permits while the I-485 is pending (if you filed those applications), but the actual green card comes only after adjustment is approved. The I-130 approval by itself doesn’t grant any interim benefits.'}
+        ],
+        4: [
+            {}
+        ], 
     }
 }

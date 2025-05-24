@@ -1,21 +1,35 @@
 import * as React from 'react';
+import Checkbox from '@mui/material/Checkbox';
 import Timeline from '@mui/lab/Timeline';
 import TimelineItem from '@mui/lab/TimelineItem';
 import TimelineSeparator from '@mui/lab/TimelineSeparator';
 import TimelineConnector from '@mui/lab/TimelineConnector';
 import TimelineContent from '@mui/lab/TimelineContent';
 import TimelineDot from '@mui/lab/TimelineDot';
+import TimelineOppositeContent, {
+  timelineOppositeContentClasses,
+} from '@mui/lab/TimelineOppositeContent';
+
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
 import { Typography, Box } from '@mui/material';
 
 function BasicTimeline({ steps, onStepClick, completedSteps = [], onToggleComplete, selectedStep }) {
   return (
-    <Timeline>
+    <Timeline
+    sx={{
+      [`& .${timelineOppositeContentClasses.root}`]: {
+        flex: 0.2,
+      },
+    }}
+    >
       {steps.map((step, index) => {
         const isComplete = completedSteps.includes(step.id);
         return (
           <TimelineItem key={step.id} sx={{ cursor: 'pointer'}}>
+          <TimelineOppositeContent color="textSecondary">
+          <Checkbox />
+        </TimelineOppositeContent>
             <TimelineSeparator>
               <TimelineDot
                 color={isComplete ? 'success' : 'grey'}
@@ -37,7 +51,9 @@ function BasicTimeline({ steps, onStepClick, completedSteps = [], onToggleComple
             sx={{
               backgroundColor: selectedStep?.id === step.id ? '#E9EFFB' : 'transparent',
               borderRadius: 5,
-              padding: 4
+              paddingLeft: 4,
+              paddingTop: 1,
+              paddingBottom: 1
             }}>
               
               <Typography variant="h6">{step.label}</Typography>

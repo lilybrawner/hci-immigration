@@ -1,0 +1,54 @@
+import Link from '@mui/material/Link';
+
+export const sSteps = [
+    {id: 1, label: 'Step 1: Submitting Form I-130'},
+    {id: 2, label: 'Step 2: File the Form I-130 Immigrant Petition'},
+    {id: 3, label: 'Step 3: Wait for USCIS Processing'},
+    {id: 4, label: 'Step 4: Case Transfer to NVC (Consular) or Adjustment Filing (Domestic)'},
+    {id: 5, label: 'Step 5: Submit Affidavit of Support (Form I-864) and Financial Evidence'},
+    {id: 6, label: 'Step 6: Submit Visa Application (DS-260) and Civil Documents'},
+    {id: 7, label: 'Step 7: Case Complete – Interview Scheduling and Preparation'},
+    {id: 8, label: 'Step 8: Complete the Medical Examination and Final Interview Prep'},
+    {id: 9, label: 'Step 9: Attend the Interview'},
+    {id: 10, label: 'Step 10: Post-Interview – Visa Issuance or Additional Actions'},
+    {id: 11, label: 'Step 11: Travel to the United States – Port of Entry and Activation of Permanent Residence'},
+    {id: 12, label: 'Step 12: Welcome to the USA – Receive Green Card and Conditional Residence Obligations'}
+]
+
+export const sChecklist = {
+    1: [
+        {}
+    ], 
+    2: [
+        { section: 'Tasks'},
+        { id: 2.1, label: 'Complete and sign Form I-130 (Petition for Alien Relative) with accurate information about you (the U.S. citizen petitioner) and your foreign spouse (the beneficiary). Double-check all names, dates, and answers to avoid delays.', checked: false},
+        { label: 'Double-check all names, dates, and answers to avoid delays.', nested: true, textOnly: true},
+        { label: 'Gather supporting evidence of your marriage and eligibility, including:', textOnly: true},
+        { id: 2.2, label: 'Copy of your marriage certificate', nested: true, checked: false},
+        { id: 2.3, label: 'proof of your U.S. citizenship (birth certificate, passport, or naturalization certificate)', nested: true, checked: false},
+    ], 
+    3: [
+        { section: 'Tasks'},
+        { id: 3.1, label: 'Receive the Receipt Notice: After filing, USCIS will mail you a receipt notice (Form I-797C, Notice of Action) typically within a few weeks. This receipt includes a unique case number.', checked: false},
+        { id: 3.2, label: 'Review the notice to ensure your name and address are correct.', checked: false},
+        { id: 3.3, label: 'Track Your Case: Use the receipt number to check your case status on the USCIS online portal.', checked: false}, 
+        { label: 'Initially, the status will be “Received.” You can also create/ log in to your USCIS account to see updates.', textOnly: true, nested: true},
+        { id: 3.4, label: 'Respond to Any RFEs: If USCIS needs more evidence, they will send a Request for Evidence (RFE) by mail (and to your account if filed online).', checked: false},
+        { label: 'The notice will list what additional documents or information are required.', textOnly: true, nested: true},
+        { id: 3.5, label: 'Respond by the deadline with the requested evidence to avoid denial.', checked: false},
+        { label: 'Common RFEs in spousal cases might ask for missing relationship evidence or clarify documents.', textOnly: true, nested: true},
+        { id: 3.6, label: 'USCIS Background Process: While you wait, USCIS is verifying the information and conducting security checks.', checked: false},
+        { label: 'Immediate relative petitions (IR category) are not subject to visa quotas, so they can be approved as soon as USCIS finishes processing.', nested: true, textOnly: true},
+        { label: 'If everything is in order, USCIS will approve the I-130; if not, they may deny the petition (uncommon if all genuine) or issue additional requests.', nested: true, textOnly: true},
+        { id: 3.7, label: 'Approval Notice: When a decision is made, USCIS will mail an approval notice (Form I-797).', checked: false},
+        { label: 'If your spouse will do consular processing abroad, USCIS will automatically forward the approved petition to the National Visa Center (NVC) for the next phase.', nested: true, textOnly: true},
+        { label: 'If your spouse is adjusting status in the U.S., the approved I-130 remains with USCIS to be paired with the I-485 process. In the rare case of a denial, the notice will explain the reasons and mention if an appeal is possible.', nested: true, textOnly: true},
+        { section: 'Required Documents'},
+        { id: 3.8, label: 'USCIS Receipt Notice (I-797C)', checked: false},
+        { id: 3.9, label: 'Copy of the I-130 Petition', checked: false},
+        { id: 3.10, label: 'Evidence for RFE (if expected)', checked: false},
+        { label: ' If you anticipate USCIS might request more proof (e.g., bona fide marriage evidence), start gathering those documents (updated bank statements, more photos, letters from friends, etc.) so you can respond quickly if asked.', textOnly: true, nested: true},
+        { id: 3.11, label: 'Address Change Confirmation', checked: false}
+
+    ]
+}

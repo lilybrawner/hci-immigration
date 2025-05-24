@@ -35,30 +35,29 @@ export default function Results({ steps, initialChecklists, page }) {
     .map(([stepId]) => Number(stepId));
 
   const completedCount = completedSteps.length;
-  const changeWidth = selectedStep ? '50%' : '100%';
-  const percentage = steps.length > 0 ? Math.round((completedCount / steps.length) * 100) : 0;
+  const splitStyle = {
+    width: '40%'
+  }
 
   return (
-    <Box sx={{ display: 'flex', height: '100vh' }}>
-      <Box sx={{ width: changeWidth, ml: -10}}>
-        <Box sx={{maxWidth: 600, mx: 'auto', mt: 2}}>
+    <Box sx={{ display: 'flex', justifyContent: 'center'}}>
+      
+      <Box sx={ selectedStep ? splitStyle : {} }>
+
           <Progress totalSteps={steps.length} completedSteps={completedCount} />
-          <Typography align="center" sx={{ mt: 1  }}>
-          {`${percentage}%`}
-          </Typography>
-        </Box>
-        <Box sx={{ml:-20}}>
+          <Box sx={{paddingRight: 5}}>
           <BasicTimeline
             steps={steps}
             onStepClick={setSelectedStep}
             completedSteps={completedSteps}
             selectedStep={selectedStep}  
           />
+          </Box>
         </Box>
-      </Box>
+ 
 
       {selectedStep && (
-        <Box sx={{ width: '50%', overflowY: 'auto' }}>
+        <Box sx={{ width: '60%', overflowY: 'auto' }}>
           <Panel
             step={selectedStep}
             checklist={checklists[selectedStep.id] || []}
