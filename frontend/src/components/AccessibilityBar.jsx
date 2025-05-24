@@ -73,10 +73,14 @@ export default function AccessibilityBar({ stepText, checklist, onSetTranslation
             onChange={(e) => setLangCode(e.target.value)}
             size="small"
           >
-            <MenuItem value="es">Spanish</MenuItem>
-            <MenuItem value="fr">French</MenuItem>
-            <MenuItem value="zh">Chinese</MenuItem>
             <MenuItem value="en">English</MenuItem>
+<MenuItem value="es">Spanish</MenuItem>
+<MenuItem value="fr">French</MenuItem>
+<MenuItem value="zh">Chinese</MenuItem>
+<MenuItem value="hi">Hindi</MenuItem>
+<MenuItem value="tl">Tagalog</MenuItem>
+<MenuItem value="vi">Vietnamese</MenuItem>
+<MenuItem value="ar">Arabic</MenuItem>
           </Select>
         </FormControl>
   
