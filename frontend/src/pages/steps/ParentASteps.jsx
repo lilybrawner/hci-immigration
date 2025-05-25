@@ -117,7 +117,7 @@ export const paChecklist = {
         { id: 5.8, label: '(No physical documents need to be sent for fees – it’s all online. Just keep the receipts.)', checked: false }
     ],
     6: [
-        { label: 'If you filed the I-485 in Step 4, you’ve essentially completed the “visa application” on the USCIS side. Your parent’s pending I-485 is their green card application. In this step, there’s nothing additional to submit for AOS except responding to any USCIS requests. (Skip to Step 7 for affidavit requirements, which you already handled in the I-485 packet.)', textOnly: true }
+        { id: 6.1, label: 'If you filed the I-485 in Step 4, you’ve essentially completed the “visa application” on the USCIS side. Your parent’s pending I-485 is their green card application. In this step, there’s nothing additional to submit for AOS except responding to any USCIS requests. (Skip to Step 7 for affidavit requirements, which you already handled in the I-485 packet.)', checked: false }
     ],
     7: [
         { label: 'Purpose: The Affidavit of Support is a legally binding document to ensure your parent will not become a public charge. As the petitioner, you must submit this and demonstrate you have sufficient income or assets to support your parent at 125% of the federal poverty guidelines (income threshold depends on household size).', textOnly: true },
