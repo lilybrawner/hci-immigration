@@ -7,7 +7,7 @@ import DownloadIcon from '@mui/icons-material/Download';
 import { pdf } from '@react-pdf/renderer';
 import ChecklistPDF from './ChecklistPDF'; 
 
-export default function Panel({ step, checklist, onChecklistChange, onSetTranslation, page }) {
+export default function Panel({ step, checklist, onChecklistChange, onSetTranslation, page, renderLabel }) {
   const [tab, setTab] = React.useState(0);
 
   const stepText = checklist.map(item => item.label).join('\n');
@@ -35,7 +35,6 @@ export default function Panel({ step, checklist, onChecklistChange, onSetTransla
     onChecklistChange(step.id, updated);
   };
   
-
   const handleDownloadPDF = async () => {
     const doc = <ChecklistPDF step={step} checklist={checklist} />;
     const asPdf = pdf(doc);
@@ -95,7 +94,7 @@ export default function Panel({ step, checklist, onChecklistChange, onSetTransla
                 return (
                   <Box key={`section-${index}`} sx={{ pt: index === 0 ? 0 : 4, pb: 1 }}>
                     <Typography variant="h6" sx={{ fontWeight: 'bold' }}>
-                      {item.section}
+                      {renderLabel ? renderLabel(item.section) : item.section}
                     </Typography>
                   </Box>
                 );
@@ -106,9 +105,9 @@ export default function Panel({ step, checklist, onChecklistChange, onSetTransla
                   <Typography
                     key={`textOnly-${index}`}
                     variant="body1"
-                    sx={{pt: 1, pl: item.nested ? 5 : 0 }}
+                    sx={{ pt: 1, pl: item.nested ? 5 : 0 }}
                   >
-                    {labelText}
+                    {renderLabel ? renderLabel(labelText) : labelText}
                   </Typography>
                 );
               }
@@ -117,7 +116,7 @@ export default function Panel({ step, checklist, onChecklistChange, onSetTransla
                 item.children && item.children.length > 0 && item.children[0].type === 'dropdown';
 
               return (
-                <Box key={`checkbox-${index}`} sx={{pt: 1, pl: item.nested ? 5 : 0 }}>
+                <Box key={`checkbox-${index}`} sx={{ pt: 1, pl: item.nested ? 5 : 0 }}>
                   <FormControlLabel
                     control={
                       <Checkbox
@@ -126,8 +125,8 @@ export default function Panel({ step, checklist, onChecklistChange, onSetTransla
                         sx={{ mt: -1, color: '#425E8E' }}
                       />
                     }
-                    label={labelText}
-                    sx={{ alignIte: 'flex-start' }}
+                    label={renderLabel ? renderLabel(labelText) : labelText}
+                    sx={{ alignItems: 'flex-start' }}
                   />
                   {hasDropdown && item.checked && (
                     <Box sx={{ mt: 0, ml: 4 }}>
@@ -182,3 +181,4 @@ export default function Panel({ step, checklist, onChecklistChange, onSetTransla
     </>
   );
 }
+
