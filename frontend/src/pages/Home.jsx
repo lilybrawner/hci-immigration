@@ -41,7 +41,8 @@ function Home() {
           >
             <option value="">Select</option>
             <option value="Spouse">U.S. citizen looking to sponsor my spouse</option>
-            <option value="Parent">U.S. citizen looking to sponsor my parents</option>
+            <option value="ParentA">U.S. citizen looking to sponsor my parents living in the US</option>
+            <option value="ParentC">U.S. citizen looking to sponsor my parents living abroad</option>
             <option value="Visa">International student looking to study in the U.S.</option>
             <option value="Greencard">Green card holder looking to apply for citizenship</option>
           </select>

@@ -127,7 +127,7 @@ export default function Panel({ step, checklist, onChecklistChange, onSetTransla
                       />
                     }
                     label={labelText}
-                    sx={{ alignItems: 'flex-start' }}
+                    sx={{ alignIte: 'flex-start' }}
                   />
                   {hasDropdown && item.checked && (
                     <Box sx={{ mt: 0, ml: 4 }}>

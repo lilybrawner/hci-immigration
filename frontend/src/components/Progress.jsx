@@ -1,20 +1,18 @@
 import * as React from 'react';
 import MobileStepper from '@mui/material/MobileStepper';
+import '../App.css'
 
 export default function Progress({ totalSteps, completedSteps }) {
-  
+  const percentage = totalSteps > 0 ? Math.round((completedSteps / totalSteps) * 100) : 0;
+
     return (
-        <MobileStepper
-          variant="progress"
-          steps={totalSteps}
-          activeStep={completedSteps}
-          position="static"
-          sx={{
-              maxWidth: 700, 
-              flexGrow: 1,
-              marginLeft: '55%',
-              minHeight: 50,
-          }}
-        />
+      <div className='progress-parent'>
+      <div className='progress-div'>
+        <progress barClassName="my-progress" color="awesome" value={completedSteps / totalSteps}/>
+      </div>
+      <div className='label-div'>
+        <p className='progress-label'>{`${percentage}%`}</p>
+      </div>
+      </div>
     );
   }
