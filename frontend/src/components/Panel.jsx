@@ -106,7 +106,7 @@ export default function Panel({ step, checklist, onChecklistChange, onSetTransla
                   <Typography
                     key={`textOnly-${index}`}
                     variant="body1"
-                    sx={{ pl: item.nested ? 5 : 0 }}
+                    sx={{pt: 1, pl: item.nested ? 5 : 0 }}
                   >
                     {labelText}
                   </Typography>
@@ -117,7 +117,7 @@ export default function Panel({ step, checklist, onChecklistChange, onSetTransla
                 item.children && item.children.length > 0 && item.children[0].type === 'dropdown';
 
               return (
-                <Box key={`checkbox-${index}`} sx={{ pl: item.nested ? 5 : 0 }}>
+                <Box key={`checkbox-${index}`} sx={{pt: 1, pl: item.nested ? 5 : 0 }}>
                   <FormControlLabel
                     control={
                       <Checkbox
@@ -130,7 +130,7 @@ export default function Panel({ step, checklist, onChecklistChange, onSetTransla
                     sx={{ alignItems: 'flex-start' }}
                   />
                   {hasDropdown && item.checked && (
-                    <Box sx={{ mt: 1, ml: 4 }}>
+                    <Box sx={{ mt: 0, ml: 4 }}>
                       <select
                         value={item.children[0].selected || ''}
                         onChange={(e) => {

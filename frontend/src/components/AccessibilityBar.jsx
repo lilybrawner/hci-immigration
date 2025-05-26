@@ -4,7 +4,7 @@ import { Box, Button, FormControl, InputLabel, MenuItem, Select, Typography, Sta
 
 export default function AccessibilityBar({ stepText, checklist, onSetTranslation }) {
   const [translatedText, setTranslatedText] = useState('');
-  const [langCode, setLangCode] = useState('es');
+  const [langCode, setLangCode] = useState('en');
   const [loading, setLoading] = useState(false);
 
   const handleTranslate = async () => {
