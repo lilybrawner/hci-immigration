@@ -1,6 +1,6 @@
 import Link from '@mui/material/Link';
 
-export const paSteps = [
+export const pcSteps = [
     { id: 1, label: 'Step 1: Confirm Eligibility and Relationship' },
     { id: 2, label: 'Step 2: Gather Required Documents for the Petition' },
     { id: 3, label: 'Step 3: File Form I-130 Petition and Receive Approval' },
@@ -15,7 +15,7 @@ export const paSteps = [
     { id: 12, label: 'Step 12: U.S. Entry and Post-Arrival Next Steps' }
 ]
 
-export const paChecklist = {
+export const pcChecklist = {
     1: [
         { section: 'Eligibility Checklist' },
         { id: 1.1, label: 'Verify Sponsor’s Status/Age:', checked: false },
