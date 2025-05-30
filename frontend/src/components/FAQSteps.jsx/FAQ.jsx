@@ -1,3 +1,5 @@
+import Link from '@mui/material/Link';
+
 export const FAQ = {
     "GCFAQ": {
         3: [
@@ -310,6 +312,64 @@ export const FAQ = {
             { question: 'As a new green card holder, can my parent travel back to their home country to wrap up affairs?', answer: 'Yes, but be cautious. Short trips under 6 months are fine. If your parent just got here and immediately stays abroad for many months, it could raise questions at re-entry. It’s understandable they might need to settle affairs, sell property, etc. We recommend not exceeding, say, 3–4 months abroad in the first year without a re-entry permit, just to be safe. And definitely not over a year without obtaining a re-entry permit beforehand. Encourage them to establish ties here (bank account, doctor visits, etc.) before traveling out, to solidify that the U.S. is now home.' },
             { question: 'What responsibilities do I (the sponsor) have now that my parent is an LPR?', answer: 'Primarily, the Affidavit of Support obligations: you are on the hook to ensure your parent has financial support. If your parent, say, tries to get certain welfare benefits, you might be contacted to reimburse those. Realistically, in many cases parents won’t qualify for most benefits for 5 years, and hopefully they won’t need them. But be aware of that. You should also help them integrate – e.g., if they don’t speak English, maybe help find language classes, or generally assist them in understanding U.S. systems (like healthcare, banking). Also remind them of things like address change filing, and the eventual naturalization if they desire.' },
             { question: 'How soon can my parent become a U.S. citizen?', answer: 'They can apply for citizenship after 5 years of being a permanent resident (there’s no expedited 3-year rule here, as that’s only for spouses of U.S. citizens). The 5-year clock starts from the day they became an LPR (entry or approval date). They can actually file the N-400 application 90 days before the 5-year anniversary. They’ll need to meet continuous residence (not have disrupted by long trips) and be physically present in the US for about half that time (30 months) and be able to pass the English and civics tests, among other requirements. Until then, they should maintain their green card (renew it before expiration at 10 years if they choose not to naturalize by then).' },
+        ]
+    }, 
+    "F1FAQ": {
+        1: [
+            { question: 'How do I know if my school is SEVP-certified?', answer: 
+                (
+                    <>
+                    You can check on the linked Department of Homeland Security{' '}
+                    <Link
+                        href="https://studyinthestates.dhs.gov/school-search" 
+                        target="_blank" 
+                        rel="noopener"
+                    >website
+                    </Link>
+                    .
+                    </>
+                )},
+        ], 
+        5: [
+            { question: 'What kind of questions should I anticipate?', answer:  
+                (
+                    <>
+                    According to{' '}
+                    <Link
+                        href="https://shorelight.com/student-stories/student-visa-usa-f1/" 
+                        target="_blank" 
+                        rel="noopener"
+                    >Shorelight
+                    </Link>,{' '}
+                    they may ask you questions about what other US universities you applied to, why you chose the specific school, how you’ll pay for your education, whether you have family in the US, and what your plans are during and after school.
+                    </>
+                )},
+        ], 
+        6: [
+            { question: 'Why was my application refused under Section 221(g)?', answer: 'It could be because your application was incomplete or more documentation is needed. If this is the case, you will be informed on what you need to provide. Your application may also need more administrative processing. In this circumstance, processing times can vary.'},
+            { question: 'Can my refusal under Section 221(g) be overturned?', answer: 'Yes. If additional documentation or information was requested from you, provide it within one year of the visa denial.'}
+        ], 
+        7: [
+            { question: 'Can I enter the US more than 30 days in advance?', answer: 'Not under your F-1 visa. If you wish to enter earlier than 30 days before your start date, you must separately apply and qualify for a visitor (B) visa. Once admitted under the visitor (B) visa, you must apply to USCIS for a change of status to student (F-1) status before you start your program. This might have long processing times, and you can not begin your course of study until the change of status is approved.'}
+        ], 
+        8: [
+            { question: 'Do I need to take courses during my academic vacation?', answer: 
+                (
+                    <>
+                    No. According to the{' '}
+                    <Link
+                        href="https://studyinthestates.dhs.gov/students/maintaining-status" 
+                        target="_blank" 
+                        rel="noopener"
+                    >Department of Homeland Security
+                    </Link>,{' '}
+                    you do not need to take classes during an annual vacation, but you can.
+                    </>
+                )},
+        ],
+        11: [
+            { question: 'What if I have a valid US visa in an expired passport?', answer: 'It is still valid. A visa is valid until its expiration date, unless it is canceled or revoked. Carry both your current passport, and your expired passport with the valid US visa.' }, 
+            { question: 'What if I have a spouse and children?', answer: 'You spouse and unmarried, minor children can apply for F-2 visas. Your school must issue them an individual Form I-20, which is required for their visa application. You must provide proof of relationship and a copy of your F-1 visa. Your minor children can attend school in the US while accompanying you.' }
         ]
     }
 }

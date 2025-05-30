@@ -5,6 +5,7 @@ import GreencardRes from './pages/GreencardRes';
 import SpouseRes from './pages/SpouseRes';
 import ParentARes from './pages/ParentARes';
 import ParentCRes from './pages/ParentCRes';
+import F1Res from './pages/F1Res';
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
           <Route path="/spouse" element={<SpouseRes />} />
           <Route path="/parenta" element={<ParentARes />} />
           <Route path="/parentc" element={<ParentCRes />} />
+          <Route path="/visa" element={<F1Res />} />
         </Routes>
       </Router>
   );
