@@ -5,7 +5,7 @@ import Progress from '../components/Progress';
 import { Box, Typography } from '@mui/material';
 
 export default function Results({ steps, initialChecklists, page , renderLabel}) {
-  const [selectedStep, setSelectedStep] = useState(null);
+  const [selectedStep, setSelectedStep] = useState(steps?.[0] || null);
   const [checklists, setChecklists] = useState(initialChecklists || {});
 
   const handleChecklistChange = (stepId, updatedChecklist) => {

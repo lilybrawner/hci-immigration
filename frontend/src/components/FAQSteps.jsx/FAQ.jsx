@@ -2,6 +2,9 @@ import Link from '@mui/material/Link';
 
 export const FAQ = {
     "GCFAQ": {
+        2: [
+            { question: 'What if I didn’t check one of the 15 numbered items?', answer: 'Unless stated otherwise, the 15 items must be true for you to be eligible for naturalization. Some items include a specific attachment for you to fill out if the numbered item was not true. Follow the instructions on the attachment to see if you are still eligible. For example, if number 3 was not true for you, go through Attachment A to see if you are still eligible.' },
+        ],
         3: [
             { question: 'Is using this checklist sufficient to fill out the N-400?', answer: 'No. Please read and follow the instructions on the N-400 carefully. The checklist, even though it’s provided by USCIS, is for informational purposes only and does not replace the instruction requirements on the form itself. Also, please seek professional guidance from an attorney if needed, to ensure you provide all the required documentation for your specific circumstances.' },
             { question: 'Do I need to submit original documents?', answer: 'Do not send original documents unless it is specifically requested in the form instructions or applicable regulations.' }
