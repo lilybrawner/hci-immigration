@@ -2,88 +2,36 @@ import React, { useState, useRef } from 'react';
 import axios from 'axios';
 import { Box, Button, FormControl, InputLabel, MenuItem, Select, Stack, Paper } from '@mui/material';
 
-// Helper to extract plain text from JSX (for translation lookup)
-function extractTextFromJSX(node) {
-  if (typeof node === 'string') return node;
-  if (Array.isArray(node)) return node.map(extractTextFromJSX).join(' ');
-  if (React.isValidElement(node)) {
-    return extractTextFromJSX(node.props.children);
-  }
-  return String(node);
-}
-
-// Recursively collect all text entries in checklist for translation
-function collectTextsForTranslation(items) {
+// Recursively collect all translatable text from 'label' and 'section' fields
+function collectTranslatableTexts(items) {
   let texts = [];
   for (const item of items) {
-    if (item.label) {
-      texts.push(extractTextFromJSX(item.label));
-    } else if (item.section) {
-      texts.push(extractTextFromJSX(item.section));
+    if (item.label && typeof item.label === 'string') {
+      texts.push(item.label);
+    } else if (item.section && typeof item.section === 'string') {
+      texts.push(item.section);
     }
-
-    if (item.type === 'dropdown' && Array.isArray(item.options)) {
-      for (const opt of item.options) {
-        if (typeof opt === 'string') {
-          texts.push(opt);
-        } else if (opt.label) {
-          texts.push(extractTextFromJSX(opt.label));
-          if (Array.isArray(opt.children)) {
-            texts = texts.concat(collectTextsForTranslation(opt.children));
-          }
-        }
-      }
-    }
-
     if (Array.isArray(item.children)) {
-      texts = texts.concat(collectTextsForTranslation(item.children));
+      texts = texts.concat(collectTranslatableTexts(item.children));
     }
   }
   return texts;
 }
 
-// Recursively replace texts in checklist items using a translation map
-function replaceTextsWithTranslations(items, translationMap) {
+// Recursively replace only label and section fields
+function replaceLabelSectionTranslations(items, translationMap) {
   return items.map(item => {
-    let newItem = { ...item };
+    const newItem = { ...item };
 
-    // Replace label
-    if (item.label) {
-      const originalText = extractTextFromJSX(item.label);
-      if (translationMap.has(originalText)) {
-        const translated = translationMap.get(originalText);
-        newItem.label = translated;
-      }
-    } else if (item.section) {
-      const originalText = extractTextFromJSX(item.section);
-      if (translationMap.has(originalText)) {
-        newItem.section = translationMap.get(originalText);
-      }
+    if (item.label && translationMap.has(item.label)) {
+      newItem.label = translationMap.get(item.label);
+    }
+    if (item.section && translationMap.has(item.section)) {
+      newItem.section = translationMap.get(item.section);
     }
 
-    // Replace dropdown options and their children recursively
-    if (item.type === 'dropdown' && Array.isArray(item.options)) {
-      newItem.options = item.options.map(opt => {
-        if (typeof opt === 'string') {
-          return translationMap.get(opt) || opt;
-        } else if (opt.label) {
-          const originalOptText = extractTextFromJSX(opt.label);
-          let newOpt = {
-            ...opt,
-            label: translationMap.get(originalOptText) || opt.label,
-          };
-          if (Array.isArray(opt.children)) {
-            newOpt.children = replaceTextsWithTranslations(opt.children, translationMap);
-          }
-          return newOpt;
-        }
-        return opt;
-      });
-    }
-
-    // Replace recursively in children
     if (Array.isArray(item.children)) {
-      newItem.children = replaceTextsWithTranslations(item.children, translationMap);
+      newItem.children = replaceLabelSectionTranslations(item.children, translationMap);
     }
 
     return newItem;
@@ -101,11 +49,9 @@ export default function AccessibilityBar({ stepText, checklist, onSetTranslation
     if (!checklist) return;
     setLoading(true);
     try {
-      // Collect unique texts for translation
-      const textsToTranslate = collectTextsForTranslation(checklist).filter(Boolean);
+      const textsToTranslate = collectTranslatableTexts(checklist).filter(Boolean);
       const uniqueTexts = [...new Set(textsToTranslate)];
 
-      // Translate all texts in parallel
       const translatedTexts = await Promise.all(
         uniqueTexts.map(async (text) => {
           const { data } = await axios.post('/api/translate', {
@@ -116,18 +62,13 @@ export default function AccessibilityBar({ stepText, checklist, onSetTranslation
         })
       );
 
-      // Build map original -> translated
       const translationMap = new Map();
       uniqueTexts.forEach((orig, idx) => {
         translationMap.set(orig, translatedTexts[idx]);
       });
 
-      // Replace checklist texts with translated texts
-      const newTranslatedChecklist = replaceTextsWithTranslations(checklist, translationMap);
-
+      const newTranslatedChecklist = replaceLabelSectionTranslations(checklist, translationMap);
       setTranslatedChecklist(newTranslatedChecklist);
-
-      // Pass the entire translated checklist object back to parent
       onSetTranslation(newTranslatedChecklist);
 
     } catch (error) {
@@ -141,8 +82,7 @@ export default function AccessibilityBar({ stepText, checklist, onSetTranslation
     let textToSpeak = '';
 
     if (translatedChecklist) {
-      // Flatten all translated texts to speak
-      const texts = collectTextsForTranslation(translatedChecklist).filter(Boolean);
+      const texts = collectTranslatableTexts(translatedChecklist).filter(Boolean);
       textToSpeak = texts.join('\n');
     } else if (typeof stepText === 'string') {
       textToSpeak = stepText;
