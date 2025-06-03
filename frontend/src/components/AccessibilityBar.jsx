@@ -2,8 +2,6 @@ import React, { useState, useRef } from 'react';
 import axios from 'axios';
 import { Box, Button, FormControl, InputLabel, MenuItem, Select, Stack, Paper } from '@mui/material';
 
-import React from 'react';
-
 function extractTextFromReactElement(element) {
   if (typeof element === 'string') {
     return element;
