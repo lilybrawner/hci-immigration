@@ -17,7 +17,7 @@ function Home() {
 
   return (
     <div>
-      <div style={{ padding: '50px', margin: '0 auto' }}>
+      <div style={{ padding: '25px 25px 0px 25px', margin: '0 auto' }}>
         <h1 style={{ marginTop: 0 }}>
           DISCLAIMER
         </h1>

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useRef } from 'react';
 import axios from 'axios';
 import { Box, Button, FormControl, InputLabel, MenuItem, Select, Typography, Stack, Paper } from '@mui/material';
 
@@ -35,30 +36,54 @@ export default function AccessibilityBar({ stepText, checklist, onSetTranslation
     setLoading(false);
   };
 
-  const handleSpeak = async () => {
-    try {
-      // Ensure text is a string and not empty
-      const textToSpeak = typeof translatedText === 'string' && translatedText.trim()
-        ? translatedText
-        : (typeof stepText === 'string' ? stepText : '');
-  
-      if (!textToSpeak) {
-        console.warn('No valid text to speak');
-        return;
-      }
-  
-      const response = await axios.post('/api/speak', {
-        text: textToSpeak,
-        languageCode: langCode,
-      }, { responseType: 'arraybuffer' });
-  
-      const blob = new Blob([response.data], { type: 'audio/mpeg' });
-      const audio = new Audio(URL.createObjectURL(blob));
-      audio.play();
-    } catch (error) {
-      console.error('Speech synthesis error:', error);
+const audioRef = useRef(null);
+const [isPlaying, setIsPlaying] = useState(false);
+
+const handleSpeak = async () => {
+  const textToSpeak = typeof translatedText === 'string' && translatedText.trim()
+    ? translatedText
+    : (typeof stepText === 'string' ? stepText : '');
+
+  if (!textToSpeak) {
+    console.warn('No valid text to speak');
+    return;
+  }
+
+  // If audio already exists and hasn't ended
+  if (audioRef.current && !audioRef.current.ended) {
+    if (!audioRef.current.paused) {
+      // Pause if currently playing
+      audioRef.current.pause();
+      setIsPlaying(false);
+    } else {
+      // Resume if paused
+      audioRef.current.play();
+      setIsPlaying(true);
     }
-  };
+    return;
+  }
+
+  // Else, fetch new audio and play from start
+  try {
+    const response = await axios.post('/api/speak', {
+      text: textToSpeak,
+      languageCode: langCode,
+    }, { responseType: 'arraybuffer' });
+
+    const blob = new Blob([response.data], { type: 'audio/mpeg' });
+    const audio = new Audio(URL.createObjectURL(blob));
+
+    audioRef.current = audio;
+
+    audio.play();
+    setIsPlaying(true);
+
+    audio.onended = () => setIsPlaying(false);
+  } catch (error) {
+    console.error('Speech synthesis error:', error);
+  }
+};
+
 
   return (
     <Paper elevation={3} sx={{ p: 1.5, mt: 1.5, backgroundColor: '#fafafa', width: 'auto', display: 'inline-flex'}}>
@@ -95,9 +120,14 @@ export default function AccessibilityBar({ stepText, checklist, onSetTranslation
             {loading ? 'Translating...' : 'Translate'}
           </Button>
   
-          <Button variant="outlined" color="secondary" onClick={handleSpeak} size="small">
-            Speak
-          </Button>
+          <Button
+  variant="outlined"
+  color="secondary"
+  onClick={handleSpeak}
+  size="small"
+>
+  {isPlaying ? 'Pause' : 'Speak'}
+</Button>
         </Box>
       </Stack>
     </Paper>
