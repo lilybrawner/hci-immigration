@@ -73,7 +73,7 @@ export const gcchecklists = {
               >
                 Immigration and Nationality Act (INA) Section 329 
               </Link>
-               to determine your eligibility through military service.
+              {' '}to determine your eligibility through military service.
             </>
           ),
           textOnly: true,
@@ -151,7 +151,7 @@ export const gcchecklists = {
           >
             A Guide to Naturalization (M-476)
           </Link>
-          for more information.
+          {' '}for more information.
         </>
       ),
       textOnly: true,
@@ -178,7 +178,7 @@ export const gcchecklists = {
         >
           A Guide to Naturalization (M-476)
         </Link>
-        for more information.
+        {' '}for more information.
       </>
     ),
     textOnly: true,
@@ -208,7 +208,7 @@ export const gcchecklists = {
           >
             A Guide to Naturalization (M-476)
           </Link>
-          for more information.
+          {' '}for more information.
         </>
       ),
       textOnly: true,
@@ -235,7 +235,7 @@ export const gcchecklists = {
         >
           A Guide to Naturalization (M-476)
         </Link>
-        for more information.
+        {' '}for more information.
       </>
     ),
     textOnly: true,
@@ -268,18 +268,54 @@ export const gcchecklists = {
     ],
   
     3: [
-      { label: 'General Checklist', textOnly: true },
-      { id: 3.1, label: 'Complete and sign your Form N‑400', checked: false },
-      { id: 3.2, label: 'If you reside outside the US, get two passport‑style photos', checked: false },
-      { id: 3.3, label: 'Collect documents to demonstrate eligibility', checked: false },
-      {id: 3.4, label: 'Review your Form N‑400 and supporting docs', checked: false },
+      { section: 'Step 3: Prepare Form N-400 (Application for Naturalization) General Checklist'},
+      { id: 3.1, label: 'Complete and sign your Form N‑400', checked: false },
+      { id: 3.2, label: 'If you reside outside the US, get two passport‑style photos taken', checked: false },
+      { id: 3.3, label: 'Collect necessary documents to demonstrate eligibility for naturalization', checked: false },
+      {id: 3.4, label: 'Review your Form N‑400 and supporting documents', checked: false },
   
-      { label: 'Required Initial Evidence (send **copies** unless originals requested)', textOnly: true },
+      { section: 'Required Document Checklist'},
+      {
+        label: (
+          <>
+            The following checklist is a tool provided by USCIS to help you prepare the{' '}
+            <Link
+              href="https://www.uscis.gov/n-400"
+              target="_blank"
+              rel="noopener"
+            >
+              N-400 (under “Checklist of Required Initial Evidence”)
+            </Link>
+            . It does not replace the instruction requirements on the form itself. Do not send original documents unless specifically requested in the form instructions or applicable regulations.
+
+          </>
+        ),
+        textOnly: true,
+      },
+      { label: 'Note: If you submit any documents in a foreign language, you must include a full English translation along with a certification from the translator that verifies that the translation is complete and accurate, and that the translator is competent to translate from the language to English.', textOnly: true },
+      { label: 'Send copies of the following documents unless you are asked to provide an original.', textOnly: true },
       { id: 3.5, label: 'Permanent Resident Card', checked: false },
-      { id: 3.6, label: 'Photocopy of both sides of Permanent Resident Card', checked: false },
-      { id: 3.7, label: 'Receipt for Form I‑90 if card is lost', checked: false },
-      { id: 3.8, label: 'Check or money order for application + biometrics fees (A‑Number on back)', checked: false },
-      { id: 3.9, label: <Link href="https://www.uscis.gov/g-1450" target="_blank" rel="noopener">Form G‑1450 (credit‑card payment authorization)</Link>, checked: false },
+      { id: 3.6, label: 'Photocopy of both sides of Permanent Resident Card', checked: false , nested: true},
+      { id: 3.7, label: 'If you have lost the card, submit a photocopy of the receipt for your Form I-90 (Application to Replace Permanent Resident Card)', textOnly: true, nested: false},
+      { id: 3.8, label: 'A check or money order for the application fee (and biometric services fee, if applicable) with your A‑Number on back', checked: false },
+      {
+        label: (
+          <>
+            If you want to pay by credit card instead (there is not additional fee), complete and submit {' '}
+            <Link
+              href="https://www.uscis.gov/g-1450"
+              target="_blank"
+              rel="noopener"
+            >
+              Form G-1450 (Authorization for Credit Card Transaction)
+            </Link>
+            .
+
+          </>
+        ),
+        textOnly: true,
+        nested: true,
+      },
       { id: 3.11, label: 'Two identical color photographs (if residing outside the US)', checked: false },
       { label: 'Photo requirements — see page 33 of Guide M‑476', textOnly: true },
       { label: 'Head‑covering photos must still show facial features', textOnly: true },

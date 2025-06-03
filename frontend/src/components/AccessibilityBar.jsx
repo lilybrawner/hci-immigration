@@ -2,16 +2,40 @@ import React, { useState, useRef } from 'react';
 import axios from 'axios';
 import { Box, Button, FormControl, InputLabel, MenuItem, Select, Stack, Paper } from '@mui/material';
 
-// Recursively collect all translatable text from 'label' and 'section' fields (only if string)
+import React from 'react';
+
+function extractTextFromReactElement(element) {
+  if (typeof element === 'string') {
+    return element;
+  }
+  if (React.isValidElement(element)) {
+    const children = element.props.children;
+    if (Array.isArray(children)) {
+      return children.map(extractTextFromReactElement).join(' ');
+    } else {
+      return extractTextFromReactElement(children);
+    }
+  }
+  return '';
+}
+
 function collectTranslatableTexts(items) {
   let texts = [];
   for (const item of items) {
     if (typeof item.label === 'string') {
       texts.push(item.label);
+    } else if (React.isValidElement(item.label)) {
+      const extracted = extractTextFromReactElement(item.label);
+      if (extracted) texts.push(extracted);
     }
+
     if (typeof item.section === 'string') {
       texts.push(item.section);
+    } else if (React.isValidElement(item.section)) {
+      const extracted = extractTextFromReactElement(item.section);
+      if (extracted) texts.push(extracted);
     }
+
     if (Array.isArray(item.children)) {
       texts = texts.concat(collectTranslatableTexts(item.children));
     }
@@ -19,7 +43,6 @@ function collectTranslatableTexts(items) {
   return texts;
 }
 
-// Recursively replace only label and section fields if they are strings
 function replaceLabelSectionTranslations(items, translationMap) {
   return items.map(item => {
     const newItem = { ...item };
@@ -27,9 +50,12 @@ function replaceLabelSectionTranslations(items, translationMap) {
     if (typeof item.label === 'string' && translationMap.has(item.label)) {
       newItem.label = translationMap.get(item.label);
     }
+    // If label is React element, leave it as-is (do not translate or replace)
+
     if (typeof item.section === 'string' && translationMap.has(item.section)) {
       newItem.section = translationMap.get(item.section);
     }
+    // Same for section React elements, leave as-is
 
     if (Array.isArray(item.children)) {
       newItem.children = replaceLabelSectionTranslations(item.children, translationMap);
