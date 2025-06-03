@@ -21,19 +21,37 @@ export default function Results({ steps, initialChecklists, page , renderLabel})
 
   const handleSetTranslation = (translatedText) => {
     if (!selectedStep) return;
+  
     console.log('Raw translatedText:', JSON.stringify(translatedText));
-    // Split by both \n and \r\n, just in case
-    const lines = translatedText.split(/\r?\n/).map(line => line.trim());
   
-    console.log('Split lines:', lines);  // Debugging output
+    // If it's a string, attempt to split it
+    if (typeof translatedText === 'string') {
+      const lines = translatedText.split(/\r?\n/).map(line => line.trim());
+      console.log('Split lines:', lines);
   
-    const updated = checklists[selectedStep.id].map((item, idx) => ({
-      ...item,
-      translation: lines[idx] || item.label,
-    }));
+      const updated = checklists[selectedStep.id].map((item, idx) => ({
+        ...item,
+        translation: lines[idx] || item.label,
+      }));
   
-    setChecklists(prev => ({ ...prev, [selectedStep.id]: updated }));
+      setChecklists(prev => ({ ...prev, [selectedStep.id]: updated }));
+    }
+  
+    // If it's already a translated checklist (array of objects)
+    else if (Array.isArray(translatedText)) {
+      const updated = translatedText.map((item, idx) => ({
+        ...checklists[selectedStep.id]?.[idx],
+        translation: item.label || checklists[selectedStep.id]?.[idx]?.label,
+      }));
+  
+      setChecklists(prev => ({ ...prev, [selectedStep.id]: updated }));
+    }
+  
+    else {
+      console.warn('Unexpected translation format:', translatedText);
+    }
   };
+  
 
   const completedSteps = Object.entries(checklists)
     .filter(([_, items]) =>
