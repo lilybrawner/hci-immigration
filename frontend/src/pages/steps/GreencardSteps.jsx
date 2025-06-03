@@ -1,4 +1,5 @@
 import Link from '@mui/material/Link';
+import React from 'react';
 
 export const gcsteps = [
     { id: 1, label: "Step 1: Are you already a US citizen?"}, 
@@ -24,72 +25,243 @@ export const gcchecklists = {
     ],
     2: [
       { section: 'Step 2: Determine your Eligibility' },
-      { label: 'The following checklist is taken straight from the Naturalization Eligibility Worksheet (M-480).', textOnly: true },
-      { label: <Link href="https://www.uscis.gov/citizenship/learn-about-citizenship/10-steps-to-naturalization" target="_blank" rel="noopener">PDF Version</Link>, textOnly: true, nested: true },
-      { label: 'Check the box to indicate that it is true. To be eligible, all these answers must be TRUE, unless specified otherwise.', textOnly: true },
-      { label: 'According to the worksheet, if you answer these questions as true, “you are probably eligible to apply for naturalization.”', textOnly: true },
-      { id: 2.1, label: '1. I am at least 18 years old', checked: false },
-      { label: 'Exception: Military naturalization under INA §329', textOnly: true , nested: true},
+      {
+          label: (
+            <>
+              The following checklist is taken straight from the Naturalization Eligibility Worksheet (M-480). Click here if you would rather complete it using the{' '}
+              <Link
+                href="https://www.uscis.gov/citizenship/learn-about-citizenship/10-steps-to-naturalization"
+                target="_blank"
+                rel="noopener"
+              >
+                PDF Version
+              </Link>
+              .
+            </>
+          ),
+          textOnly: true,
+        },
+        {
+          label: (
+            <>
+             For a more streamlined process, use{' '}
+              <Link
+                href="https://www.uscis.gov/naturalization-eligibility"
+                target="_blank"
+                rel="noopener"
+              >
+                USCIS’s Naturalization Eligibility Tool
+              </Link>
+              by following the link and clicking “Determine my eligibility.”
+            </>
+          ),
+          textOnly: true,
+        },
+        {
+          label: 'Check the box to indicate that it’s true. To be eligible, all these answers must be TRUE, unless specified otherwise. According to the worksheet, if you answer these questions as true, “you are probably eligible to apply for naturalization.”',
+          textOnly: true,
+        } ,     
+      { id: 2.1, label: '1. I am at least 18 years old OR I am under 18 years old but I am a member of the US armed forces who served honorably during a designated period of hostilities', checked: false },
+      {
+          label: (
+            <>
+             If applicable, read{' '}
+              <Link
+                href="https://www.uscis.gov/policy-manual/volume-12-part-i-chapter-3"
+                target="_blank"
+                rel="noopener"
+              >
+                Immigration and Nationality Act (INA) Section 329 
+              </Link>
+               to determine your eligibility through military service.
+            </>
+          ),
+          textOnly: true,
+          nested: true,
+        },
       { id: 2.2 , label: '2. I am a Permanent Resident of the United States and have been issued a Permanent Resident Card', checked: false },
-      { label: '3. I have been a Permanent Resident for 5 or more years', checked: false , id: 'perm5'},
-      { label: 'Attachment A: I have been a Permanent Resident for 3-5 years', textOnly: true , hideIfChecked: 'perm5'},
-      { id: 2.3 ,label: 'I am married to, and living with, a US citizen', checked: false, nested: true, hideIfChecked: 'perm5' },
-      { id: 2.4, label: 'I have been married to that US citizen for at least the past 3 years', checked: false, nested: true , hideIfChecked: 'perm5'},
-      { id: 2.5, label: 'My spouse has been a US citizen for at least the past 3 years', checked: false, nested: true, hideIfChecked: 'perm5' },
-      { id: 2.6, label: 'During the past 3 years, I have not been out of the country for 18 months or more', checked: false, nested: true , hideIfChecked: 'perm5'},
-      { label: '(All of the above must be TRUE to be eligible → If so, go to Question 5)',  textOnly: true , hideIfChecked: 'perm5'},
-      { label: '(You can file 90 days early once continuous-residence is satisfied.)',  textOnly: true, nested: true },
-  
-      { label: '4. In the last 5 years, I have **not** been outside the US for 30 months or more', checked: false , id: 'mon30' },
-      { label: 'Attachment B: I have been outside the US for 30 months or more', textOnly: true , hideIfChecked: 'mon30'},
-      { id: 2.7, label: 'Served on a US-operated or US-registered vessel', checked: false, nested: true , hideIfChecked: 'mon30'},
-      { id: 2.8, label: 'Employee / contractor of the US Government', checked: false, nested: true , hideIfChecked: 'mon30'},
-      { id: 2.9, label: 'Perform ministerial / priestly functions for a US-based denomination', checked: false, nested: true , hideIfChecked: 'mon30'},
-      { label: '(All of the above must be TRUE → If so, go to Question 5)', textOnly: true , hideIfChecked: 'mon30' },
-      { label: 'Note: see pages 20-21 of Guide M-476', textOnly: true , hideIfChecked: 'mon30'},
-  
-      { label: '5. In the last 5 years (or 3 if under Attachment A) I have **not** taken a trip that lasted 1 year or more', checked: false, id: 'trip' },
-      { id: 2.101, label: 'Attachment C: I have taken a trip of 1 year or more', textOnly: true , hideIfChecked: 'trip'},
-      { id: 2.11,label: 'Since becoming a Permanent Resident, no trip ≥1 year without an approved Form N‑470', checked: false, nested: true , hideIfChecked: 'trip'},
-      { label: '(Above must be TRUE → go to #6)', textOnly: true , hideIfChecked: 'trip'},
-      { label: 'Note: see pages 18‑21 of Guide M‑476', textOnly: true , hideIfChecked: 'trip'},
-  
-      {  id: 2.12,label: '6. I have resided in the district/state where I am applying for the last 3 months', checked: false },
-      { label: '7. I can read, write, and speak basic English', checked: false, id: 'dis' },
-      { label: 'Attachment D: I cannot read, write, or speak basic English', textOnly: true, hideIfChecked: 'dis' },
-      {  id: 2.13, label: 'I am over 50 years old and have lived in the United States for at least 20 years since I became a Permanent Resident OR', checked: false, nested: true , hideIfChecked: 'dis'},
-      {  id: 2.14, label: 'I am over 55 years old and have lived in the United States for at least 15 years since I became a Permanent Resident OR', checked: false, nested: true , hideIfChecked: 'dis'},
-      {  id: 2.15, label: 'I have a disability that prevents me from fulfilling this requirement and will be filing a “Medical Certification for Disability Exceptions” (Form N-648) with my application which will be completed and signed by a doctor', checked: false, nested: true , hideIfChecked: 'dis'},
-      { label: '(Above must be TRUE → go to #8)', textOnly: true , hideIfChecked: 'dis'},
-      { label: 'Note: Read pages 26-27 in A Guide To Naturalization (M-476) for more information.', textOnly: true , hideIfChecked: 'dis'},
-      { label: '8. I know US history and government fundamentals', checked: false , id: 'his'},
-      { label: 'Attachment E: I have a disability that prevents me from fulfilling the civic requirement', textOnly: true , hideIfChecked: 'his'},
-      {  id: 2.16, label: 'I will be filing a “Medical Certification for Disability Exceptions” (Form N-648) with my application which will be completed and signed by a doctor', checked: false, nested: true , hideIfChecked: 'his'},
-      {  label: 'Note: Read pages 26-27 in A Guide To Naturalization (M-476) for more information.', textOnly: true , hideIfChecked: 'his'},
-      {  id: 2.17, label: '9. I am a person of good moral character', checked: false },
-      {  id: 2.18,
-        label: '10. One of the following must be true',
-        checked: false,
-        children: [
+      {
+        id: 2.25,
+        label: '3. One of the following must be true',
+        type: 'dropdown',
+        options: [
           {
-            type: 'dropdown',
-            options: [
-              'I am female',
-              'I am a male registered with Selective Service',
-              'I first entered the US after my 26th birthday',
-              'I was in the US 18‑26 but did not register and will submit Status Info Letter',
-              'I was a lawful non‑immigrant 18‑26'
-            ],
-            selected: null
+            label: 'I have been a permanent resident for 5 or more years',
+            autoCheck: true
+          },
+          {
+            label: 'I have been a permanent resident for 3-5 years',
+            children: [
+              {
+                id: '2.25.1',
+                label: 'I am married to, and living with, a US citizen',
+                checked: false, 
+                nested: true
+              },
+              {
+                id: '2.25.2',
+                label: 'I have been married to that US citizen for at least the past 3 years',
+                checked: false,
+                nested: true,
+              },
+              {
+                id: '2.25.3',
+                label: 'My spouse has been a US citizen for at least the past 3 years',
+                checked: false,
+                nested: true,
+              },
+              {
+                id: '2.25.4',
+                label: 'During the past 3 years, I have not been out of the country for 18 months or more',
+                checked: false,
+                nested: true,
+              },
+              {
+                id: '2.25.5',
+                label: 'Note: You can file your application 90 days before you have satisfied the continuous residence requirement.',
+                textOnly: true,
+                nested: true,
+              }
+            ]
           }
-        ]
+        ],
+        selected: null,
+        checked: false
       },
-      {  id: 2.19, label: '11. I have never deserted from the US Armed Forces', checked: false },
-      {  id: 2.21, label: '12. I have never been exempted/discharged from the US Armed Forces as an alien', checked: false },
+      {
+        id: 2.26,
+        label: '4. One of the following must be true',
+        type: 'dropdown',
+        options: [
+          'In the last 5 years, I have not been outside the US for 30 months or more',
+          'I am a person who has served on board a vessel operated by or registered in the United States',
+          'I am an employee or an individual under contract to the US Government',
+          'I am a person who performs ministerial or priestly functions for a religious denomination or an interdenominational organization with a valid presence in the United States',
+        ],
+        selected: null,
+        checked: false,
+      },
+      { label: (
+        <>
+          Read pages 20-21 in{' '}
+          <Link
+            href="https://id.uscourts.gov/Content_Fetcher/index.cfml/A_Guide_to_Naturalization_3814.pdf?Content_ID=3814"
+            target="_blank"
+            rel="noopener"
+          >
+            A Guide to Naturalization (M-476)
+          </Link>
+          for more information.
+        </>
+      ),
+      textOnly: true,
+      nested: true,
+    },
+    {
+      id: 2.27,
+      label: '5. One of the following must be true',
+      type: 'dropdown',
+      options: [
+        'During the last 5 years (or last 3 if I qualify under Attachment A), I have not taken a trip out of the United States that lasted one year or more',
+        'Since becoming a Permanent Resident, I have not taken a trip out of the United States that lasted for one year or more without an approved “Application to Preserve Residence for Naturalization Purposes” (Form N-470)',
+      ],
+      selected: null,
+      checked: false,
+    },
+    { label: (
+      <>
+        Read pages 18-21 in{' '}
+        <Link
+          href="https://id.uscourts.gov/Content_Fetcher/index.cfml/A_Guide_to_Naturalization_3814.pdf?Content_ID=3814"
+          target="_blank"
+          rel="noopener"
+        >
+          A Guide to Naturalization (M-476)
+        </Link>
+        for more information.
+      </>
+    ),
+    textOnly: true,
+    nested: true,
+  },
+      {  id: 2.12, label: '6. I have resided in the district/state where I am applying for the last 3 months', checked: false },
+      {
+        id: 2.28,
+        label: '7. One of the following must be true',
+        type: 'dropdown',
+        options: [
+          'I can read, write, and speak basic English',
+          'I am over 50 years old and have lived in the United States for at least 20 years since I became a Permanent Resident',
+          'I am over 55 years old and have lived in the United States for at least 15 years since I became a Permanent Resident',
+          'I have a disability that prevents me from fulfilling this requirement and will be filing a “Medical Certification for Disability Exceptions” (Form N-648) with my application which will be completed and signed by a doctor'
+        ],
+        selected: null,
+        checked: false,
+      },
+      { label: (
+        <>
+          Read pages 26-27 in{' '}
+          <Link
+            href="https://id.uscourts.gov/Content_Fetcher/index.cfml/A_Guide_to_Naturalization_3814.pdf?Content_ID=3814"
+            target="_blank"
+            rel="noopener"
+          >
+            A Guide to Naturalization (M-476)
+          </Link>
+          for more information.
+        </>
+      ),
+      textOnly: true,
+      nested: true,
+    },
+    {
+      id: 2.29,
+      label: '8. One of the following must be true',
+      type: 'dropdown',
+      options: [
+        'I know the fundamentals of US history and the form and principles of the US government',
+        'I have a disability that prevents me from fulfilling this requirement and will be filing a “Medical Certification for Disability Exceptions” (Form N-648) with my application which will be completed and signed by a doctor'
+      ],
+      selected: null,
+      checked: false,
+    },
+    { label: (
+      <>
+        Read pages 26-27 in{' '}
+        <Link
+          href="https://id.uscourts.gov/Content_Fetcher/index.cfml/A_Guide_to_Naturalization_3814.pdf?Content_ID=3814"
+          target="_blank"
+          rel="noopener"
+        >
+          A Guide to Naturalization (M-476)
+        </Link>
+        for more information.
+      </>
+    ),
+    textOnly: true,
+    nested: true,
+  },
+      {  id: 2.17, label: '9. I am a person of good moral character', checked: false },
+      {
+        id: 2.18,
+        label: '10. One of the following must be true',
+        type: 'dropdown',
+        options: [
+          'I am female',
+          'I am a male registered with the Selective Service',
+          'I am a male who did not enter the United States under any status until after my 26th birthday',
+          'I am a male who was in the United States between the ages of 18 and 26 but did not register with the Selective Service, and I will send a “Status Information Letter” from the Selective Service explaining why I did not register with my application',
+          'I am a male who was in the United States between the ages of 18 and 26 as a lawful nonimmigrant'
+        ],
+        selected: null,
+        checked: false,
+      },      
+      {  id: 2.19, label: '11. I have never deserted from the US Armed Forces', checked: false },
+      {  id: 2.21, label: '12. I have never received an exemption or discharge from the US Armed Forces on the grounds that I am an alien', checked: false },
       { id: 2.22, label: '13. I am willing to perform military or civilian service if required by law', checked: false },
-      { label: '(If your religion forbids military service, you must accept non‑military service)',  nested: true, textOnly: true },
+      { label: '(If your religion forbids military service, you must accept non-military service)',  nested: true, textOnly: true },
       {  id: 2.23,label: '14. I will support the US Constitution', checked: false },
-      { id: 2.24, label: '15. I am willing to take the Oath of Allegiance', checked: false },
+      { id: 2.24, label: '15. I understand and am willing to take an oath of allegiance to the United States', checked: false },
       { section: 'Sources' },
       { label: <Link href="https://www.uscis.gov/citizenship/learn-about-citizenship/10-steps-to-naturalization" target="_blank" rel="noopener">10-Step Naturalization Process</Link>, textOnly: true },
       { label: <Link href="https://id.uscourts.gov/Content_Fetcher/index.cfml/A_Guide_to_Naturalization_3814.pdf?Content_ID=3814" target="_blank" rel="noopener">A Guide To Naturalization (M-476)</Link>, textOnly: true },

@@ -12,6 +12,13 @@ export default function Results({ steps, initialChecklists, page , renderLabel})
     setChecklists(prev => ({ ...prev, [stepId]: updatedChecklist }));
   };
 
+  const goToNextStep = () => {
+    const currentIndex = steps.findIndex(s => s.id === selectedStep.id);
+    if (currentIndex < steps.length - 1) {
+      setSelectedStep(steps[currentIndex + 1]);
+    }
+  };  
+
   const handleSetTranslation = (translatedText) => {
     if (!selectedStep) return;
     console.log('Raw translatedText:', JSON.stringify(translatedText));
@@ -59,13 +66,14 @@ export default function Results({ steps, initialChecklists, page , renderLabel})
       {selectedStep && (
         <Box sx={{ width: '60%', overflowY: 'auto' }}>
           <Panel
-            step={selectedStep}
-            checklist={checklists[selectedStep.id] || []}
-            onChecklistChange={handleChecklistChange}
-            onSetTranslation={handleSetTranslation}
-            page={page}
-            renderLabel={renderLabel}
-          />
+  step={selectedStep}
+  checklist={checklists[selectedStep.id] || []}
+  onChecklistChange={handleChecklistChange}
+  onSetTranslation={handleSetTranslation}
+  page={page}
+  renderLabel={renderLabel}
+  onNextStep={goToNextStep}
+/>
         </Box>
       )}
     </Box>

@@ -25,7 +25,8 @@ function Home() {
         This tool is not intended to be a replacement for a qualified immigration attorney.
         All information we are presenting is publicly accessible from US government websites 
         and other reliable sources. Our sources are cited at the bottom of each step, for 
-        each respective process. This tool is not endorsed by UCLA. It is solely for a class 
+        each respective process. None of the personal information that you submit will be recorded
+        in any way. This tool is not endorsed by UCLA. It is solely for a class 
         project and is intended for informational purposes only.
         </p>
       </div>
