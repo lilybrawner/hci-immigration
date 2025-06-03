@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import BasicTimeline from '../components/Timeline';
 import Panel from '../components/Panel';
 import Progress from '../components/Progress';
-import { Box, Typography } from '@mui/material';
+import { Box } from '@mui/material';
 
 export default function Results({ steps, initialChecklists, page , renderLabel}) {
   const [selectedStep, setSelectedStep] = useState(steps?.[0] || null);

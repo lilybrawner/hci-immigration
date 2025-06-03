@@ -94,7 +94,11 @@ app.post('/api/speak', async (req, res) => {
 });
 
 // Serve React app for any unknown routes (to enable client side routing)
-app.get('/', (req, res) => {
+// Serve index.html for all non-API GET requests to support client-side routing
+app.get('*', (req, res, next) => {
+  if (req.method !== 'GET') return next();
+  if (req.path.startsWith('/api')) return next();
+  
   res.sendFile(path.resolve(__dirname, 'public', 'index.html'));
 });
 
