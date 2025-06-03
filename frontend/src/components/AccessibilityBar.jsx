@@ -2,13 +2,14 @@ import React, { useState, useRef } from 'react';
 import axios from 'axios';
 import { Box, Button, FormControl, InputLabel, MenuItem, Select, Stack, Paper } from '@mui/material';
 
-// Recursively collect all translatable text from 'label' and 'section' fields
+// Recursively collect all translatable text from 'label' and 'section' fields (only if string)
 function collectTranslatableTexts(items) {
   let texts = [];
   for (const item of items) {
-    if (item.label && typeof item.label === 'string') {
+    if (typeof item.label === 'string') {
       texts.push(item.label);
-    } else if (item.section && typeof item.section === 'string') {
+    }
+    if (typeof item.section === 'string') {
       texts.push(item.section);
     }
     if (Array.isArray(item.children)) {
@@ -18,15 +19,15 @@ function collectTranslatableTexts(items) {
   return texts;
 }
 
-// Recursively replace only label and section fields
+// Recursively replace only label and section fields if they are strings
 function replaceLabelSectionTranslations(items, translationMap) {
   return items.map(item => {
     const newItem = { ...item };
 
-    if (item.label && translationMap.has(item.label)) {
+    if (typeof item.label === 'string' && translationMap.has(item.label)) {
       newItem.label = translationMap.get(item.label);
     }
-    if (item.section && translationMap.has(item.section)) {
+    if (typeof item.section === 'string' && translationMap.has(item.section)) {
       newItem.section = translationMap.get(item.section);
     }
 
