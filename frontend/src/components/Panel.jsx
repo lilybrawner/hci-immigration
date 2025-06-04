@@ -2,39 +2,89 @@ import React from 'react';
 import '../App.css';
 import FAQAccordion from './Accordion';
 import AccessibilityBar from './AccessibilityBar';
-import { Box, Tabs, Tab, Typography, Checkbox, FormControlLabel, Stack, IconButton } from '@mui/material';
+import {
+  Box,
+  Tabs,
+  Tab,
+  Typography,
+  Checkbox,
+  FormControlLabel,
+  Stack,
+  IconButton,
+  FormControl,
+  Select,
+  MenuItem,
+} from '@mui/material';
 import DownloadIcon from '@mui/icons-material/Download';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { pdf } from '@react-pdf/renderer';
 import ChecklistPDF from './ChecklistPDF'; 
 
-export default function Panel({ step, checklist, onChecklistChange, onSetTranslation, page, renderLabel }) {
+export default function Panel({ step, checklist, onChecklistChange, onSetTranslation, page, renderLabel, onNextStep }) {
   const [tab, setTab] = React.useState(0);
 
-  const stepText = checklist.map(item => item.label).join('\n');
+  const stepText = checklist.map(item => typeof item.label === 'string' ? item.label : '').join('\n');
+
+  const allChecked = checklist
+    .filter(item => !item.section && !item.textOnly)
+    .every(item => item.checked);
 
   const handleCheck = (id) => {
     const clickedItem = checklist.find(item => item.id === id);
-    const isController = typeof id === 'string';
     const isChecking = !clickedItem?.checked;
-  
-    const updated = checklist.map(item => {
-      // Toggle the clicked item itself
-      if (item.id === id) {
-        return { ...item, checked: isChecking };
-      }
-  
-      // If clicked item is a controller, update its nested items
-      if (isController && item.hideIfChecked === id) {
-        return { ...item, checked: isChecking };
-      }
-  
-      // Otherwise, leave the item unchanged
-      return item;
-    });
-  
+
+    const updated = checklist.map(item =>
+      item.id === id ? { ...item, checked: isChecking } : item
+    );
+
     onChecklistChange(step.id, updated);
   };
-  
+
+  const handleDropdownChange = (item, selectedIndex) => {
+    const updatedChecklist = checklist.map(ci => {
+      if (ci.id === item.id) {
+        const updated = { ...ci, selected: selectedIndex, checked: true };
+
+        if (Array.isArray(ci.options[selectedIndex]?.children)) {
+          // If there are nested children, auto-check them all false initially
+          updated.options = ci.options.map((option, idx) => {
+            if (idx === selectedIndex && option.children) {
+              return {
+                ...option,
+                children: option.children.map(child => ({ ...child, checked: child.checked ?? false })),
+              };
+            }
+            return option;
+          });
+        }
+        return updated;
+      }
+      return ci;
+    });
+
+    onChecklistChange(step.id, updatedChecklist);
+  };
+
+  const handleCheckChild = (parentId, childId) => {
+    const updatedChecklist = checklist.map(item => {
+      if (item.id === parentId) {
+        const updatedOptions = item.options.map(option => {
+          if (option.children) {
+            const updatedChildren = option.children.map(child =>
+              child.id === childId ? { ...child, checked: !child.checked } : child
+            );
+            return { ...option, children: updatedChildren };
+          }
+          return option;
+        });
+        return { ...item, options: updatedOptions };
+      }
+      return item;
+    });
+
+    onChecklistChange(step.id, updatedChecklist);
+  };
+
   const handleDownloadPDF = async () => {
     const doc = <ChecklistPDF step={step} checklist={checklist} />;
     const asPdf = pdf(doc);
@@ -58,14 +108,14 @@ export default function Panel({ step, checklist, onChecklistChange, onSetTransla
           mb: 2,
           flexDirection: { xs: 'column', sm: 'row' },
           gap: { xs: 1, sm: 0 },
-          backgroundColor: '#E9EFFB', 
-          borderRadius: 3
+          backgroundColor: '#E9EFFB',
+          borderRadius: 3,
         }}
       >
         <Box sx={{ flexShrink: 0 }}>
           <Tabs value={tab} onChange={(e, v) => setTab(v)}>
             <Tab label="Step-by-Step" />
-            <Tab label="FAQ" />
+            <Tab label="Frequently Asked Questions" />
           </Tabs>
         </Box>
 
@@ -82,12 +132,6 @@ export default function Panel({ step, checklist, onChecklistChange, onSetTransla
         <Box p={0}>
           <Stack spacing={1}>
             {checklist.map((item, index) => {
-              if (item.hideIfChecked) {
-                const controllingItem = checklist.find(i => i.id === item.hideIfChecked);
-                if (controllingItem?.checked) return null;
-              }
-
-              // Translation fallback
               const labelText = item.translation || item.label || item.section;
 
               if (item.section) {
@@ -112,8 +156,78 @@ export default function Panel({ step, checklist, onChecklistChange, onSetTransla
                 );
               }
 
-              const hasDropdown =
-                item.children && item.children.length > 0 && item.children[0].type === 'dropdown';
+              if (item.type === 'dropdown') {
+                // Handle dropdown with or without nested children
+                const selectedIndex = item.selected ?? '';
+
+                // If there are nested children for the selected option
+                const selectedOption = typeof selectedIndex === 'number' ? item.options[selectedIndex] : null;
+                const hasNestedChildren = selectedOption?.children && selectedOption.children.length > 0;
+
+                return (
+                  <Box key={`dropdown-${index}`} sx={{ pt: 1, pl: item.nested ? 5 : 0 }}>
+                    <FormControl fullWidth size="small">
+                      <Typography variant="body1" sx={{ mb: 1 }}>
+                        {renderLabel ? renderLabel(item.label) : item.label}
+                      </Typography>
+                      <Select
+                        value={selectedIndex}
+                        onChange={(e) => handleDropdownChange(item, e.target.value)}
+                        displayEmpty
+                      >
+                        <MenuItem disabled value="">
+                          <em>Select an option</em>
+                        </MenuItem>
+                        {item.options.map((option, idx) => {
+                          const label = typeof option === 'string' ? option : option.label;
+                          return (
+                            <MenuItem key={idx} value={idx}>
+                              {label}
+                            </MenuItem>
+                          );
+                        })}
+                      </Select>
+                    </FormControl>
+
+                    {hasNestedChildren && (
+                      <Box sx={{ mt: 1 }}>
+                        {selectedOption.children.map((child, cIndex) => {
+                          if (child.textOnly) {
+                            return (
+                              <Typography
+                                key={`child-textOnly-${cIndex}`}
+                                variant="body1"
+                                sx={{ pl: 5 }}
+                              >
+                                {renderLabel ? renderLabel(child.label) : child.label}
+                              </Typography>
+                            );
+                          }
+
+                          return (
+                            <Box key={`child-checkbox-${cIndex}`} sx={{ pl: 5 }}>
+                              <FormControlLabel
+                                control={
+                                  <Checkbox
+                                    checked={child.checked}
+                                    onChange={() => handleCheckChild(item.id, child.id)}
+                                    sx={{ mt: -1, color: '#425E8E' }}
+                                  />
+                                }
+                                label={renderLabel ? renderLabel(child.label) : child.label}
+                                sx={{ alignItems: 'flex-start' }}
+                              />
+                            </Box>
+                          );
+                        })}
+                      </Box>
+                    )}
+                  </Box>
+                );
+              }
+
+              // Normal checkbox items
+              const isCustom = typeof item.label === 'function';
 
               return (
                 <Box key={`checkbox-${index}`} sx={{ pt: 1, pl: item.nested ? 5 : 0 }}>
@@ -125,41 +239,20 @@ export default function Panel({ step, checklist, onChecklistChange, onSetTransla
                         sx={{ mt: -1, color: '#425E8E' }}
                       />
                     }
-                    label={renderLabel ? renderLabel(labelText) : labelText}
+                    label={isCustom
+                      ? item.label({
+                          updateChecklist: (id, update) => {
+                            const updatedChecklist = checklist.map(ci =>
+                              ci.id === id ? { ...ci, ...update } : ci
+                            );
+                            onChecklistChange(step.id, updatedChecklist);
+                          },
+                        })
+                      : renderLabel
+                      ? renderLabel(labelText)
+                      : labelText}
                     sx={{ alignItems: 'flex-start' }}
                   />
-                  {hasDropdown && item.checked && (
-                    <Box sx={{ mt: 0, ml: 4 }}>
-                      <select
-                        value={item.children[0].selected || ''}
-                        onChange={(e) => {
-                          const updatedChecklist = checklist.map((el, i) => {
-                            if (i === index) {
-                              return {
-                                ...el,
-                                children: el.children.map(child =>
-                                  child.type === 'dropdown'
-                                    ? { ...child, selected: e.target.value }
-                                    : child
-                                )
-                              };
-                            }
-                            return el;
-                          });
-                          onChecklistChange(step.id, updatedChecklist);
-                        }}
-                      >
-                        <option value="" disabled>
-                          Select one
-                        </option>
-                        {item.children[0].options.map((option, optIndex) => (
-                          <option key={optIndex} value={option}>
-                            {option}
-                          </option>
-                        ))}
-                      </select>
-                    </Box>
-                  )}
                 </Box>
               );
             })}
@@ -169,7 +262,7 @@ export default function Panel({ step, checklist, onChecklistChange, onSetTransla
 
       {tab === 1 && (
         <Box p={2}>
-          <FAQAccordion step={step.id} page={page}/>
+          <FAQAccordion step={step.id} page={page} />
         </Box>
       )}
 
@@ -177,8 +270,28 @@ export default function Panel({ step, checklist, onChecklistChange, onSetTransla
         <IconButton type="button" onClick={handleDownloadPDF}>
           <DownloadIcon />
         </IconButton>
+        <IconButton
+          sx={{
+            backgroundColor: allChecked ? '#425E8E' : '#C4C4C4',
+            color: 'white',
+            width: '150px',
+            height: '50px',
+            borderRadius: 7,
+            ml: 2,
+            "&:hover": {
+              backgroundColor: allChecked ? '#425E8E' : '#C4C4C4'
+            }
+          }}
+          onClick={() => {
+            if (allChecked) {
+              onNextStep();
+            }
+          }}
+          aria-label="Continue"
+        >
+          <ArrowForwardIcon />
+        </IconButton>
       </Box>
     </>
   );
 }
-

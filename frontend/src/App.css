@@ -32,6 +32,10 @@ progress {
   width: 20em;
 }
 
+.home-form {
+  margin-top: 0px;
+}
+
 .progress-div {
   margin-top: 2em;
   padding-left: 20%;
