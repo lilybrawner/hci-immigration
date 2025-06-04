@@ -14,7 +14,14 @@ import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
 import { Typography, Box } from '@mui/material';
 
-function BasicTimeline({ steps, onStepClick, completedSteps = [], onToggleComplete, selectedStep }) {
+function BasicTimeline({ steps, onStepClick, completedSteps = [], onToggleComplete, selectedStep, checklists, onChecklistChange }) {
+
+  const handleMasterCheck = (stepId, isChecking) => {
+    const checklist = checklists[stepId] || [];
+    const updated = checklist.map(item => ({ ...item, checked: isChecking }));
+    onChecklistChange(stepId, updated);
+  };
+
   return (
     <Timeline
     sx={{
@@ -25,10 +32,16 @@ function BasicTimeline({ steps, onStepClick, completedSteps = [], onToggleComple
     >
       {steps.map((step, index) => {
         const isComplete = completedSteps.includes(step.id);
+        const stepChecklist = checklists[step.id] || [];
+        const allChecked = stepChecklist.length > 0 && stepChecklist.every(item => item.checked);
         return (
           <TimelineItem key={step.id} sx={{ cursor: 'pointer'}}>
           <TimelineOppositeContent color="textSecondary">
-          <Checkbox />
+              <Checkbox
+                checked={allChecked}
+                onChange={(e) => handleMasterCheck(step.id, e.target.checked)}
+              sx={{ mt: -1, color: '#425E8E' }}
+            />
         </TimelineOppositeContent>
             <TimelineSeparator>
               <TimelineDot
