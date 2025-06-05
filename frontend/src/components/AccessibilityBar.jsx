@@ -2,51 +2,87 @@ import React, { useState, useRef } from 'react';
 import axios from 'axios';
 import { Box, Button, FormControl, InputLabel, MenuItem, Select, Stack, Paper } from '@mui/material';
 
-export default function AccessibilityBar({
-  stepText = '',        
-  onSetTranslation,     
-  langCode,             
-  setLangCode,          
-}) {
+// Helper: get all visible non-empty text nodes under root
+function getTextNodes(root) {
+  const walker = document.createTreeWalker(
+    root,
+    NodeFilter.SHOW_TEXT,
+    {
+      acceptNode: (node) => {
+        if (!node.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+        if (node.parentElement && window.getComputedStyle(node.parentElement).display === 'none') return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    },
+    false
+  );
+
+  const nodes = [];
+  while (walker.nextNode()) {
+    nodes.push(walker.currentNode);
+  }
+  return nodes;
+}
+
+export default function AccessibilityBar({ onSetTranslation, panelContainerRef }) {
+  const [langCode, setLangCode] = useState('en');
   const [loading, setLoading] = useState(false);
   const audioRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
 
-  // Normalize stepText to always be a string
-  const safeStepText = Array.isArray(stepText) ? stepText.join('\n') : stepText;
-
-  // Handle translate button click
   const handleTranslate = async () => {
-    if (typeof safeStepText !== 'string' || !safeStepText.trim()) return;
-
     setLoading(true);
     try {
-      const textsToTranslate = safeStepText.split('\n').filter(line => line.trim());
+      // Translate all visible text on the entire page (including sidebar)
+      const textNodes = getTextNodes(document.body);
+      const uniqueTexts = [...new Set(textNodes.map(node => node.nodeValue.trim()))];
 
-      console.log('Translating:', { textsToTranslate, langCode });
+      const translatedTexts = await Promise.all(
+        uniqueTexts.map(async (text) => {
+          if (!text) return '';
+          const { data } = await axios.post('/api/translate', {
+            text,
+            targetLang: langCode,
+          });
+          return data.translatedText;
+        })
+      );
 
-      const { data } = await axios.post('/api/translate', {
-        texts: textsToTranslate,
-        targetLang: langCode,
+      const translationMap = new Map();
+      uniqueTexts.forEach((orig, idx) => {
+        translationMap.set(orig, translatedTexts[idx]);
       });
 
-      if (Array.isArray(data.translatedTexts)) {
-        onSetTranslation(data.translatedTexts);
-      } else {
-        console.error('Unexpected translation API response', data);
-        onSetTranslation([]);
-      }
+      // Replace text on entire page
+      textNodes.forEach(node => {
+        const trimmedText = node.nodeValue.trim();
+        if (translationMap.has(trimmedText)) {
+          const leading = node.nodeValue.match(/^\s*/)[0];
+          const trailing = node.nodeValue.match(/\s*$/)[0];
+          node.nodeValue = leading + translationMap.get(trimmedText) + trailing;
+        }
+      });
+
+      onSetTranslation && onSetTranslation(`Translated to ${langCode}`);
     } catch (error) {
       console.error('Translation error:', error);
-      onSetTranslation([]);
+      onSetTranslation && onSetTranslation('Translation failed. Please try again.');
     }
     setLoading(false);
   };
 
-  // Handle speak button click
   const handleSpeak = async () => {
-    if (!safeStepText.trim()) {
-      console.warn('No valid text to speak');
+    if (!panelContainerRef?.current) {
+      console.warn('Panel container ref not set for speech.');
+      return;
+    }
+
+    // Get text nodes ONLY inside Panel container (exclude sidebar)
+    const textNodes = getTextNodes(panelContainerRef.current);
+    const textToSpeak = textNodes.map(node => node.nodeValue.trim()).join('\n');
+
+    if (!textToSpeak.trim()) {
+      console.warn('No valid text to speak inside Panel.');
       return;
     }
 
@@ -64,23 +100,25 @@ export default function AccessibilityBar({
     try {
       const response = await axios.post(
         '/api/speak',
-        { text: safeStepText, languageCode: langCode },
+        {
+          text: textToSpeak,
+          languageCode: langCode,
+        },
         { responseType: 'arraybuffer' }
       );
 
       const blob = new Blob([response.data], { type: 'audio/mpeg' });
       const audio = new Audio(URL.createObjectURL(blob));
+
       audioRef.current = audio;
+
       audio.play();
       setIsPlaying(true);
+
       audio.onended = () => setIsPlaying(false);
     } catch (error) {
       console.error('Speech synthesis error:', error);
     }
-  };
-
-  const handleLangChange = (e) => {
-    setLangCode(e.target.value);
   };
 
   return (
@@ -96,7 +134,7 @@ export default function AccessibilityBar({
             id="lang-select"
             value={langCode}
             label="Language"
-            onChange={handleLangChange}
+            onChange={(e) => setLangCode(e.target.value)}
             size="small"
           >
             <MenuItem value="en">English</MenuItem>
