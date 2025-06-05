@@ -113,11 +113,9 @@ const ChecklistPDF = ({ step, checklist, faq }) => {
   console.log('step', step);
 console.log('checklist', checklist);
 console.log('faq', faq);
-  const normalizedFaq = Array.isArray(faq)
-    ? faq
-    : typeof faq === 'string'
-    ? [{ question: '', answer: faq }]
-    : [];
+const normalizedFaq = Array.isArray(faq) ? faq : [];
+
+
 
   return (
     <Document>
@@ -186,20 +184,25 @@ console.log('faq', faq);
 
         {/* FAQ Section */}
         {normalizedFaq.length > 0 ? (
-  <>
+  <View>
     <Text style={styles.faqTitle}>Frequently Asked Questions</Text>
     {normalizedFaq.map((item, i) => (
       <View key={i} style={{ marginTop: 10 }}>
-        <Text style={styles.faqQuestion}>{renderFormattedText(item.question)}</Text>
-        {typeof item.answer === 'string'
-          ? renderTextWithLinks(item.answer)
-          : renderFormattedText(item.answer)}
+        <View style={styles.faqQuestion}>
+          {renderFormattedText(item.question)}
+        </View>
+        <View style={styles.faqAnswer}>
+          {typeof item.answer === 'string'
+            ? renderTextWithLinks(item.answer)
+            : renderFormattedText(item.answer)}
+        </View>
       </View>
     ))}
-  </>
+  </View>
 ) : (
-  <Text style={{ marginTop: 10, fontStyle: 'italic' }}>No FAQs available.</Text>
+  <Text style={{ marginTop: 10, fontStyle: 'italic' }}>No FAQs available for this step.</Text>
 )}
+
 
       </Page>
     </Document>

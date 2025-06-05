@@ -26,12 +26,13 @@ import DownloadIcon from '@mui/icons-material/Download';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { pdf } from '@react-pdf/renderer';
 import ChecklistPDF from './ChecklistPDF'; 
+import { FAQ } from './FAQSteps.jsx/FAQ';
 
 export default function Panel({ step, checklist, onChecklistChange, onSetTranslation, page, renderLabel, onNextStep , isLast}) {
   const [tab, setTab] = React.useState(0);
   const [showCompletionPopup, setShowCompletionPopup] = React.useState(false);
   const panelRef = useRef(null);
-  const faqForStep = page?.[step.id] || [];
+  const faqForStep = FAQ[page]?.[step.id] || [];
 
   const stepText = checklist.map(item => typeof item.label === 'string' ? item.label : '').join('\n');
 
