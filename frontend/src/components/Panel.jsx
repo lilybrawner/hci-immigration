@@ -192,14 +192,21 @@ export default function Panel({ step, checklist, onChecklistChange, onSetTransla
                         displayEmpty
                       >
                         <MenuItem disabled value="">
-                          <em>Select an option</em>
-                        </MenuItem>
-                        {item.options.map((option, idx) => {
-                          const label = typeof option === 'string' ? option : option.label;
-                          return (
-                            <MenuItem key={idx} value={idx}>
-                              {label}
-                            </MenuItem>
+    <em>Select an option</em>
+  </MenuItem>
+  {item.options.map((option, idx) => {
+    const label = typeof option === 'string' ? option : option.label;
+    return (
+      <MenuItem
+        key={idx}
+        value={idx}
+        sx={{
+          whiteSpace: 'normal',
+          wordBreak: 'break-word',
+        }}
+      >
+        {label}
+      </MenuItem>
                           );
                         })}
                       </Select>
