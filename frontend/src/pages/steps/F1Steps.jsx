@@ -9,16 +9,15 @@ export const F1steps = [
     { id: 6, label: 'Step 6: Attend your Visa Interview' }, 
     { id: 7, label: 'Step 7: Enter the United States' }, 
     { id: 8, label: 'Step 8: Maintain F-1 Visa Status' },
-    { id: 9, label: 'Step 9: CPT, if desired' }, 
+    { id: 9, label: 'Step 9: Employment Options' }, 
     { id: 10, label: 'Step 10: Graduation and Program Completion' }, 
-    { id: 11, label: 'Step 11: Change of Status' }
 ]
 
 export const F1checklists = {
     1: [
-        { section: 'Checklist'},
+        { section: 'Step 1: Determine Eligibility'},
         { id: 1.1, label: 'I will be enrolled in an accredited college, university, seminary, conservatory, academic high school, elementary school, or other academic institution OR in a language training program', checked: false},
-        { id: 1.2, label: 'My school is approved by the Student and Exchange Visitors Program, Immigration and Customs Enforcement, and is authorized by the US government to accept foreign students', checked: false, nested: true},
+        { id: 1.2, label: 'My school is approved by the Student and Exchange Visitors Program, Immigration and Customs Enforcement, and is authorized by the US government to accept foreign students', checked: false, nested: false},
         { label: (
             <>
             Use this{' '}
@@ -27,8 +26,8 @@ export const F1checklists = {
                 target="_blank" 
                 rel="noopener"
             >link
-            </Link>{' '}
-            to check if your school is SEVP certified
+            </Link>
+            {' '}to check if your school is SEVP certified
             </>
         ), textOnly: true, nested: true},
         { id: 1.3, label: 'My program or course of study will culminate in a degree, diploma, or certificate', checked: false },
@@ -51,31 +50,49 @@ export const F1checklists = {
         ), textOnly: true, nested: true},
         { section: 'Sources' }, 
         { label: <Link href="https://travel.state.gov/content/travel/en/us-visas/study/student-visa.html" target="_blank" rel="noopener">Student Visa Process</Link>, textOnly: true },
+        { label: <Link href="https://www.uscis.gov/working-in-the-united-states/students-and-exchange-visitors/students-and-employment" target="_blank" rel="noopener">Working in the United States</Link>, textOnly: true },
         { label: <Link href="https://shorelight.com/student-stories/student-visa-usa-f1/" target="_blank" rel="noopener">F-1 Visa for International Students: Requirements, Rules, Status</Link>, textOnly: true }
     ], 
     2: [
-        { section: 'Checklist' },
+        { section: 'Step 2: School Acceptance' },
         { id: 2.1, label: 'Receive acceptance from a SEVP-certified institution', checked: false },
-        { id: 2.2, label: 'Receive your I-20 Form from your SEVP-certified institution' }, 
-        { label: 'Note: This will include your', textOnly: true },
-        { id: 2.3, label: 'Your SEVIS ID number', checked: false, nested: true },
-        { id: 2.4, label: 'Your program start and end dates', checked: false, nested: true },
-        { id: 2.5, label: 'Your funding sources', checked: false, nested: true },
-        { id: 2.6, label: 'The cost of attendance at your institution', checked: false, nested: true },
-        { id: 2.7, label: 'Your school official’s signature', checked: false, nested: true },
+        { id: 2.2, label: 'Receive your I-20 Form from your SEVP-certified institution' , checked: false}, 
+        { label: 'Note: This will include your SEVIS ID number, your program start and end dates, your funding sources, the cost of attendance at your institution, and your school official’s signature', textOnly: true , nested: true},
         { id: 2.8, label: 'Verify the personal information on your I-20 Form and, if correct, sign the bottom of the first page', checked: false },
         { id: 2.9, label: 'Keep your I-20', checked: false, nested: true },
         { id: 2.11, label: 'Pay your SEVIS fee (I-901)', checked: false }, 
-        { id: 2.12, label: 'Submit $350 through the payment portal', checked: false, nested: true }, 
-        { id: 2.13, label: 'Save the receipt to bring to your visa interview', checked: false, nested: true },
+        { label: (
+          <>
+          Submit $350 through the ICE{' '}
+          <Link
+              href="https://www.fmjfee.com/i901fee/index.html" 
+              target="_blank" 
+              rel="noopener"
+          >payment portal
+          </Link>
+          </>
+      ), checked: false, nested: true},
+        { id: 2.13, label: 'Print the payment confirmation from the portal to bring to your visa interview', checked: false, nested: true },
         { section: 'Sources' }, 
         { label: <Link href="https://travel.state.gov/content/travel/en/us-visas/study/student-visa.html" target="_blank" rel="noopener">Student Visa Process</Link>, textOnly: true },
-        { label: <Link href="https://shorelight.com/student-stories/student-visa-usa-f1/" target="_blank" rel="noopener">F-1 Visa for International Students: Requirements, Rules, Status</Link>, textOnly: true }
+        { label: <Link href="https://shorelight.com/student-stories/student-visa-usa-f1/" target="_blank" rel="noopener">F-1 Visa for International Students: Requirements, Rules, Status</Link>, textOnly: true },
+        { label: <Link href="https://www.ice.gov/sevis/i901" target="_blank" rel="noopener">Sevis Fee Information</Link>, textOnly: true }
     ], 
     3: [
-        { section: 'Checklist' },
-        { id: 3.1, label: 'Fill out Form DS-160 (Online Nonimmigrant Visa Application)', checked: false },
-        { label: 'Requirements', textOnly: true },
+        { section: 'Step 3: Complete the Online Visa Application' },
+        { label: (
+          <>
+          You should apply early because{' '}
+          <Link
+              href="https://travel.state.gov/content/travel/en/us-visas/visa-information-resources/global-visa-wait-times.html" 
+              target="_blank" 
+              rel="noopener"
+          >wait times to get an interview appointment
+          </Link>{' '}
+          vary.
+          </>
+      ), textOnly: true},
+        { id: 3.1, label: 'Fill out Form DS-160 (Online Nonimmigrant Visa Application), which requires the following:', checked: false },
         { id: 3.2, label: 
             (
                 <>
@@ -91,29 +108,35 @@ export const F1checklists = {
         { id: 3.3, label: 'Your passport', checked: false, nested: true },
         { id: 3.4, label: 'Your I-20', checked: false, nested: true },
         { id: 3.5, label: 'Your travel itinerary', checked: false, nested: true },
+        { id: 3.67, label: 'Note: You will be asked to provide your social media handles for any and all accounts you have used in the last 5 years.', textOnly: true, nested: true}, 
         { id: 3.6, label: 'Pay the non-refundable visa application $185 fee', checked: false }, 
         { id: 3.7, label: 'Print the DS-160 confirmation barcode page to bring to your visa interview', checked: false },
         { section: 'Sources' }, 
         { label: <Link href="https://travel.state.gov/content/travel/en/us-visas/study/student-visa.html" target="_blank" rel="noopener">Student Visa Process</Link>, textOnly: true },
-        { label: <Link href="https://shorelight.com/student-stories/student-visa-usa-f1/" target="_blank" rel="noopener">F-1 Visa for International Students: Requirements, Rules, Status</Link>, textOnly: true }
+        { label: <Link href="https://shorelight.com/student-stories/student-visa-usa-f1/" target="_blank" rel="noopener">F-1 Visa for International Students: Requirements, Rules, Status</Link>, textOnly: true },
+        { label: <Link href="https://www.boundless.com/blog/government-monitoring-of-immigrants-social-media/" target="_blank" rel="noopener">Immigrant Social Media</Link>, textOnly: true },
+        { label: <Link href="https://international.northeastern.edu/ogs/new-students/f-1-visa-process/" target="_blank" rel="noopener">Northeastern University F-1 Visa Process Information</Link>, textOnly: true },
+        { label: <Link href="https://travel.state.gov/content/travel/en/us-visas/visa-information-resources/visas-news-archive/20190604_collection-of-social-media-identifiers-from-U-S-visa-applicants.html" target="_blank" rel="noopener">Social Media Identifiers for Visa Applicants</Link>, textOnly: true },
     ],
     4: [
-        { label: 'Note: generally, an interview is required unless you are 13 years of age or younger OR you are 80 years of age or older.', textOnly: true },
+      { section: 'Step 4: Schedule an Interview' },  
+      { label: 'Note: generally, an interview is required unless:', textOnly: true },
+        { label: 'You are 13 years of age or younger OR', textOnly: true , nested: true},
+        { label: 'You are 80 years of age or older', textOnly: true , nested: true},
         { label: 
             (
                 <>
-                Note: Apply early because{' '}
+                Given {' '}
                 <Link
                     href="https://travel.state.gov/content/travel/en/us-visas/visa-information-resources/global-visa-wait-times.html" 
                     target="_blank" 
                     rel="noopener"
                 >wait times
-                </Link>{' '}
-                vary.
+                </Link>
+                , set up your appointment as early as possible.
                 </>
             ), textOnly: true
         },
-        { section: 'Checklist' },
         {
           id: 4.1,
           label:
@@ -131,7 +154,36 @@ export const F1checklists = {
         { label: <Link href="https://shorelight.com/student-stories/student-visa-usa-f1/" target="_blank" rel="noopener">F-1 Visa for International Students: Requirements, Rules, Status</Link>, textOnly: true }
       ],
       5: [
-        { section: 'Required Documents' },
+        { section: 'Step 5: Gather Required Documentation and Prepare for the Interview' },
+        {
+          id: 5.01,
+          label:
+            'Gather required documents',
+            checked: false,
+        },
+        {
+          id: 5.11,
+          label:
+            'Be prepared to pay a visa issuance fee at the end of your interview (if applicable to your nationality)',
+          checked: false,
+        },
+        { id: 5.12,
+          label: (
+            <>
+              Review these{' '}
+              <Link
+                href="https://ois.usc.edu/new-students/visa/interview-tips/"
+                target="_blank"
+                rel="noopener"
+              >
+                Interview Tips
+              </Link>{' '}
+              from USC’s Office of International Services
+            </>
+          ),
+          checked: false,
+        },
+        { section: 'Required Documents Checklist'},
         {
           id: 5.1,
           label:
@@ -192,51 +244,31 @@ export const F1checklists = {
                 </>
             ), textOnly: true, nested: true
         },
+        { section: 'Additional Documents that May Be Requested'},
         {
           id: 5.7,
-          label: 'Academic preparation documents (transcripts, diplomas, degrees, or certificates from school you attended, and standardized test scores required by your US school.)',
-          checked: false,
-        },
+          label: 'Evidence of academic preparation', checked: false
+        } ,
+        { label: 'Transcripts, diplomas, degrees, or certificates from schools you attended', checked: false, nested: true },
+        { label: 'Standardized test scores required by your US school', nested: true, checked: false },
         {
           id: 5.8,
-          label: 'Your intent to depart the US upon completion of the course of study',
+          label: 'Evidence of your intent to depart the US upon completion of the course of study',
           checked: false,
         },
         {
           id: 5.9,
           label:
-            'How you will pay all educational, living, and travel costs (e.g., bank statements and other proof of finances)',
-          checked: false,
-        },
-        { section: 'Checklist' },
-        {
-          id: 5.11,
-          label:
-            'Be prepared to pay a visa issuance fee at the end of your interview (if applicable to your nationality)',
-          checked: false,
-        },
-        { id: 5.12,
-          label: (
-            <>
-              Review these{' '}
-              <Link
-                href="https://ois.usc.edu/new-students/visa/interview-tips/"
-                target="_blank"
-                rel="noopener"
-              >
-                Interview Tips
-              </Link>{' '}
-              from USC’s Office of International Services
-            </>
-          ),
-          textOnly: true,
-        },
+            'Evidence of how you will pay all educational, living, and travel costs', checked: false },
+            {
+label: 'Bank statements and other proof of finances', checked: false, nested: true},
         { section: 'Sources' }, 
         { label: <Link href="https://travel.state.gov/content/travel/en/us-visas/study/student-visa.html" target="_blank" rel="noopener">Student Visa Process</Link>, textOnly: true },
         { label: <Link href="https://shorelight.com/student-stories/student-visa-usa-f1/" target="_blank" rel="noopener">F-1 Visa for International Students: Requirements, Rules, Status</Link>, textOnly: true }
       ],
       6: [
-        { label: 'Note: Fingerprint scans are often taken at this step' },
+        { section: 'Step 6: Attend your Visa Interview' },
+        { label: 'Note: Fingerprint scans are often taken at this step' , textOnly: true},
         { section: 'Required Documents' },
         {
           id: 6.1,
@@ -270,9 +302,12 @@ export const F1checklists = {
         { label: <Link href="https://studyinthestates.dhs.gov/students/prepare/students-and-the-form-i-20" target="_blank" rel="noopener">Students and the Form I-20</Link>, textOnly: true }
       ],
       7: [
+        { section: 'Step 7: Enter the United States' },
+        { label: 'A visa does not guarantee entry into the US. Customs and Border Protection (CBP) officials at the US port of entry have the authority to permit or deny admission to the US.', textOnly: true},
+        { label: 'Once admitted, the CBP official will provide an admission stamp or a paper Form I-94.', textOnly: true},
         { label: (
             <>
-              A visa does not guarantee entry into the US. Customs and Border Protection (CBP) officials at the US port of henry have the authority to permit or deny admission to the US. Once admitted, the CBP official will provide an admission stamp or a paper Form I-94. Learn more about US entry information from {' '}
+              Learn more about US entry information from {' '}
               <Link
                 href="https://ois.usc.edu/new-students/visa/interview-tips/"
                 target="_blank"
@@ -284,7 +319,7 @@ export const F1checklists = {
             </>
           ),
           textOnly: true, },
-        { section: 'Checklist' },
+          { label: 'Note: These steps MUST be followed to maintain F-1 status upon your arrival to the US.', textOnly: true},
         {
           id: 7.1,
           label: 'Have your I-20 on hand to show at the US port of entry',
@@ -311,7 +346,7 @@ export const F1checklists = {
         { label: <Link href="https://studyinthestates.dhs.gov/students/maintaining-status" target="_blank" rel="noopener">Maintaining Status</Link>, textOnly: true }
       ],
       8: [
-        { section: 'Checklist' },
+        { section: 'Step 8: Maintain F-1 Visa Status' },
         {
           id: 8.1,
           label: 'Attend all your classes',
@@ -340,7 +375,7 @@ export const F1checklists = {
         },
         { label: 'Note: Reduced course loads are only approved in limited circumstances',
             nested: true,
-            wordOnly: true
+            textOnly: true
         },
         {
           id: 8.6,
@@ -357,15 +392,15 @@ export const F1checklists = {
           label:
           (
             <>
-              Note: Your DSO is a great resource that you should regularly consult, especially if things change over time. Check out{' '}
+              Note: Your DSO is a great resource that you should regularly consult, especially if things change over time. Check out the section “Talk with your DSO First” on the{' '}
               <Link
                 href="https://studyinthestates.dhs.gov/students/maintaining-status"
                 target="_blank"
                 rel="noopener"
               >
-                “Talk with your DSO First”
-              </Link>
-              .
+                Maintaining Status
+              </Link>{' '}
+              page.
             </>
           ),
           textOnly: true,
@@ -375,15 +410,16 @@ export const F1checklists = {
         { label: <Link href="https://studyinthestates.dhs.gov/students/maintaining-status" target="_blank" rel="noopener">Maintaining Status</Link>, textOnly: true }
       ],
       9: [
-        { section: 'Checklist' },
+        { section: 'Step 9: Employment Options' },
         { id: 9.1, label: '' }, 
         { section: 'Sources' }, 
         { label: <Link href="https://www.uscis.gov/working-in-the-united-states/students-and-exchange-visitors/students-and-employment" target="_blank" rel="noopener">Students and Employment</Link>, textOnly: true },
         { label: <Link href="https://www.uscis.gov/working-in-the-united-states/students-and-exchange-visitors/optional-practical-training-opt-for-f-1-students" target="_blank" rel="noopener">Optional Practical Training (OPT) for F-1 Students</Link>, textOnly: true },
-        { label: <Link href="https://www.uscis.gov/working-in-the-united-states/students-and-exchange-visitors/optional-practical-training-extension-for-stem-students-stem-opt" target="_blank" rel="noopener">Optional Practical Training Extension for STEM Students (STEM OPT)</Link>, textOnly: true }
+        { label: <Link href="https://www.uscis.gov/working-in-the-united-states/students-and-exchange-visitors/optional-practical-training-extension-for-stem-students-stem-opt" target="_blank" rel="noopener">Optional Practical Training Extension for STEM Students (STEM OPT)</Link>, textOnly: true },
+        { label: <Link href="https://studyinthestates.dhs.gov/sevis-help-hub/student-records/fm-student-employment/f-1-curricular-practical-training-cpt" target="_blank" rel="noopener">Curricular Practical Training (CPT)</Link>, textOnly: true }
       ],
       10: [
-        { section: 'Checklist' },
+        { section: 'Step 10: Graduation and Program Completion' },
         {
           id: 10.1,
           label:
@@ -392,10 +428,7 @@ export const F1checklists = {
         },
         { label: 'Note: If you overstay the 60 days, you will be out of status and your visa will be automatically voided. In certain cases, you may be ineligible for visas in the future.', textOnly: true, nested: true },
         {
-          id: 10.2,
-          label:
-            'Options to extend your stay',
-          checked: false,
+          section: 'Options to Extend your Stay',
         },
         {
           id: 10.3,
@@ -413,10 +446,10 @@ export const F1checklists = {
             </>
           ),
           checked: false,
-          nested: true
+          nested: false,
         },
-        { id: 10.4, label: 'Transfer to another school', nested: true, checked: false },
-        { id: 10.5, label: 'Change your education level (ex. from Bachelor’s to Master’s)', nested: true, checked: false },
+        { id: 10.4, label: 'Transfer to another school', nested: false, checked: false },
+        { id: 10.5, label: 'Change your education level (ex. from Bachelor’s to Master’s)', nested: false, checked: false },
         { id: 10.6, 
             label: (
             <>
@@ -429,25 +462,12 @@ export const F1checklists = {
               </Link>
             </>
           ), },
+          { id: 10.44, label: 'Receive your change of status', nested: true, checked: false },
+          { id: 10.45, label: 'Once you depart from the US, apply for a new visa at a US Embassy or Consulate', nested: true, checked: false },
         { section: 'Sources' }, 
         { label: <Link href="https://travel.state.gov/content/travel/en/us-visas/study/student-visa.html" target="_blank" rel="noopener">Student Visa Process</Link>, textOnly: true },
         { label: <Link href="https://shorelight.com/student-stories/student-visa-usa-f1/" target="_blank" rel="noopener">F-1 Visa for International Students: Requirements, Rules, Status</Link>, textOnly: true },
         { label: <Link href="https://studyinthestates.dhs.gov/students/maintaining-status" target="_blank" rel="noopener">Maintaining Status</Link>, textOnly: true }
-      ],
-      11: [
-        { section: 'Checklist' },
-        {
-          id: 11.1,
-          label:
-            'Receive your change of status',
-          checked: false,
-        },
-        {
-          id: 11.2,
-          label:
-            'Once you depart from the US, apply for a new visa at a US Embassy or Consulate',
-          checked: false,
-        },
       ],
 }
 

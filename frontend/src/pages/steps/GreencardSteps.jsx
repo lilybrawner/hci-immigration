@@ -11,15 +11,15 @@ export const gcsteps = [
     { id: 7, label: "Step 7: Receive a Decision (from USCIS on your Form N-400)"}, 
     { id: 8, label: "Step 8: Receive a Notice to Take the Oath of Allegiance"}, 
     { id: 9, label: "Step 9: Take the Oath of Allegiance to the United States"}, 
-    { id: 10, label: "Step 10: Understanding US citizenship"}
+    { id: 10, label: "Step 10: Understanding US Citizenship"}
 ]
 
 export const gcchecklists = {
     1: [ 
       { section: 'Step 1: Determine if you are a US citizen' },
+      { label: 'Continue to Step 2 if the following is correct and you are not a US citizen:', textOnly: true },
       { id: 1.1, label: 'I am not a US citizen by birth AND', checked: false },
       { id: 1.2,label: 'I did not acquire or derive US citizenship from my parents automatically after birth', checked: false },
-      { label: 'If you check both of these, continue to Step 2', textOnly: true },
       { section: 'Sources' },
       { label: <Link href="https://www.uscis.gov/citizenship/learn-about-citizenship/10-steps-to-naturalization" target="_blank" rel="noopener">10-Step Naturalization Process</Link>, textOnly: true },
     ],
@@ -30,7 +30,7 @@ export const gcchecklists = {
             <>
               The following checklist is taken straight from the Naturalization Eligibility Worksheet (M-480). Click here if you would rather complete it using the{' '}
               <Link
-                href="https://www.uscis.gov/citizenship/learn-about-citizenship/10-steps-to-naturalization"
+                href="https://www.uscis.gov/sites/default/files/document/guides/M-480.pdf"
                 target="_blank"
                 rel="noopener"
               >
@@ -52,7 +52,7 @@ export const gcchecklists = {
               >
                 USCIS’s Naturalization Eligibility Tool
               </Link>
-              by following the link and clicking “Determine my eligibility.”
+              {' '}by following the link and clicking “Determine my eligibility.”
             </>
           ),
           textOnly: true,
@@ -61,7 +61,17 @@ export const gcchecklists = {
           label: 'Check the box to indicate that it’s true. To be eligible, all these answers must be TRUE, unless specified otherwise. According to the worksheet, if you answer these questions as true, “you are probably eligible to apply for naturalization.”',
           textOnly: true,
         } ,     
-      { id: 2.1, label: '1. I am at least 18 years old OR I am under 18 years old but I am a member of the US armed forces who served honorably during a designated period of hostilities', checked: false },
+      {
+        id: 2.47,
+        label: '1. One of the following must be true',
+        type: 'dropdown',
+        options: [
+          'I am at least 18 years old',
+          'I am under 18 years old but I am a member of the US armed forces who served honorably during a designated period of hostilities',
+        ],
+        selected: null,
+        checked: false,
+      },
       {
           label: (
             <>
@@ -134,9 +144,9 @@ export const gcchecklists = {
         type: 'dropdown',
         options: [
           'In the last 5 years, I have not been outside the US for 30 months or more',
-          'I am a person who has served on board a vessel operated by or registered in the United States',
-          'I am an employee or an individual under contract to the US Government',
-          'I am a person who performs ministerial or priestly functions for a religious denomination or an interdenominational organization with a valid presence in the United States',
+          'I have been outside the US for 30 months or more, but I am a person who has served on board a vessel operated by or registered in the United States',
+          'I have been outside the US for 30 months or more, but I am an employee or an individual under contract to the US Government',
+          'I have been outside the US for 30 months or more, but I am a person who performs ministerial or priestly functions for a religious denomination or an interdenominational organization with a valid presence in the United States',
         ],
         selected: null,
         checked: false,
@@ -162,7 +172,7 @@ export const gcchecklists = {
       label: '5. One of the following must be true',
       type: 'dropdown',
       options: [
-        'During the last 5 years (or last 3 if I qualify under Attachment A), I have not taken a trip out of the United States that lasted one year or more',
+        'During the last 5 years (or last 3 if I qualified), I have not taken a trip out of the United States that lasted one year or more',
         'Since becoming a Permanent Resident, I have not taken a trip out of the United States that lasted for one year or more without an approved “Application to Preserve Residence for Naturalization Purposes” (Form N-470)',
       ],
       selected: null,
@@ -191,9 +201,9 @@ export const gcchecklists = {
         type: 'dropdown',
         options: [
           'I can read, write, and speak basic English',
-          'I am over 50 years old and have lived in the United States for at least 20 years since I became a Permanent Resident',
-          'I am over 55 years old and have lived in the United States for at least 15 years since I became a Permanent Resident',
-          'I have a disability that prevents me from fulfilling this requirement and will be filing a “Medical Certification for Disability Exceptions” (Form N-648) with my application which will be completed and signed by a doctor'
+          'I cannot read, write, and speak basic English, but I am over 50 years old and have lived in the United States for at least 20 years since I became a Permanent Resident',
+          'I cannot read, write, and speak basic English, but I am over 55 years old and have lived in the United States for at least 15 years since I became a Permanent Resident',
+          'I cannot read, write, and speak basic English, but I have a disability that prevents me from fulfilling this requirement and will be filing a “Medical Certification for Disability Exceptions” (Form N-648) with my application which will be completed and signed by a doctor'
         ],
         selected: null,
         checked: false,
@@ -268,7 +278,7 @@ export const gcchecklists = {
     ],
   
     3: [
-      { section: 'Step 3: Prepare Form N-400 (Application for Naturalization) General Checklist'},
+      { section: 'Step 3: Prepare Form N-400 (Application for Naturalization)'},
       { id: 3.1, label: 'Complete and sign your Form N‑400', checked: false },
       { id: 3.2, label: 'If you reside outside the US, get two passport‑style photos taken', checked: false },
       { id: 3.3, label: 'Collect necessary documents to demonstrate eligibility for naturalization', checked: false },
@@ -296,7 +306,7 @@ export const gcchecklists = {
       { label: 'Send copies of the following documents unless you are asked to provide an original.', textOnly: true },
       { id: 3.5, label: 'Permanent Resident Card', checked: false },
       { id: 3.6, label: 'Photocopy of both sides of Permanent Resident Card', checked: false , nested: true},
-      { id: 3.7, label: 'If you have lost the card, submit a photocopy of the receipt for your Form I-90 (Application to Replace Permanent Resident Card)', textOnly: true, nested: false},
+      { id: 3.7, label: 'If you have lost the card, submit a photocopy of the receipt for your Form I-90 (Application to Replace Permanent Resident Card)', checked: false, nested: false},
       { id: 3.8, label: 'A check or money order for the application fee (and biometric services fee, if applicable) with your A‑Number on back', checked: false },
       {
         label: (
@@ -316,16 +326,35 @@ export const gcchecklists = {
         textOnly: true,
         nested: true,
       },
-      { id: 3.11, label: 'Two identical color photographs (if residing outside the US)', checked: false },
-      { label: 'Photo requirements — see page 33 of Guide M‑476', textOnly: true },
-      { label: 'Head‑covering photos must still show facial features', textOnly: true },
-      { id: 3.12, label: 'Original Form G‑28 if represented by attorney / accredited rep', checked: false },
-      {id: 3.13,  label: 'Legal name change evidence (marriage certificate, divorce decree, or court order)', checked: false },
+      { id: 3.11, label: 'If you reside outside the US, submit two identical color photographs with your name and A-Number (if any) written lightly on the back of each photo using a pencil or a felt pen', checked: false },
+      { label: (
+        <>
+          Read page 33 in{' '}
+          <Link
+            href="https://id.uscourts.gov/Content_Fetcher/index.cfml/A_Guide_to_Naturalization_3814.pdf?Content_ID=3814"
+            target="_blank"
+            rel="noopener"
+          >
+            A Guide to Naturalization (M-476)
+          </Link>
+          {' '}for photo requirements.
+        </>
+      ), nested: true, textOnly: true
+    },
+      { label: 'Note: If your religion requires you to wear a head covering, your facial features must still be exposed in the photo for purposes of identification', textOnly: true , nested: true},
+      { id: 3.12, label: 'If an attorney or accredited representative is acting on your behalf, provide a completed ORIGINAL Form G-28 (Notice of Entry of Appearance as Attorney or Representative)', checked: false },
+      {id: 3.13,  label: 'If your current legal name is different from the name on your Permanent Resident Card, provide the document(s) that legally changed your name (marriage certificate, divorce decree, or court order)', checked: false },
     
-      { id: 3.14, label: 'Court or government order to provide financial support (if spouse / children live apart)', checked: false, nested: true },
-      { id: 3.15, label: 'Proof you have complied with support order (cancelled checks, receipts, wage‑garnishment proof, or letter from caregiver)', checked: false, nested: true },
-    
-      { id: 3.16, label: <Link href="https://www.uscis.gov/n-648" target="_blank" rel="noopener">Form N‑648 (Medical Certification for Disability Exceptions)</Link>, checked: false },
+      { id: 3.14, label: 'If you have a dependent spouse or child(ren) who do not live with you, provide any court or government order to provide financial support', checked: false},
+      { id: 3.15, label: 'Provide evidence of your financial support (including evidence that you have complied with any court or government order) such as cancelled checks, money and receipts, a court or agency printout of child support payments, evidence of wage garnishments OR a letter from the parent or guardian who cares for your child(ren)', checked: false, nested: true },
+      { label: (
+        <>
+          If you have a disability that prevents you from complying with the English language or civics requirements, submit{' '}
+          <Link href="https://www.uscis.gov/n-648" target="_blank" rel="noopener">Form N‑648 (Medical Certification for Disability Exceptions)</Link>,
+        </>
+      ), nested: false, checked: false
+    },
+    { id: 3.88, label: 'It must be completed less than 6 months ago by a licensed medical or osteopathic doctor or licensed clinical psychologist', nested: true, textOnly: true },
     
       { id: 3.17, label: 'Current marriage certificate', checked: false },
       { id: 3.18, label: 'Divorce / annulment decree or death certificate for all prior marriages (if any)', checked: false },
@@ -413,13 +442,17 @@ export const gcchecklists = {
 ],
 
 5: [
-{ label: 'Attend biometrics appointment (if required)',  textOnly: true },
-{ id: 5.1, label: 'Receive Form I‑797C appointment notice from USCIS', checked: false },
+{ section: 'Step 5: Attend Biometrics Appointment (if required)' },
+{ id: 5.1, label: 'If you need a biometrics appointment, USCIS will send you an appointment notice (Form I-797C)', textOnly: true },
+{ id: 5.2, label: 'Receive Form I-797C from USCIS', checked: false },
 { id: 5.2, label: 'Arrive at the appointment mentioned on the notice', checked: false },
-{ id: 5.3, label: 'Bring appointment notice plus valid photo ID (Green Card, passport, or driver’s license)', checked: false, nested: true},
-{ id: 5.4, label: 'Wear appropriate attire (photo may appear on Certificate of Naturalization)', checked: false, nested: true },
-{ id: 5.5, label: 'Bring a copy of your completed N‑400 to the appointment (recommended)', checked: false, nested: true },
-{ label: 'If you need to reschedule, do so BEFORE the appointment date via your USCIS account or call 800‑375‑5283 with good cause', textOnly: true },
+{ id: 5.3, label: 'Bring your appointment notice and valid photo identification (your Green Card, passport, or driver’s license)', checked: false, nested: true},
+{ id: 5.4, label: 'Note: You may be photographed at this appointment, so wear some acceptable to display on your Certificate of Naturalization', textOnly: true, nested: true },
+{ id: 5.5, label: 'Note: USCIS recommends that you save a copy of the completed application and bring it to your appointment.', textOnly: true, nested: true },
+{ label: 'If you need to reschedule, you MUST do it before the date and time of your scheduled biometrics appointment and establish good cause for rescheduling. You can reschedule your appointment online through your USCIS account or call the USCIS Contact Center +1(800-375-5283). ', textOnly: true },
+{ section: 'Sources'},
+{ label: <Link href="https://www.uscis.gov/citizenship/learn-about-citizenship/10-steps-to-naturalization" target="_blank" rel="noopener">10-Step Naturalization Process</Link>, textOnly: true },
+{ label: <Link href="https://www.uscis.gov/forms/filing-guidance/preparing-for-your-biometric-services-appointment" target="_blank" rel="noopener">Preparing for your Biometric Services Appointment</Link>, textOnly: true },
 ],
 
 6: [
@@ -443,21 +476,36 @@ export const gcchecklists = {
 ],
 
 8: [
-{ id: 8.1, label: 'Receive Form N‑445 with date, time, and location of oath ceremony', checked: false },
-{ id: 8.2, label: 'If eligible, same‑day oath may be offered after interview', checked: false },
-{ id: 8.3, label: 'If you cannot attend, follow rescheduling instructions on Form N‑445', checked: false },
+  { section: 'Step 8: Receive a Notice to Take the Oath of Allegiance'},
+{ id: 8.1, label: 'Note: USCIS will mail you a notification with the date, time, and location of your scheduled naturalization ceremony', textOnly: true },
+{ id: 8.11, label: 'If you filed online, you can access this notice online as well', textOnly: true , nested: true},
+{ id: 8.2, label: 'In some cases, you may be able to participate in the oath ceremony on the same day as your interview', textOnly: true},
+{ id: 8.3, label: 'If you can’t attend the oath ceremony on the day scheduled for you, follow the instruction on the notice (N-445) to ask for a reschedule', checked: false },
+{ section: 'Sources'},
+{ label: <Link href="https://www.uscis.gov/citizenship/learn-about-citizenship/10-steps-to-naturalization" target="_blank" rel="noopener">10-Step Naturalization Process</Link>, textOnly: true },
+{ label: <Link href="https://www.uscis.gov/citizenship/learn-about-citizenship/naturalization-ceremonies?" target="_blank" rel="noopener">Naturalization Ceremonies</Link>, textOnly: true },
+
 ],
 
 9: [
-{ id: 9.1, label: 'Complete questionnaire on Form N‑445 before ceremony', checked: false },
-{ id: 9.2, label: 'Report to ceremony location; check in with USCIS', checked: false },
-{ id: 9.3, label: 'USCIS officer reviews your Form N‑445 answers', checked: false },
+  { section: 'Step 9: Take the Oath of Allegiance to the United States'},
+{ id: 9.1, label: 'Complete the questionnaire on Form N-445 (Notice of Naturalization Oath Ceremony)', checked: false },
+{ id: 9.2, label: 'Report for your naturalization ceremony', checked: false },
+{ id: 9.99, label: 'Check in with USCIS', checked: false },
+{ id: 9.3, label: 'Note: A USCIS officer will review your Form N-445 responses', textOnly: true, nested: true},
 { id: 9.4, label: 'Turn in Permanent Resident Card', checked: false },
 { id: 9.5, label: 'Take the Oath of Allegiance', checked: false },
-{ id: 9.6, label: 'Receive Certificate of Naturalization; review for errors before leaving', checked: false },
+{ id: 9.8, label: 'Receive and review your Certificate of Naturalization', checked: false },
+{ id: 9.6, label: 'Notify USCIS of any error you see before leaving the ceremony site', checked: false , nested: true},
+{ section: 'Sources'},
+{ label: <Link href="https://www.uscis.gov/citizenship/learn-about-citizenship/10-steps-to-naturalization" target="_blank" rel="noopener">10-Step Naturalization Process</Link>, textOnly: true },
+{ label: <Link href="https://www.uscis.gov/citizenship/learn-about-citizenship/naturalization-ceremonies?" target="_blank" rel="noopener">Naturalization Ceremonies</Link>, textOnly: true },
 ],
 10: [
-{ id: 10.1, label: 'Learn about the most important rights of U.S. citizens', checked: false},
-{ id: 10.2, label: <Link href="https://www.uscis.gov/citizenship/learn-about-citizenship/should-i-consider-us-citizenship" target="_blank" rel="noopener">USCIS Should I Consider U.S. Citizenship?</Link>, checked: false, nested: true },
-]
-  }
+  { section: 'Step 10: Understanding US Citizenship'},
+{ id: 10.1, label: 'For your information, review this list of some of the most important rights and responsibilities of all US citizens: ', checked: false},
+{ id: 10.2, label: <Link href="https://www.uscis.gov/citizenship/learn-about-citizenship/should-i-consider-us-citizenship" target="_blank" rel="noopener">USCIS Should I Consider U.S. Citizenship?</Link>, textOnly: true, nested: true },
+
+{ section: 'Sources'},
+{ label: <Link href="https://www.uscis.gov/citizenship/learn-about-citizenship/10-steps-to-naturalization" target="_blank" rel="noopener">10-Step Naturalization Process</Link>, textOnly: true },
+]}

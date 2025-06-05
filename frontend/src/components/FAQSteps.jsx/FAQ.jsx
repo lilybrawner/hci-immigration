@@ -27,9 +27,36 @@ export const FAQ = {
             { question: 'What happens if my N-400 is denied?', answer: 'If you believe you’ve been wrongly denied, you can request a hearing to appeal the decision by filing Form N-336 within 30 days of receiving the decision.' }
         ],
         8: [
-            { question: 'What is the Oath of Allegiance?', answer: 'From the Code of Federal Regulations, the following is the Oath of Allegiance as of April 14, 2025: I hereby declare, on oath, that I absolutely and entirely renounce and abjure all allegiance and fidelity to any foreign prince, potentate, state, or sovereignty, of whom or which I have heretofore been a subject or citizen; that I will support and defend the Constitution and laws of the United States of America against all enemies, foreign and domestic; that I will bear true faith and allegiance to the same; that I will bear arms on behalf of the United States when required by the law; that I will perform noncombatant service in the Armed Forces of the United States when required by the law; that I will perform work of national importance under civilian direction when required by the law; and that I take this obligation freely, without any mental reservation or purpose of evasion; so help me God.' }
+            { question: 'What is the Oath of Allegiance?',
+            answer: 
+                (
+                    <>
+                    From the{' '}
+                    <Link
+                        href="https://www.ecfr.gov/current/title-8/chapter-I/subchapter-C/part-337/section-337.1" 
+                        target="_blank" 
+                        rel="noopener"
+                    >Code of Federal Regulations
+                    </Link>,{' '}
+                    the following is the Oath of Allegiance as of April 14, 2025: I hereby declare, on oath, that I absolutely and entirely renounce and abjure all allegiance and fidelity to any foreign prince, potentate, state, or sovereignty, of whom or which I have heretofore been a subject or citizen; that I will support and defend the Constitution and laws of the United States of America against all enemies, foreign and domestic; that I will bear true faith and allegiance to the same; that I will bear arms on behalf of the United States when required by the law; that I will perform noncombatant service in the Armed Forces of the United States when required by the law; that I will perform work of national importance under civilian direction when required by the law; and that I take this obligation freely, without any mental reservation or purpose of evasion; so help me God.' 
+                    </>
+                )},
         ],
         9: [
+            { question: 'What is the Oath of Allegiance?',
+            answer: 
+                (
+                    <>
+                    From the{' '}
+                    <Link
+                        href="https://www.ecfr.gov/current/title-8/chapter-I/subchapter-C/part-337/section-337.1" 
+                        target="_blank" 
+                        rel="noopener"
+                    >Code of Federal Regulations
+                    </Link>,{' '}
+                    the following is the Oath of Allegiance as of April 14, 2025: I hereby declare, on oath, that I absolutely and entirely renounce and abjure all allegiance and fidelity to any foreign prince, potentate, state, or sovereignty, of whom or which I have heretofore been a subject or citizen; that I will support and defend the Constitution and laws of the United States of America against all enemies, foreign and domestic; that I will bear true faith and allegiance to the same; that I will bear arms on behalf of the United States when required by the law; that I will perform noncombatant service in the Armed Forces of the United States when required by the law; that I will perform work of national importance under civilian direction when required by the law; and that I take this obligation freely, without any mental reservation or purpose of evasion; so help me God.' 
+                    </>
+                )},
             { question: 'What else will I have to do at this ceremony?', answer: 'You will have to turn in your Permanent Resident Card and receive a Certificate of Naturalization. Make sure you check the Certificate and identify any errors before you leave the ceremony, so they can be corrected.' }
         ]
     },
@@ -333,6 +360,54 @@ export const FAQ = {
                     </>
                 )},
         ], 
+        2: [
+            { question: 'Will I get a payment receipt in the mail?', answer: 'No. Since 2013, SEVP has not mailed I-797C receipts. You should print out the payment confirmation from the online payment portal, and bring it to your interview. You can access the payment confirmation at any time on the portal.'},
+            { question: 'What if I need help figuring out how to pay the SEVIS fee?', answer: 
+                (
+                    <>
+                    The Department of Homeland Security has an{' '}
+                    <Link
+                        href="https://studyinthestates.dhs.gov/students/prepare/i-901-sevis-fee-payment-video" 
+                        target="_blank" 
+                        rel="noopener"
+                    >instructional video
+                    </Link>
+                    {' '}to guide you through the payment process.
+                    </>
+                )},
+        ], 
+        3: [
+            { question: 'Why do I have to provide social media handles?', answer: 
+                (
+                    <>
+                    Since 2019, applicants for an F-1 visa have been required to provide their social media handles. According to the{' '}
+                    <Link
+                        href="https://travel.state.gov/content/travel/en/us-visas/visa-information-resources/visas-news-archive/20190604_collection-of-social-media-identifiers-from-U-S-visa-applicants.html" 
+                        target="_blank" 
+                        rel="noopener"
+                    >Department of State
+                    </Link>
+                    , this additional information is for national security purposes and has been adopted to strengthen the screening process.
+                    </>
+                )},
+                { question: 'When should I apply?', answer: 
+                (
+                    <>
+                    You should apply as early as possible, because{' '}
+                    <Link
+                        href="https://travel.state.gov/content/travel/en/us-visas/visa-information-resources/global-visa-wait-times.html" 
+                        target="_blank" 
+                        rel="noopener"
+                    >wait times to get an interview appointment
+                    </Link>
+                    {' '}vary.
+                    </>
+                )},
+        ], 
+        4: [
+            { question: 'Will I need to do an interview?', answer: 'Yes. Unless you are 13 years old or younger, or 80 years old or older, you will be required to do an interview.'},
+            { question: 'Where should I schedule my interview?', answer: 'You should schedule your interview at the US Embassy or Consulate that is located in the country where you live.'},
+        ],
         5: [
             { question: 'What kind of questions should I anticipate?', answer:  
                 (
@@ -347,13 +422,25 @@ export const FAQ = {
                     they may ask you questions about what other US universities you applied to, why you chose the specific school, how you’ll pay for your education, whether you have family in the US, and what your plans are during and after school.
                     </>
                 )},
+                { question: 'Do I have to bring the additional documents listed under required documents?', answer: 'While the additional documents are not required, you should prepare and bring them to the interview in case the consular officer requests them.'},
         ], 
         6: [
             { question: 'Why was my application refused under Section 221(g)?', answer: 'It could be because your application was incomplete or more documentation is needed. If this is the case, you will be informed on what you need to provide. Your application may also need more administrative processing. In this circumstance, processing times can vary.'},
-            { question: 'Can my refusal under Section 221(g) be overturned?', answer: 'Yes. If additional documentation or information was requested from you, provide it within one year of the visa denial.'}
+            { question: 'Can my refusal under Section 221(g) (further administrative processing needed) be overturned?', answer: 'Yes. If additional documentation or information was requested from you, provide it within one year of the visa denial.'}
         ], 
         7: [
-            { question: 'Can I enter the US more than 30 days in advance?', answer: 'Not under your F-1 visa. If you wish to enter earlier than 30 days before your start date, you must separately apply and qualify for a visitor (B) visa. Once admitted under the visitor (B) visa, you must apply to USCIS for a change of status to student (F-1) status before you start your program. This might have long processing times, and you can not begin your course of study until the change of status is approved.'}
+            { question: 'Can I enter the US more than 30 days in advance?', answer: 
+            (
+                <>
+                Not under your F-1 visa. If you wish to enter earlier than 30 days before your start date, you must separately apply and qualify for a visitor (B) visa. Once admitted under the visitor (B) visa, you must apply to USCIS for a change of status to student (F-1) status before you start your program. This might have long processing times, and you can not begin your course of study until the change of status is approved. Source:{' '}
+                <Link
+                    href="https://shorelight.com/student-stories/student-visa-usa-f1/" 
+                    target="_blank" 
+                    rel="noopener"
+                >Student Visa Process
+                </Link>.
+                </>
+            )},
         ], 
         8: [
             { question: 'Do I need to take courses during my academic vacation?', answer: 
@@ -369,10 +456,26 @@ export const FAQ = {
                     you do not need to take classes during an annual vacation, but you can.
                     </>
                 )},
+                { question: 'Do I need a new visa if I take a temporary break from my studies?', answer: 
+                (
+                    <>
+                    You will not need to renew your visa unless your visa has expired. If your temporary absence is 5 months or longer, you will have to get a new Form I-20 and pay the I-901 SEVIS fee again, but you will not need to apply for a new visa unless yours has expired. If your student visa is still valid but you are outside the US, you should consult with your DSOs. Source: 
+{' '}
+                    <Link
+                        href="https://studyinthestates.dhs.gov/2017/01/questions-dsos-do-students-returning-temporary-absences-need-new-visas" 
+                        target="_blank" 
+                        rel="noopener"
+                    >Department of Homeland Security
+                    </Link>.
+                    </>
+                )},
+                { question: 'What if I have a valid US visa in an expired passport?', answer: 'It is still valid. A visa is valid until its expiration date, unless it is canceled or revoked. Carry both your current passport, and your expired passport with the valid US visa.' }, 
         ],
-        11: [
-            { question: 'What if I have a valid US visa in an expired passport?', answer: 'It is still valid. A visa is valid until its expiration date, unless it is canceled or revoked. Carry both your current passport, and your expired passport with the valid US visa.' }, 
-            { question: 'What if I have a spouse and children?', answer: 'You spouse and unmarried, minor children can apply for F-2 visas. Your school must issue them an individual Form I-20, which is required for their visa application. You must provide proof of relationship and a copy of your F-1 visa. Your minor children can attend school in the US while accompanying you.' }
+        9: [
+            {question: 'Do I need to get CPT authorization if I want to do a summer internship in my home country?', answer: 'No. You only need a CPT authorization if you’re doing training inside the US.'}
+        ],
+        10: [ 
+            { question: 'Is OPT not an optional to extend my stay?', answer: 'The options listed in this step are for after you complete your authorized OPT.'}
         ]
     }
 }

@@ -1,119 +1,47 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { Box, Button, FormControl, InputLabel, MenuItem, Select, Stack, Paper } from '@mui/material';
 
-function extractTextFromReactElement(element) {
-  if (typeof element === 'string') {
-    return element;
-  }
-  if (React.isValidElement(element)) {
-    const children = element.props.children;
-    if (Array.isArray(children)) {
-      return children.map(extractTextFromReactElement).join(' ');
-    } else {
-      return extractTextFromReactElement(children);
-    }
-  }
-  return '';
-}
-
-function collectTranslatableTexts(items) {
-  let texts = [];
-  for (const item of items) {
-    if (typeof item.label === 'string') {
-      texts.push(item.label);
-    } else if (React.isValidElement(item.label)) {
-      const extracted = extractTextFromReactElement(item.label);
-      if (extracted) texts.push(extracted);
-    }
-
-    if (typeof item.section === 'string') {
-      texts.push(item.section);
-    } else if (React.isValidElement(item.section)) {
-      const extracted = extractTextFromReactElement(item.section);
-      if (extracted) texts.push(extracted);
-    }
-
-    if (Array.isArray(item.children)) {
-      texts = texts.concat(collectTranslatableTexts(item.children));
-    }
-  }
-  return texts;
-}
-
-function replaceLabelSectionTranslations(items, translationMap) {
-  return items.map(item => {
-    const newItem = { ...item };
-
-    if (typeof item.label === 'string' && translationMap.has(item.label)) {
-      newItem.label = translationMap.get(item.label);
-    }
-    // If label is React element, leave it as-is (do not translate or replace)
-
-    if (typeof item.section === 'string' && translationMap.has(item.section)) {
-      newItem.section = translationMap.get(item.section);
-    }
-    // Same for section React elements, leave as-is
-
-    if (Array.isArray(item.children)) {
-      newItem.children = replaceLabelSectionTranslations(item.children, translationMap);
-    }
-
-    return newItem;
-  });
-}
-
-export default function AccessibilityBar({ stepText, checklist, onSetTranslation }) {
-  const [translatedChecklist, setTranslatedChecklist] = useState(null);
-  const [langCode, setLangCode] = useState('en');
+export default function AccessibilityBar({
+  stepText = '',        // Plain text string to translate & speak (passed from parent)
+  onSetTranslation,     // callback to parent with translated texts (array or string)
+  langCode,             // controlled language code from parent
+  setLangCode,          // function to update language code in parent
+}) {
   const [loading, setLoading] = useState(false);
   const audioRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
 
+  // Handle translate button click
   const handleTranslate = async () => {
-    if (!checklist) return;
+    if (!stepText.trim()) return;
+
     setLoading(true);
     try {
-      const textsToTranslate = collectTranslatableTexts(checklist).filter(Boolean);
-      const uniqueTexts = [...new Set(textsToTranslate)];
+      // If stepText is multi-line string, split into array for translation API
+      const textsToTranslate = stepText.split('\n').filter(line => line.trim());
 
-      const translatedTexts = await Promise.all(
-        uniqueTexts.map(async (text) => {
-          const { data } = await axios.post('/api/translate', {
-            text,
-            targetLang: langCode,
-          });
-          return data.translatedText;
-        })
-      );
-
-      const translationMap = new Map();
-      uniqueTexts.forEach((orig, idx) => {
-        translationMap.set(orig, translatedTexts[idx]);
+      const { data } = await axios.post('/api/translate', {
+        texts: textsToTranslate,
+        targetLang: langCode,
       });
 
-      const newTranslatedChecklist = replaceLabelSectionTranslations(checklist, translationMap);
-      setTranslatedChecklist(newTranslatedChecklist);
-      onSetTranslation(newTranslatedChecklist);
-
+      if (Array.isArray(data.translatedTexts)) {
+        onSetTranslation(data.translatedTexts);
+      } else {
+        console.error('Unexpected translation API response', data);
+        onSetTranslation([]);
+      }
     } catch (error) {
       console.error('Translation error:', error);
-      onSetTranslation('Translation failed. Please try again.');
+      onSetTranslation([]);
     }
     setLoading(false);
   };
 
+  // Handle speak button click
   const handleSpeak = async () => {
-    let textToSpeak = '';
-
-    if (translatedChecklist) {
-      const texts = collectTranslatableTexts(translatedChecklist).filter(Boolean);
-      textToSpeak = texts.join('\n');
-    } else if (typeof stepText === 'string') {
-      textToSpeak = stepText;
-    }
-
-    if (!textToSpeak.trim()) {
+    if (!stepText.trim()) {
       console.warn('No valid text to speak');
       return;
     }
@@ -132,25 +60,24 @@ export default function AccessibilityBar({ stepText, checklist, onSetTranslation
     try {
       const response = await axios.post(
         '/api/speak',
-        {
-          text: textToSpeak,
-          languageCode: langCode,
-        },
+        { text: stepText, languageCode: langCode },
         { responseType: 'arraybuffer' }
       );
 
       const blob = new Blob([response.data], { type: 'audio/mpeg' });
       const audio = new Audio(URL.createObjectURL(blob));
-
       audioRef.current = audio;
-
       audio.play();
       setIsPlaying(true);
-
       audio.onended = () => setIsPlaying(false);
     } catch (error) {
       console.error('Speech synthesis error:', error);
     }
+  };
+
+  // Handle language select change (notify parent)
+  const handleLangChange = (e) => {
+    setLangCode(e.target.value);
   };
 
   return (
@@ -166,7 +93,7 @@ export default function AccessibilityBar({ stepText, checklist, onSetTranslation
             id="lang-select"
             value={langCode}
             label="Language"
-            onChange={(e) => setLangCode(e.target.value)}
+            onChange={handleLangChange}
             size="small"
           >
             <MenuItem value="en">English</MenuItem>
@@ -193,3 +120,4 @@ export default function AccessibilityBar({ stepText, checklist, onSetTranslation
     </Paper>
   );
 }
+

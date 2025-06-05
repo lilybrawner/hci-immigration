@@ -1,10 +1,36 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import BasicTimeline from '../components/Timeline';
 import Panel from '../components/Panel';
 import Progress from '../components/Progress';
 import { Box } from '@mui/material';
 
-export default function Results({ steps, initialChecklists, page , renderLabel}) {
+// Util functions to extract and rebuild JSX text
+function extractTextNodes(element, acc = []) {
+  if (typeof element === 'string') {
+    acc.push(element);
+  } else if (React.isValidElement(element)) {
+    React.Children.forEach(element.props.children, child => {
+      extractTextNodes(child, acc);
+    });
+  }
+  return acc;
+}
+
+function rebuildWithTranslatedText(element, translations, index = { i: 0 }) {
+  if (typeof element === 'string') {
+    const translated = translations[index.i] || element;
+    index.i++;
+    return translated;
+  } else if (React.isValidElement(element)) {
+    const children = React.Children.map(element.props.children, child =>
+      rebuildWithTranslatedText(child, translations, index)
+    );
+    return React.cloneElement(element, { ...element.props }, children);
+  }
+  return null;
+}
+
+export default function Results({ steps, initialChecklists, page, renderLabel }) {
   const [selectedStep, setSelectedStep] = useState(steps?.[0] || null);
   const [checklists, setChecklists] = useState(initialChecklists || {});
 
@@ -12,88 +38,114 @@ export default function Results({ steps, initialChecklists, page , renderLabel})
     setChecklists(prev => ({ ...prev, [stepId]: updatedChecklist }));
   };
 
-  const goToNextStep = () => {
-    const currentIndex = steps.findIndex(s => s.id === selectedStep.id);
-    if (currentIndex < steps.length - 1) {
-      setSelectedStep(steps[currentIndex + 1]);
-    }
-  };  
+  // Store translated checklist text per step id (already in your code via setChecklists)
+  // We'll add new state for translated timeline step titles:
+  const [translatedStepTitles, setTranslatedStepTitles] = useState([]);
 
-  const handleSetTranslation = (translatedText) => {
-    if (!selectedStep) return;
-  
-    console.log('Raw translatedText:', JSON.stringify(translatedText));
-  
-    // If it's a string, attempt to split it
-    if (typeof translatedText === 'string') {
-      const lines = translatedText.split(/\r?\n/).map(line => line.trim());
-      console.log('Split lines:', lines);
-  
-      const updated = checklists[selectedStep.id].map((item, idx) => ({
-        ...item,
-        translation: lines[idx] || item.label,
-      }));
-  
-      setChecklists(prev => ({ ...prev, [selectedStep.id]: updated }));
-    }
-  
-    // If it's already a translated checklist (array of objects)
-    else if (Array.isArray(translatedText)) {
-      const updated = translatedText.map((item, idx) => ({
-        ...checklists[selectedStep.id]?.[idx],
-        translation: item.label || checklists[selectedStep.id]?.[idx]?.label,
-      }));
-  
-      setChecklists(prev => ({ ...prev, [selectedStep.id]: updated }));
-    }
-  
-    else {
-      console.warn('Unexpected translation format:', translatedText);
-    }
+  // Extract checklist texts for translation
+  const extractChecklistTexts = () => {
+    if (!selectedStep || !checklists[selectedStep.id]) return [];
+    return checklists[selectedStep.id]
+      .filter(item => !item.textOnly && !item.section)
+      .map(item => {
+        if (typeof item.label === 'string') return item.label;
+        if (React.isValidElement(item.label)) return extractTextNodes(item.label).join('');
+        return '';
+      })
+      .filter(Boolean);
   };
-  
+
+  // Extract step titles/texts for timeline translation
+  const extractStepTitles = () => {
+    if (!steps) return [];
+    return steps.map(step => {
+      if (typeof step.title === 'string') return step.title;
+      if (React.isValidElement(step.title)) return extractTextNodes(step.title).join('');
+      // fallback - if no title prop, or other structure
+      return String(step.id || '');
+    });
+  };
+
+  const handleChecklistTranslation = (translatedTexts) => {
+    if (!selectedStep) return;
+
+    const currentChecklist = checklists[selectedStep.id];
+    if (!currentChecklist) return;
+
+    const updatedChecklist = currentChecklist.map((item, idx) => {
+      if (item.textOnly || item.section) return item;
+
+      let originalText = '';
+      if (typeof item.label === 'string') originalText = item.label;
+      else if (React.isValidElement(item.label)) originalText = extractTextNodes(item.label).join('');
+
+      const translated = translatedTexts[idx] || originalText;
+
+      if (typeof item.label === 'string') {
+        return { ...item, translation: translated };
+      } else if (React.isValidElement(item.label)) {
+        const rebuilt = rebuildWithTranslatedText(item.label, [translated]);
+        return { ...item, translation: rebuilt };
+      }
+
+      return item;
+    });
+
+    setChecklists(prev => ({ ...prev, [selectedStep.id]: updatedChecklist }));
+  };
+
+  // New function to set translated timeline step titles
+  const handleSetStepTitlesTranslation = (translatedTexts) => {
+    setTranslatedStepTitles(translatedTexts);
+  };
+
+  const handleSetTranslation = (translatedTexts) => {
+    // Use this function for checklist translation only (called from Panel)
+    handleChecklistTranslation(translatedTexts);
+  };
 
   const completedSteps = Object.entries(checklists)
     .filter(([_, items]) =>
-    items.filter(i => !i.textOnly && !i.section).every(item => item.checked)
+      items.filter(i => !i.textOnly && !i.section).every(item => item.checked)
     )
     .map(([stepId]) => Number(stepId));
 
   const completedCount = completedSteps.length;
-  const splitStyle = {
-    width: '40%'
-  }
 
   return (
-    <Box sx={{ display: 'flex', justifyContent: 'center'}}>
-      
-      <Box sx={ selectedStep ? splitStyle : {} }>
-
-          <Progress totalSteps={steps.length} completedSteps={completedCount} />
-          <Box sx={{paddingRight: 5}}>
+    <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+      <Box sx={selectedStep ? { width: '40%' } : {}}>
+        <Progress totalSteps={steps.length} completedSteps={completedCount} />
+        <Box sx={{ paddingRight: 5 }}>
           <BasicTimeline
             steps={steps}
             onStepClick={setSelectedStep}
             completedSteps={completedSteps}
-            selectedStep={selectedStep}  
-            checklists={checklists} 
+            selectedStep={selectedStep}
+            checklists={checklists}
             onChecklistChange={handleChecklistChange}
+            translatedStepTitles={translatedStepTitles} // new prop for translated titles
           />
-          </Box>
         </Box>
- 
+      </Box>
 
       {selectedStep && (
         <Box sx={{ width: '60%', overflowY: 'auto' }}>
           <Panel
-  step={selectedStep}
-  checklist={checklists[selectedStep.id] || []}
-  onChecklistChange={handleChecklistChange}
-  onSetTranslation={handleSetTranslation}
-  page={page}
-  renderLabel={renderLabel}
-  onNextStep={goToNextStep}
-/>
+            step={selectedStep}
+            checklist={checklists[selectedStep.id] || []}
+            onChecklistChange={handleChecklistChange}
+            onSetTranslation={handleSetTranslation}
+            page={page}
+            renderLabel={renderLabel}
+            onNextStep={() => {
+              goToNextStep();
+              // Optional: reset translations on step change
+              // setTranslatedStepTitles([]);
+            }}
+            onSetStepTitlesTranslation={handleSetStepTitlesTranslation} // pass translation setter for timeline titles
+            extractStepTitles={extractStepTitles} // pass function if Panel handles timeline translation requests
+          />
         </Box>
       )}
     </Box>

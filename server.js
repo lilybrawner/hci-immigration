@@ -2,57 +2,60 @@
 const express = require('express');
 const { TextToSpeechClient } = require('@google-cloud/text-to-speech');
 const { Translate } = require('@google-cloud/translate').v2;
+const path = require('path');
 
 const app = express();
 app.use(express.json());
-
-const path = require('path');
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Initialize the Google Cloud clients
+// Initialize Google Cloud clients
 const ttsClient = new TextToSpeechClient();
 const translateClient = new Translate();
 
-// API to translate text
+// API to translate text (accepts string or array of strings)
 app.post('/api/translate', async (req, res) => {
   const { text, targetLang } = req.body;
-
-  if (typeof text !== 'string') {
-    console.error('Invalid translation input: Expected a string but got', typeof text);
-    return res.status(400).json({ error: 'Invalid input: text must be a string.' });
-  }
 
   if (!text || !targetLang) {
     return res.status(400).json({ error: 'text and targetLang are required' });
   }
 
   try {
+    // Batch translate supported by Google API
     const [translation] = await translateClient.translate(text, targetLang);
-    res.json({ translatedText: translation });
+
+    // Always respond with an array for consistency
+    const translatedTexts = Array.isArray(translation) ? translation : [translation];
+
+    res.json({ translatedTexts });
   } catch (err) {
-    console.error(err);
-    res.status(500).send('Translation failed');
+    console.error('Translation failed:', err);
+    res.status(500).json({ error: 'Translation failed' });
   }
 });
 
-// Function to get supported language codes for TTS
+// Helper to get supported language codes for TTS
 async function getSupportedLanguageCodes() {
-  const [result] = await ttsClient.listVoices();
-  const voices = result.voices;
+  try {
+    const [result] = await ttsClient.listVoices();
+    const codes = new Set();
 
-  const codes = new Set();
-  voices.forEach(voice => {
-    voice.languageCodes.forEach(code => codes.add(code));
-  });
+    result.voices.forEach(voice => {
+      voice.languageCodes.forEach(code => codes.add(code));
+    });
 
-  return Array.from(codes); 
+    return Array.from(codes);
+  } catch (err) {
+    console.error('Failed to fetch supported language codes:', err);
+    return [];
+  }
 }
 
-// Function to resolve the language code
+// Helper to resolve full language code for TTS from short code
 async function resolveLanguageCode(shortCode) {
   const supportedCodes = await getSupportedLanguageCodes();
   const match = supportedCodes.find(code => code.startsWith(shortCode + '-'));
-  return match || 'en-US'; 
+  return match || 'en-US';
 }
 
 // API to synthesize speech from text
@@ -88,13 +91,13 @@ app.post('/api/speak', async (req, res) => {
 
     res.send(response.audioContent);
   } catch (err) {
-    console.error('TTS failed:', err);
-    res.status(500).send('Text-to-Speech failed');
+    console.error('Text-to-Speech failed:', err);
+    res.status(500).json({ error: 'Text-to-Speech failed' });
   }
 });
 
-const clientRoutes = ['/greencard', '/parenta', '/parentc', '/visa', '/spouse']
-
+// SPA client routes fallback to index.html
+const clientRoutes = ['/greencard', '/parenta', '/parentc', '/visa', '/spouse'];
 clientRoutes.forEach(route => {
   app.get(route, (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
@@ -105,6 +108,8 @@ app.get('/', (req, res) => {
   res.sendFile(path.resolve(__dirname, 'public', 'index.html'));
 });
 
-// Start the server on the appropriate port
-const PORT = process.env.PORT || 8080; // Cloud Run uses 8080 by default
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+// Start server on port 8080 (Cloud Run default) or environment port
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
