@@ -14,18 +14,15 @@ const translateClient = new Translate();
 
 // API to translate text (accepts string or array of strings)
 app.post('/api/translate', async (req, res) => {
-  const { text, targetLang } = req.body;
+  const { texts, targetLang } = req.body;
 
-  if (!text || !targetLang) {
-    return res.status(400).json({ error: 'text and targetLang are required' });
+  if (!Array.isArray(texts) || !targetLang) {
+    return res.status(400).json({ error: 'texts (array) and targetLang are required' });
   }
 
   try {
-    // Batch translate supported by Google API
-    const [translation] = await translateClient.translate(text, targetLang);
-
-    // Always respond with an array for consistency
-    const translatedTexts = Array.isArray(translation) ? translation : [translation];
+    const [translations] = await translateClient.translate(texts, targetLang);
+    const translatedTexts = Array.isArray(translations) ? translations : [translations];
 
     res.json({ translatedTexts });
   } catch (err) {
