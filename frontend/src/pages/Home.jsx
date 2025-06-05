@@ -17,10 +17,17 @@ function Home() {
 
   return (
     <div>
-      <div style={{ padding: '25px 25px 0px 25px', margin: '0 auto' }}>
-        <h1 style={{ marginTop: 0 }}>
+      <div style={{ padding: '15px 25px 0px 25px', margin: '0 auto' }}>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' , marginTop: 0, marginBottom: '-8px'}}>
+        <h1 style={{ marginTop: '10px'}}>
           DISCLAIMER
         </h1>
+        <img
+          src="/logo.png"
+          alt="Logo"
+          style={{ width: '100px', height: 'auto', objectFit: 'contain' }}
+        />
+      </div>
         <p>
         This tool is not intended to be a replacement for a qualified immigration attorney.
         All information we are presenting is publicly accessible from US government websites 
