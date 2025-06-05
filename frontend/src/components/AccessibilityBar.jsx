@@ -23,6 +23,8 @@ export default function AccessibilityBar({
     try {
       const textsToTranslate = safeStepText.split('\n').filter(line => line.trim());
 
+      console.log('Translating:', { textsToTranslate, langCode });
+
       const { data } = await axios.post('/api/translate', {
         texts: textsToTranslate,
         targetLang: langCode,
