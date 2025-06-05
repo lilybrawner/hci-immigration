@@ -4,10 +4,17 @@ import Panel from '../components/Panel';
 import Progress from '../components/Progress';
 import { Box, Typography } from '@mui/material';
 import { FAQ } from '../components/FAQSteps.jsx/FAQ';
+import { IconButton } from '@mui/material';
+import HomeIcon from '@mui/icons-material/Home';
+import { useNavigate } from 'react-router-dom';
+
+import { useEffect } from 'react';
+
 
 export default function Results({ steps, initialChecklists, page , renderLabel}) {
   const [selectedStep, setSelectedStep] = useState(steps?.[0] || null);
   const [checklists, setChecklists] = useState(initialChecklists || {});
+  const navigate = useNavigate();
 
   const handleChecklistChange = (stepId, updatedChecklist) => {
     setChecklists(prev => ({ ...prev, [stepId]: updatedChecklist }));
@@ -48,37 +55,53 @@ export default function Results({ steps, initialChecklists, page , renderLabel})
   }
 
   return (
-    <Box sx={{ display: 'flex', justifyContent: 'center'}}>
-      
-      <Box sx={ selectedStep ? splitStyle : {} }>
-
+    <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+      {/* Left Column: Home + Progress + Timeline */}
+      <Box sx={selectedStep ? { width: '40%' } : {}}>
+        {/* Home and Progress inline */}
+        <Box sx={{ display: 'flex', alignItems: 'center', mb: 2, ml: 2 }}>
+          <IconButton
+            onClick={() => navigate('/')}
+            sx={{
+              backgroundColor: 'white',
+              boxShadow: 2,
+              mr: '-8px',
+              '&:hover': { backgroundColor: '#f0f0f0' },
+            }}
+          >
+            <HomeIcon />
+          </IconButton>
+  
           <Progress totalSteps={steps.length} completedSteps={completedCount} />
-          <Box sx={{paddingRight: 5}}>
+        </Box>
+  
+        {/* Timeline */}
+        <Box sx={{ paddingRight: 6 }}>
           <BasicTimeline
             steps={steps}
             onStepClick={setSelectedStep}
             completedSteps={completedSteps}
-            selectedStep={selectedStep} 
+            selectedStep={selectedStep}
             checklists={checklists}
-            onChecklistChange={handleChecklistChange} 
+            onChecklistChange={handleChecklistChange}
           />
-          </Box>
         </Box>
- 
-
+      </Box>
+  
+      {/* Right Column: Panel */}
       {selectedStep && (
         <Box sx={{ width: '60%', overflowY: 'auto' }}>
           <Panel
-  step={selectedStep}
-  checklist={checklists[selectedStep.id] || []}
-  onChecklistChange={handleChecklistChange}
-  onSetTranslation={handleSetTranslation}
-  page={page}
-  renderLabel={renderLabel}
-  onNextStep={goToNextStep}
-/>
+            step={selectedStep}
+            checklist={checklists[selectedStep.id] || []}
+            onChecklistChange={handleChecklistChange}
+            onSetTranslation={handleSetTranslation}
+            page={page}
+            renderLabel={renderLabel}
+            onNextStep={goToNextStep}
+          />
         </Box>
       )}
     </Box>
   );
-}
+}  
