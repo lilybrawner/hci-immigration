@@ -15,13 +15,21 @@ import {
   Select,
   MenuItem,
 } from '@mui/material';
+import {
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  Button
+} from '@mui/material';
 import DownloadIcon from '@mui/icons-material/Download';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { pdf } from '@react-pdf/renderer';
 import ChecklistPDF from './ChecklistPDF'; 
 
-export default function Panel({ step, checklist, onChecklistChange, onSetTranslation, page, renderLabel, onNextStep }) {
+export default function Panel({ step, checklist, onChecklistChange, onSetTranslation, page, renderLabel, onNextStep , isLast}) {
   const [tab, setTab] = React.useState(0);
+  const [showCompletionPopup, setShowCompletionPopup] = React.useState(false);
   const panelRef = useRef(null);
   const faqForStep = page?.[step.id] || [];
 
@@ -291,7 +299,11 @@ export default function Panel({ step, checklist, onChecklistChange, onSetTransla
           }}
           onClick={() => {
             if (allChecked) {
-              onNextStep();
+              if (isLast) {
+                setShowCompletionPopup(true);
+              } else {
+                onNextStep();
+              }
             }
           }}
           aria-label="Continue"
@@ -299,6 +311,17 @@ export default function Panel({ step, checklist, onChecklistChange, onSetTransla
           <ArrowForwardIcon />
         </IconButton>
       </Box>
+      <Dialog open={showCompletionPopup} onClose={() => setShowCompletionPopup(false)}>
+  <DialogTitle>🎉 Congratulations!</DialogTitle>
+  <DialogContent>
+    <Typography>You have completed this process.</Typography>
+  </DialogContent>
+  <DialogActions>
+    <Button onClick={() => setShowCompletionPopup(false)} autoFocus>
+      Close
+    </Button>
+  </DialogActions>
+</Dialog>
       </div>
     </>
   );

@@ -8,8 +8,6 @@ import { IconButton } from '@mui/material';
 import HomeIcon from '@mui/icons-material/Home';
 import { useNavigate } from 'react-router-dom';
 
-import { useEffect } from 'react';
-
 
 export default function Results({ steps, initialChecklists, page , renderLabel}) {
   const [selectedStep, setSelectedStep] = useState(steps?.[0] || null);
@@ -99,6 +97,7 @@ export default function Results({ steps, initialChecklists, page , renderLabel})
             page={page}
             renderLabel={renderLabel}
             onNextStep={goToNextStep}
+            isLast={steps.indexOf(selectedStep) === steps.length - 1}
           />
         </Box>
       )}
