@@ -1,25 +1,27 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import axios from 'axios';
 import { Box, Button, FormControl, InputLabel, MenuItem, Select, Stack, Paper } from '@mui/material';
 
 export default function AccessibilityBar({
-  stepText = '',        // Plain text string to translate & speak (passed from parent)
-  onSetTranslation,     // callback to parent with translated texts (array or string)
-  langCode,             // controlled language code from parent
-  setLangCode,          // function to update language code in parent
+  stepText = '',        
+  onSetTranslation,     
+  langCode,             
+  setLangCode,          
 }) {
   const [loading, setLoading] = useState(false);
   const audioRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
 
+  // Normalize stepText to always be a string
+  const safeStepText = Array.isArray(stepText) ? stepText.join('\n') : stepText;
+
   // Handle translate button click
   const handleTranslate = async () => {
-    if (!stepText.trim()) return;
+    if (typeof safeStepText !== 'string' || !safeStepText.trim()) return;
 
     setLoading(true);
     try {
-      // If stepText is multi-line string, split into array for translation API
-      const textsToTranslate = stepText.split('\n').filter(line => line.trim());
+      const textsToTranslate = safeStepText.split('\n').filter(line => line.trim());
 
       const { data } = await axios.post('/api/translate', {
         texts: textsToTranslate,
@@ -41,7 +43,7 @@ export default function AccessibilityBar({
 
   // Handle speak button click
   const handleSpeak = async () => {
-    if (!stepText.trim()) {
+    if (!safeStepText.trim()) {
       console.warn('No valid text to speak');
       return;
     }
@@ -60,7 +62,7 @@ export default function AccessibilityBar({
     try {
       const response = await axios.post(
         '/api/speak',
-        { text: stepText, languageCode: langCode },
+        { text: safeStepText, languageCode: langCode },
         { responseType: 'arraybuffer' }
       );
 
@@ -75,7 +77,6 @@ export default function AccessibilityBar({
     }
   };
 
-  // Handle language select change (notify parent)
   const handleLangChange = (e) => {
     setLangCode(e.target.value);
   };
@@ -120,4 +121,3 @@ export default function AccessibilityBar({
     </Paper>
   );
 }
-
