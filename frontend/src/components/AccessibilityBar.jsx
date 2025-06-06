@@ -145,6 +145,10 @@ export default function AccessibilityBar({ onSetTranslation, panelContainerRef }
             <MenuItem value="tl">Tagalog</MenuItem>
             <MenuItem value="vi">Vietnamese</MenuItem>
             <MenuItem value="ar">Arabic</MenuItem>
+            <MenuItem value="my">Burmese</MenuItem>
+            <MenuItem value="ja">Japanese</MenuItem>
+            <MenuItem value="ko">Korean</MenuItem>
+            <MenuItem value="de">German</MenuItem>
           </Select>
         </FormControl>
 
