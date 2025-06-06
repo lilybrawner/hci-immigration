@@ -1,7 +1,85 @@
 import React from 'react';
 import Results from './Results';
+import { Tooltip } from '@mui/material';
 import { F1steps, F1checklists } from './steps/F1Steps';
+import GreencardGlossary from './steps/GreencardGlossary';
+
+function wrapGlossaryTerms(node, glossary) {
+  if (typeof node === 'string') {
+    const terms = Object.keys(glossary).sort((a, b) => b.length - a.length);
+    const escapedTerms = terms.map(term => term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
+    const regex = new RegExp(`(${escapedTerms.join('|')})`, 'gi');
+
+    const parts = node.split(regex);
+    return parts.map((part, index) => {
+      const matchedTerm = terms.find(t => t.toLowerCase() === part.toLowerCase());
+      if (matchedTerm) {
+        return (
+          <Tooltip key={index} title={glossary[matchedTerm]} arrow>
+            <span style={{ textDecoration: 'underline dotted', cursor: 'help' }}>
+              {part}
+            </span>
+          </Tooltip>
+        );
+      }
+      return part;
+    });
+  }
+
+  if (React.isValidElement(node) && node.props.children) {
+    return React.cloneElement(
+      node,
+      { ...node.props },
+      React.Children.map(node.props.children, child => wrapGlossaryTerms(child, glossary))
+    );
+  }
+
+  return node;
+}
+
+function wrapLabelsInData(data, glossary) {
+  if (Array.isArray(data)) {
+    return data.map((item) => wrapLabelsInData(item, glossary));
+  }
+
+  if (typeof data === 'object' && data !== null) {
+    const newItem = { ...data };
+
+    if (typeof newItem.label === 'string' || React.isValidElement(newItem.label)) {
+      newItem.label = wrapGlossaryTerms(newItem.label, glossary);
+    }
+
+    if (newItem.options) {
+      newItem.options = wrapLabelsInData(newItem.options, glossary);
+    }
+
+    if (newItem.children) {
+      newItem.children = wrapLabelsInData(newItem.children, glossary);
+    }
+
+    return newItem;
+  }
+
+  return data;
+}
 
 export default function F1Res() {
-  return <Results steps={F1steps} initialChecklists={F1checklists} page="F1FAQ" />;
+  const glossary = GreencardGlossary;
+
+  // Apply glossary to all checklist arrays within the object
+  const checklistsWithGlossary = Object.fromEntries(
+    Object.entries(F1checklists).map(([key, list]) => [
+      key,
+      wrapLabelsInData(list, glossary)
+    ])
+  );
+
+  return (
+    <Results
+      steps={wrapLabelsInData(F1steps, glossary)}
+      initialChecklists={checklistsWithGlossary}
+      page="F1FAQ"
+      renderLabel={(label) => wrapGlossaryTerms(label, glossary)}
+    />
+  );
 }

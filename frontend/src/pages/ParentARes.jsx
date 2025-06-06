@@ -3,6 +3,7 @@ import { Tooltip } from '@mui/material';
 import Results from './Results';
 import { paSteps, paChecklist } from './steps/ParentASteps';
 import ParentAGlossary from './steps/ParentAGlossary';
+import GreencardGlossary from './steps/GreencardGlossary';
 
 function wrapGlossaryTerms(node, glossary) {
   if (typeof node === 'string') {
@@ -37,10 +38,49 @@ function wrapGlossaryTerms(node, glossary) {
   return node;
 }
 
+function wrapLabelsInData(data, glossary) {
+  if (Array.isArray(data)) {
+    return data.map((item) => wrapLabelsInData(item, glossary));
+  }
+
+  if (typeof data === 'object' && data !== null) {
+    const newItem = { ...data };
+
+    if (typeof newItem.label === 'string' || React.isValidElement(newItem.label)) {
+      newItem.label = wrapGlossaryTerms(newItem.label, glossary);
+    }
+
+    if (newItem.options) {
+      newItem.options = wrapLabelsInData(newItem.options, glossary);
+    }
+
+    if (newItem.children) {
+      newItem.children = wrapLabelsInData(newItem.children, glossary);
+    }
+
+    return newItem;
+  }
+
+  return data;
+}
 
 export default function ParentARes() {
-  const glossary = ParentAGlossary;
+  const glossary = GreencardGlossary;
 
-  const renderLabelWithGlossary = (content) => wrapGlossaryTerms(content, glossary);
-  return <Results steps={paSteps} initialChecklists={paChecklist} page="PAFAQ" renderLabel={renderLabelWithGlossary}/>;
+  // Apply glossary to all checklist arrays within the object
+  const checklistsWithGlossary = Object.fromEntries(
+    Object.entries(paChecklist).map(([key, list]) => [
+      key,
+      wrapLabelsInData(list, glossary)
+    ])
+  );
+
+  return (
+    <Results
+      steps={wrapLabelsInData(paSteps, glossary)}
+      initialChecklists={checklistsWithGlossary}
+      page="PAFAQ"
+      renderLabel={(label) => wrapGlossaryTerms(label, glossary)}
+    />
+  );
 }

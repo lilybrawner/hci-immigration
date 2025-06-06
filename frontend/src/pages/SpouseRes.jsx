@@ -2,7 +2,7 @@ import React from 'react';
 import { Tooltip } from '@mui/material';
 import Results from './Results';
 import { sSteps, sChecklist } from './steps/SpouseSteps';
-import SpouseGlossary from './steps/SpouseGlossary'; // import Spouse Glossary
+import GreencardGlossary from './steps/GreencardGlossary';
 
 function wrapGlossaryTerms(node, glossary) {
   if (typeof node === 'string') {
@@ -37,9 +37,49 @@ function wrapGlossaryTerms(node, glossary) {
   return node;
 }
 
-export default function SpouseRes() {
-  const glossary = SpouseGlossary;
+function wrapLabelsInData(data, glossary) {
+  if (Array.isArray(data)) {
+    return data.map((item) => wrapLabelsInData(item, glossary));
+  }
 
-  const renderLabelWithGlossary = (content) => wrapGlossaryTerms(content, glossary);
-      return <Results steps={sSteps} initialChecklists={sChecklist} page="SFAQ"  renderLabel={renderLabelWithGlossary}/>;
+  if (typeof data === 'object' && data !== null) {
+    const newItem = { ...data };
+
+    if (typeof newItem.label === 'string' || React.isValidElement(newItem.label)) {
+      newItem.label = wrapGlossaryTerms(newItem.label, glossary);
+    }
+
+    if (newItem.options) {
+      newItem.options = wrapLabelsInData(newItem.options, glossary);
+    }
+
+    if (newItem.children) {
+      newItem.children = wrapLabelsInData(newItem.children, glossary);
+    }
+
+    return newItem;
+  }
+
+  return data;
+}
+
+export default function SpouseRes() {
+  const glossary = GreencardGlossary;
+
+  // Apply glossary to all checklist arrays within the object
+  const checklistsWithGlossary = Object.fromEntries(
+    Object.entries(sChecklist).map(([key, list]) => [
+      key,
+      wrapLabelsInData(list, glossary)
+    ])
+  );
+
+  return (
+    <Results
+      steps={wrapLabelsInData(sSteps, glossary)}
+      initialChecklists={checklistsWithGlossary}
+      page="SFAQ"
+      renderLabel={(label) => wrapGlossaryTerms(label, glossary)}
+    />
+  );
 }
