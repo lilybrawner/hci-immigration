@@ -13,7 +13,20 @@ export const FAQ = {
             { question: 'Do I need to keep copies of everything I submit?', answer: ' Yes. You should keep a copy of your completed Form N-400 and any supporting documents you submit with it, for your own records. You should also keep the Form N-400 receipt USCIS will send to you, and other important documents and communications/receipts from USCIS throughout the process.' },
             { question: 'If I request a reduced fee or a fee waiver, can I still file online?', answer: 'No. USCIS requires that people requesting a reduced fee or fee waiver file their N-400 by mail.' },
             { question: 'How much is the filing fee?', answer: 'The filing fee is $710 to file online and $760 to file by mail. If you request a reduced fee, it is $380.' },
-            { question: 'What’s the earliest time I can file?', answer: 'Use the following USCIS Early Filing Calculator to calculate the earliest date you can file.' }
+            { question: 'What’s the earliest time I can file?', answer: 
+            (
+                    <>
+                    Use the following{' '}
+                    <Link
+                        href="https://www.uscis.gov/forms/uscis-early-filing-calculator" 
+                        target="_blank" 
+                        rel="noopener"
+                    >USCIS Early Filing Calculator
+                    </Link>,{' '}
+                    to calculate the earliest date you can file.
+                    </>
+                    )
+                    }
         ],
         5: [
             { question: 'How do I know if I need a biometrics appointment?', answer: 'USCIS will send you an appointment notice, if it is applicable.' },

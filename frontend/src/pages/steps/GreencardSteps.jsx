@@ -359,86 +359,299 @@ export const gcchecklists = {
       { id: 3.17, label: 'Current marriage certificate', checked: false },
       { id: 3.18, label: 'Divorce / annulment decree or death certificate for all prior marriages (if any)', checked: false },
     
-      { id: 3.19, label: 'Criminal / offense records (if applicable)', checked: false },
-      { id: 3.21, label: 'Arrest report + official statement that no charges were filed (if arrested, no charges)', checked: false, nested: true },
-      { id: 3.22, label: 'Court‑certified arrest record + disposition for each incident (if charges filed)', checked: false, nested: true },
-      { id: 3.23, label: 'Evidence you completed jail / prison / probation or alternative sentence', checked: false, nested: true },
-      { id: 3.24, label: 'Sentencing record + proof of completed alternative / rehab programs', checked: false, nested: true },
-      { id: 3.25, label: 'Probation or parole record (if applicable)', checked: false, nested: true },
-      { id: 3.26, label: 'Court order or pardon documents for vacated / expunged cases', checked: false, nested: true },
-      { id: 3.27, label: 'Countervailing evidence in your favor (optional)', textOnly: true },
-    
-      { id: 3.28, label: 'Traffic‑incident docs (only if alcohol/drugs, arrest, or injury involved)', checked: false },
-    
-      { id: 3.29, label: 'Proof of payment for fines / restitution / wage‑garnishment orders', checked: false },
-      { id: 3.31, label: 'IRS correspondence for any unfiled tax returns', checked: false },
-      { id: 3.32, label: 'IRS or tax‑office agreement + status of repayment program (if taxes overdue)', checked: false },
-      { id: 3.33, label: 'Evidence of child‑support payments (canceled checks, agency printouts, wage‑garnishment proof, or notarized caregiver letter)', checked: false },
+      { id: 3.19, label: 'Documentation of crimes and offenses, if applicable', checked: false },
+      { id: 3.21, label: 'If you have ever been in a traffic incident, provide Documentation of traffic incidents only if the incident involved alcohol or drugs OR led to an arrest OR seriously injured another person', checked: false, nested: true },
+      { id: 3.22, label: 'If you have ever been ordered to pay a fine, make restitution, or have your wages garnished, provide documentation of the order to pay a fine, restitution, or garnish wages AND Documentation that you have paid the required sum or evidence of current payment', checked: false, nested: true },
+      { id: 3.23, label: 'If you have ever been arrested or detained for any reason, anywhere in the world, and NO CHARGES WERE FILED, provide an arrest report AND An official statement from the arresting agency or applicable court, confirming that no charges were filed', checked: false, nested: true },
+      { id: 3.24, label: 'If you have ever been convicted and sentenced in any capacity or placed in any rehabilitation program in lieu of serving time, provide your sentencing record and evidence to show you completed your period of jail, prison, alternative sentence, or probation', checked: false, nested: true },
+      { id: 3.25, label: 'If you have ever failed to file an income tax return since you became a Lawful Permanent Resident, provide all correspondence with the IRS regarding your failure to file', checked: false, nested: true },
+      { id: 3.26, label: 'If you have any taxes that are overdue, provide a signed agreement from the IRS or state or local tax office showing you have filed a tax return and have arranged to pay the taxes you owe AND documentation from the IRS or state or local tax office showing the current status of your repayment program (Note: you can obtain copies of tax documents and tax information by contacting your local IRS offices)', checked: false, nested: true },
+      { id: 3.27, label: 'If you have ever had any arrest or conviction vacated, set aside, sealed, expunged, or otherwise removed from your record, or received a pardon, provide A motion to vacate and court order vacating, setting aside, sealing, expunging, or otherwise removing the arrest or conviction from your record OR A statement from the court that no record exists of your arrest or conviction OR An application or petition for a pardon and final decision granting your application or petition for a pardon', nested: true, checked: false },
     
       { id: 3.34, label: 'Proof you maintained US residence for trips 6‑12 months (rent/mortgage, bank statements, car registration, passport stamps, or IRS transcripts)', checked: false },
     
-      { id: 3.35, label: 'Status information letter from Selective Service (male applicants 26‑31, or 29 if based on marriage)', checked: false },
-      { id: 3.36, label: 'Statement explaining failure to register (if applicable)', checked: false },
+      { id: 3.35, label: 'If you are male, have lived in the US in a status other than “lawful nonimmigrant” between the ages of 18 and 26, and are currently older than 26 years of age but younger than 31 years of age (or younger than 29 years old if filing based on marriage to a US citizen), applicants 26‑31, or 29 if based on marriage), provide the following information:', textOnly: true },
+      { id: 3.36, label: 'Status information letter from the Selective Service AND A statement regarding your reasons for failing to register', checked: false, nested: true },
+      { label: 'Note: Call 1-847-688-6888 for more information', textOnly: true, nested: true },
     
-      { id: 3.37, label: 'Court order for legal guardian / surrogate OR evidence of designated representative (school, hospital, IRS, SSA, affidavits)', checked: false },
-      {id: 3.38, label: 'Documentation of family relationship (if rep. is not legal guardian)', checked: false, nested: true },
-      { id: 3.39, label: 'Form N‑648 certifying inability to take Oath (if applicable)', checked: false },
-  
-      { id: 3.41, label: 'Evidence spouse has been a US citizen 3+ years (birth cert, naturalization or citizenship cert, passport, or Form FS-240)', checked: false },
-      { id: 3.42, label: 'Current marriage certificate', checked: false },
-      { id: 3.43, label: 'Evidence termination of all prior marriages for both spouses', checked: false },
-      { id: 3.44, label: 'Joint documents (tax returns, bank accounts, leases, mortgages, children\'s birth certs) for last 3 years or IRS transcripts', checked: false },
-      { id: 3.45, label: 'Proof of continuous residence for any 6-12 month trips in last 3 years', checked: false },
-      { id: 3.46, label: 'Evidence of qualifying employment abroad if spouse is a US citizen working overseas', checked: false },
-      { id: 3.47, label: 'Typed statement of intent to reside abroad with spouse and return to US afterward', checked: false, nested: true },
-      { id: 3.48, label: 'Proof of authorization to accompany spouse on military orders + military service docs (if spouse in US armed forces)', checked: false },
-    
-      { id: 3.49, label: 'Evidence of US‑citizen spouse’s citizenship', checked: false },
-      { id: 3.51, label: 'Evidence of marriage to US‑citizen spouse (current or former; marriage need not still exist)', checked: false },
-      { id: 3.52, label: 'Note: Divorce / separation not required if LPR was obtained via VAWA', textOnly: true },
-
-      { id: 3.53, label: <Link href="https://www.uscis.gov/n-426" target="_blank" rel="noopener">Form N‑426 (Certification of Military or Naval Service)</Link> + ' (if currently serving)', checked: false },
-      { id: 3.54, label: 'DD 214, NGB 22, or discharge orders (if separated)', checked: false },
-      {id: 3.55,  label: 'Official military orders (if applicable)', checked: false },
-      { id: 3.56, label: 'Two passport‑style photos (if residing outside the US)', checked: false },
-      { id: 3.57, label: 'Note: No continuous‑residence docs needed if serving during designated hostilities', textOnly: true },
-    
-      { id: 3.58, label: 'Reminder: Attorney or accredited rep must file Form G‑28 with N‑400 or bring it to the interview',textOnly: true },
-
+      {
+        id: 3.37,
+        label: 'Special Applicant Situations',
+        type: 'dropdown',
+        options: [
+          {
+            label: 'Applicants needing assistance from legal guardian, surrogate, or designated representative',
+            children: [
+              { label: 'Provide a court order authorizing the legal guardian or surrogate to exercise authority over the applicant’s affairs', checked: false, nested: true },
+              { label: 'Evidence of an authorized designated representative who is the primary custodial caregiver and who takes responsibility for the applicant, such as:', textOnly: true, nested: true },
+              { label: 'School records', checked: false, nested: true },
+              { label: 'Hospital records', checked: false, nested: true },
+              { label: 'Income tax returns (records showing that a person is an authorized representative before the IRS in connection with the applicant’s federal tax matters)', checked: false, nested: true },
+              { label: 'Social Security documents (like enrollment in the US SSA Representative’s Payment Program)', checked: false, nested: true },
+              { label: 'Affidavits (written sworn statements from other family members or persons who have personal knowledge of the familial relationship)', checked: false, nested: true },
+              { label: 'Documentation of family relationship if the designated representative is not the legal guardian or surrogate', checked: false, nested: true },
+              { label: 'Form N-648 certified by a medical professional of your inability to take the Oath', checked: false, nested: true },
+              { label: 'Note: You could also provide a separate attestation from the medical profession, but it is not necessary if you’re providing the Form N-648', textOnly: true, nested: true }
+            ]
+          },
+          {
+            label: 'Spouses of US citizens',
+            children: [
+              { label: 'Evidence that your spouse has been a US citizen for the last 3 years (US birth certificate, certificate of naturalization, or certificate of citizenship', checked: false, nested: true },
+              { label: 'Biographical and signature page of spouse’s US passport', checked: false, nested: true },
+              { label: 'Form FS-240 (Report of Birth Abroad)', checked: false, nested: true },
+              { label: 'A copy of your current marriage certificate', checked: false, nested: true },
+              { label: 'Evidence of termination of prior marriages (divorce decree, annulment, death cert)', checked: false,nested: true },
+              { label: 'Joint documents (tax returns, bank accounts, leases, birth certs of children)', checked: false, nested: true },
+              { label: 'IRS-certified copies or transcripts for the past 3 years', checked: false, nested: true },
+              { label: 'Proof of continuous residence if any trip outside US lasted 6–12 months', checked: false, nested: true },
+              { label: 'If spouse works abroad, provide proof of employment and intention to return', checked: false, nested: true },
+              { label: 'If spouse is in the military, provide military documentation and photos', checked: false, nested: true }
+            ]
+          },
+          {
+            label: 'VAWA (Violence Against Women Act) Applicants',
+            children: [
+              { label: 'Evidence of US citizenship', checked: false, nested: true },
+              { label: 'Evidence of marriage to the US citizen', checked: false, nested: true },
+              { label: 'Note: Divorce, separation, or union is NOT required for VAWA eligibility', textOnly: true, nested: true }
+            ]
+          },
+          {
+            label: 'Military Service',
+            children: [
+              { label: 'If currently serving: Form N-426', checked: false, nested: true },
+              { label: 'If separated: DD Form 214, NGB Form 22, or discharge orders', checked: false, nested: true },
+              { label: 'Copy of military orders if applicable', checked: false, nested: true },
+              { label: 'Two passport-style photos if you reside outside the US', checked: false, nested: true },
+              { label: 'Note: No continuous residence or physical presence required if serving during hostilities', textOnly: true, nested: true }
+            ]
+          }
+        ],
+        selected: null,
+        checked: false
+      },
     ],
 
 4: [
-{ label: 'Submit Form N‑400 and pay filing fees', textOnly: true },
+{ section: 'Step 4: Submit Form N-400 and Pay Fees'},
 
-{ id: 4.1, label: <Link href="https://www.uscis.gov/citizenship/learn-about-citizenship/10-steps-to-naturalization" target="_blank" rel="noopener">10‑Step Naturalization Process</Link>, checked: false },
-{ id: 4.2, label: <Link href="https://www.uscis.gov/n-400" target="_blank" rel="noopener">Form N‑400, Application for Naturalization</Link>, checked: false },
-{ id: 4.3, label: 'Decide whether to file online or by mail (do not do both)', checked: false },
-{ id: 4.4, label: 'If requesting a full or partial fee waiver, you must file by mail', checked: false },
+{ id: 4.1, label: 'File the documents and pay the fees', checked: false },
+{ id: 4.2, label: 'Note: The filing fee is final and nonrefundable', textOnly: true, nested: true },
 
-{ id: 4.5, label: 'Pay the correct fee (final and non‑refundable)', checked: false },
-{ id: 4.6, label: 'If paying full fee: $760 by mail  |  $710 online', checked: false, nested: true },
-{  id: 4.7, label: 'If requesting reduced fee: $380 + supporting documents (must file by mail)', checked: false, nested: true },
-{ id: 4.8, label: 'If requesting fee waiver: file Form I‑912 (or written request) + supporting docs (mail only)', checked: false, nested: true },
-{ id: 4.9,label: 'Save a copy of your payment', checked: false },
+{
+  id: 4.3,
+  label: 'Filing Fee Selection',
+  type: 'dropdown',
+  options: [
+    {
+      label: 'I am paying the full filing fee',
+      children: [
+        {
+          label: 'Select “No” in Part 10, Item Number 1',
+          checked: false,
+          nested: true,
+        },
+        {
+          label: 'Skip to Part 11',
+          checked: false,
+          nested: true,
+        },
+        {
+          label: 'Choose whether you will file online OR by mail and submit $760 if filing by mail or $710 if filing online',
+          checked: false,
+          nested: true,
+        },
+      ]
+    },
+    {
+      label: 'I am applying for a reduced fee',
+      children: [
+        {
+          label: 'Select “Yes” in Part 10, Item Number 1',
+          checked: false,
+          nested: true,
+        },
+        {
+          label: 'Complete the rest of Part 10',
+          checked: false,
+          nested: true,
+        },
+        {
+          label: 'File the paper forms by mail',
+          checked: false,
+          nested: true,
+        },
+        {
+          label: 'Submit $380 and documentation to support the reduced fee',
+          checked: false,
+          nested: true,
+        },
+        {
+          label: 'Note: By applying for a reduced fee you can not apply online.',
+          textOnly: true,
+          nested: true,
+        }
+      ]
+    },
+    {
+      label: 'I am applying for a fee waiver',
+      children: [
+        {
+          label: 'Select “Yes” in Part 10, Item Number 1',
+          checked: false,
+          nested: true,
+        },
+        {
+          label: 'Complete Form I-912 (Request for Fee Waiver)',
+          checked: false,
+          nested: true,
+        },
+        {
+          label: 'File the paper forms by mail',
+          checked: false,
+          nested: true,
+        },
+        {
+          label: 'Submit Form I-912 and documentation to support your request for a fee waiver',
+          checked: false,
+          nested: true,
+        },
+        {
+          label: 'Note: You can submit a written request instead of Form I-912',
+          textOnly: true,
+          nested: true,
+        }
+      ]
+    }
+  ],
+  selected: null,
+  checked: false
+},
 
-{ id: 4.11, label: 'Mail payment options: money order, personal check, cashier’s check, credit/debit card via Form G‑1450', checked: false, nested: true },
-{ id: 4.12, label: 'Make checks payable to U.S. Department of Homeland Security', checked: false, nested: true },
+{
+  id: 4.4,
+  label: 'Filing Method',
+  type: 'dropdown',
+  options: [
+    {
+      label: 'I am filing online',
+      children: [
+        {
+          label: 'Create a USCIS online account',
+          checked: false,
+          nested: true
+        },
+        {
+          label: 'Choose the guided filing method OR PDF filing option through the USCIS account',
+          nested: true,
+          checked: false,
+        },
+        {
+          label: 'NOTE: You can create an online representative account for attorneys and accredited representatives',
+          textOnly: true,
+          nested: true
+        },
+        {
+          label: 'Note: They can file the N-400 on your behalf ONLY through the guided filing method',
+          textOnly: true,
+          nested: true
+        }
+      ]
+    },
+    {
+      label: 'I am filing by mail',
+      children: [
+        {
+          label: 'NOTE: Payment options: Money order, personal check, cashier’s check, credit card using Form G-1450, or debit card using Form G-1450. Checks must be payable to the U.S. Department of Homeland Security',
+          textOnly: true,
+          nested: true
+        },
+        {
+          label: 'Receive the USCIS Account Acceptance Notice',
+          nested: true,
+          checked: false,
+        },
+        {
+          label: 'Create an online account to track and manage your case (recommended)',
+          nested: true,
+          checked: false,
+        },
+        {
+          label: 'Note: Advantages of creating a USCIS account: Pay your filing fee online, check your case status, receive notifications and case updates, view personalized case completion date estimates, respond to requests for evidence, and manage your contact information, including updating your address',
+          textOnly: true,
+          nested: true
+        },
+        {
+          label: 'Read the “Filing by Mail” tips section below',
+          nested: true,
+          checked: false,
+        }
+      ]
+    }
+  ],
+  selected: null,
+  checked: false
+},
+
+{ id: 4.5,label: 'Save a receipt of your payment', checked: false },
+
+{ id: 4.6,label: 'Keep a copy of your completed Form N-400 and any supporting documentation you submitted', checked: false },
+{ id: 4.7, label: 'NOTE: This Form N-400 receipt notice automatically extends the validity of your Permanent Resident Card for up to 24 months from its expiration date. This means you may not need to file Form I-90 (Application to Replace Permanent Resident Card) to maintain proper documentation. If you lose your Permanent Resident Card, you will still need to file Form I-90, even if you applied for naturalization. You must also file Form I-90 if you lose the Form N-400 receipt notice.', textOnly: true, nested: true},
+
+{ section: 'When to File'},
 
 { id: 4.13, label: 'File no earlier than 90 days before meeting the continuous‑residence requirement', checked: false },
 { id: 4.14, label: <Link href="https://www.uscis.gov/forms/uscis-early-filing-calculator" target="_blank" rel="noopener">Use USCIS early‑filing calculator to confirm earliest date</Link>, checked: false, nested: true },
 
-{ id: 4.15, label: 'Create a USCIS online account (recommended even if mailing)', checked: false },
-{ id: 4.16, label: 'Track case status, get updates, respond to RFEs, and manage contact info online', checked: false, nested: true },
+{ section: 'Tips for Filing By Mail'},
+
+{ label: 'Complete Your Paper Properly', textOnly: true },
+{ label: 'Only use the current form edition', textOnly: true, nested: true },
+{ label: 'Make sure the form edition date and page numbers are visible on each printed page', textOnly: true, nested: true },
+{ label: 'Make sure the edition dates are all the same', textOnly: true, nested: true },
+{ label: 'Recommended: Download forms from the USCIS website and complete them electronically before printing them out and signing them', textOnly: true },
+{ label: 'If handwriting your answers', textOnly: true},
+{ label: 'Use BLACK INK', textOnly: true, nested: true },
+{ label: 'Write clearly and legibly', textOnly: true, nested: true },
+{ label: 'Do NOT use highlighters, correction fluid, or correction tape', textOnly: true, nested: true },
+{ label: 'If you make an error, start over with a clean form', textOnly: true, nested: true },
+{ label: 'Complete the entire form, unless the form instructs you to skip items', textOnly: true },
+{ label: 'Sign your name in the provided signature space', textOnly: true},
+{ label: 'Pay the correct fee', textOnly: true },
+{ label: 'Recommended: If you are filing multiple applications, petitions, or requests, send separate payments for each application', textOnly: true,  },
+{ label: 'Assemble Your Application, Petition, or Request', textOnly: true},
+{ label: (
+  <>
+    The UCSIS recommends {' '}
+    <Link
+      href="https://www.uscis.gov/forms/filing-guidance/tips-for-filing-forms-by-mail"
+      target="_blank"
+      rel="noopener"
+    >
+      this
+    </Link>
+    {' '}assembly order.
+  </>
+),
+textOnly: true,
+nested: true,
+},
+{ label: 'Filing Multiple Applications, Petitions, or Requests in the Same Envelope', textOnly: true, nested: true },
+{ label: 'Forms N-400 for family members who are applying for adjustment or naturalization at the same time are okay to be included in the same envelope because they are related and eligible to be filed together', textOnly: true, nested: true },
+{ label: 'If you are filing multiple forms in the same envelope, do the following', textOnly: true, nested: true },
+{ label: 'Write you name, date of birth, and A-Number (if any)', textOnly: true, nested: true },
+{ label: 'Mail Your Application, Petition, or Request', textOnly: true },
+{ label: 'Address the package to the complete address provided on the USCIS website on that form’s webpage, including the Attn: line', textOnly: true, nested: true },
+{ label: 'You can send your forms through USPS, FedEx, DHL, or UPS', textOnly: true, nested: true },
+{ label: 'Save a copy of your payment and write down your tracking number to verify it’s delivery', textOnly: true, nested: true },
 
 
-{ id: 4.17, label: <Link href="https://www.uscis.gov/forms/filing-guidance/tips-for-filing-forms-by-mail" target="_blank" rel="noopener">Follow USCIS tips for filing forms by mail</Link>, checked: false },
-{ id: 4.18, label: 'Download current form edition, complete electronically, then print & sign', checked: false, nested: true },
-{ id: 4.19, label: 'If handwriting, use black ink; no highlighters or correction fluid/tape', checked: false, nested: true },
-{ id: 4.21, label: 'Sign every form; assemble in recommended order; separate payments preferred', checked: false, nested: true },
-{ id: 4.22, label: 'Address package exactly as shown on form webpage; keep tracking number', checked: false, nested: true },
+{section: 'Sources'},
+{ id: 4.1, label: <Link href="https://www.uscis.gov/citizenship/learn-about-citizenship/10-steps-to-naturalization" target="_blank" rel="noopener">10‑Step Naturalization Process</Link>, textOnly: true },
+{ id: 4.2, label: <Link href="https://www.uscis.gov/n-400" target="_blank" rel="noopener">Form N‑400, Application for Naturalization</Link>, textOnly: true},
+{ id: 4.17, label: <Link href="https://www.uscis.gov/forms/filing-guidance/tips-for-filing-forms-by-mail" target="_blank" rel="noopener">USCIS Tips for Filing Forms by Mail</Link>, textOnly: true },
 
-{ id: 4.23, label: 'Wait for Form N‑400 receipt notice (extends Green Card up to 24 months)', checked: false },
-{ id: 4.24, label: 'Keep a copy of your entire N‑400 package and supporting evidence', checked: false },
 ],
 
 5: [
@@ -456,23 +669,122 @@ export const gcchecklists = {
 ],
 
 6: [
-{ label: 'Prepare for naturalization interview', textOnly: true },
-{ id: 6.1, label: 'USCIS will schedule interview; bring the appointment notice', checked: false },
-{ id: 6.2, label: 'Arrive at USCIS office on time; reschedule promptly if you must miss', checked: false },
-{ id: 6.3, label: 'Review your N‑400 responses—officer will ask about them', checked: false },
-{ id: 6.4, label: 'Take English and civics tests (unless exempt)', checked: false },
-{ label: <Link href="https://www.uscis.gov/citizenship/find-study-materials-and-resources" target="_blank" rel="noopener">USCIS study materials</Link>, textOnly: true, nested: true },
-{ label: <Link href="https://www.uscis.gov/citizenship-exam" target="_blank" rel="noopener">100 civics questions & MP3 audio (2008 test)</Link>, textOnly: true, nested: true },
-{ label: <Link href="https://my.uscis.gov/en/prep/test/civics/view" target="_blank" rel="noopener">Civics practice test</Link>, textOnly: true, nested: true },
-{ label: <Link href="https://www.usa.gov/learn-english" target="_blank" rel="noopener">Resources to learn English</Link>, textOnly: true, nested: true },
+  { section: 'Step 6: Prepare for and Complete the Interview' },
+{ label: 'Note: USCIS will schedule an interview with you to complete the process.', textOnly: true },
+{ id: 6.1, label: 'Report to the USCIS office at the scheduled time on your appointment notice', checked: false },
+{ id: 6.2, label: 'BRING THE APPOINTMENT NOTICE TO YOUR INTERVIEW', checked: false , nested: true},
+{ id: 6.8, label: 'Note: If you miss your interview, follow the instructions on the appointment notice as soon as possible to reschedule your interview. Missing the interview could delay your process for multiple months.', textOnly: true , nested: true},
+
+{ section: 'What to Expect' },
+{ id: 6.4, label: 'A USCIS officer will ask you questions about your Form N-400', textOnly: true},
+{ id: 6.5, label: 'You will take the English and civics test, unless you are exempt', textOnly: true},
+
+{ section: 'Study Resources and Sources' },
+{ label: <Link href="https://www.uscis.gov/citizenship/find-study-materials-and-resources" target="_blank" rel="noopener">USCIS Test Information and Study Materials</Link>, textOnly: true, nested: false },
+{ label: <Link href="https://www.uscis.gov/citizenship-exam" target="_blank" rel="noopener">100 civics questions & MP3 audio (2008 test)</Link>, textOnly: true, nested: false},
+{ label: <Link href="https://my.uscis.gov/en/prep/test/civics/view" target="_blank" rel="noopener">2008 Civics Practice Test</Link>, textOnly: true, nested: false },
+{ label: <Link href="https://www.usa.gov/learn-english" target="_blank" rel="noopener">Resources to learn English</Link>, textOnly: true, nested: false },
+{ label: <Link href="https://www.uscis.gov/citizenship/learn-about-citizenship/10-steps-to-naturalization" target="_blank" rel="noopener">10-Step Naturalization Process</Link>, textOnly: true },
 ],
 
 7: [
-{ id: 7.1, label: 'Receive USCIS decision (granted, continued, or denied)', textOnly: true },
-{ id: 7.2, label: 'Check notice in mail or online account', checked: false },
-{ id: 7.3, label: 'If continued: respond to Form N‑14 or retake failed test section within 60‑90 days', checked: false },
-{ id: 7.4, label: 'If denied: you may appeal by filing Form N‑336 within 30 days', checked: false },
-{ id: 7.5, label: 'If granted: proceed to oath‑ceremony steps', checked: false },
+  { section: 'Step 7: Receive a Decision (from USCIS on your Form N-400)' },
+{ id: 7.1, label: 'Note: The USCIS officer will provide you with a verbal notice of results at the end of your interview. You may be able to participate in a naturalization ceremony (Step 9) on the same day as your interview. If this is the case, go to Step 9.', textOnly: true },
+{ id: 7.2, label: 'USCIS will mail the written notice of decision to you. If you filed the N-400 online, you can also access the notice in your account.', textOnly: true, nested: true },
+{ id: 7.3, label: 'If there is not a naturalization ceremony on the same day as your interview, continue to Step 8.', textOnly: true, nested: true},
+{
+  id: 7.6,
+  label: 'Naturalization Notice Outcome',
+  type: 'dropdown',
+  options: [
+    {
+      label: 'Granted',
+      children: [
+        {
+          label: 'Note: The evidence establishes that you are eligible for naturalization',
+          textOnly: true,
+          nested: true,
+        },
+        {
+          id: '7.30.1',
+          label: 'Continue to the next steps',
+          checked: false,
+          nested: true,
+        }
+      ]
+    },
+    {
+      label: 'Continued',
+      children: [
+        {
+          label: 'If additional evidence/documentation is needed:',
+          textOnly: true,
+          nested: true,
+        },
+        {
+          id: '7.30.2',
+          label: 'File Form N-14 (Request for Additional Information, Documents, or Forms)',
+          checked: false,
+          nested: true,
+        },
+        {
+          label: 'If you failed the English and/or civics test:',
+          textOnly: true,
+          nested: true,
+        },
+        {
+          label: 'USCIS will schedule another interview for you within 60 to 90 days',
+          textOnly: true,
+          nested: true,
+        },
+        {
+          label: 'Attend the interview. You will only be retested on the part that you failed.',
+          textOnly: true,
+          nested: true,
+        },
+        {
+          label: 'Your Form N-400 will be denied if you fail the tests a second time',
+          textOnly: true,
+          nested: true,
+        }
+      ]
+    },
+    {
+      label: 'Denied',
+      children: [
+        {
+          label: 'If the evidence in your record establishes that you are not eligible for naturalization',
+          textOnly: true,
+          nested: true,
+        },
+        {
+          label: 'If you believe your Form N-400 has been incorrectly denied, you can request a hearing to appeal the decision',
+          textOnly: true,
+          nested: true,
+        },
+        {
+          id: '7.30.3',
+          label: 'File Form N-336 (Request for a Hearing on a Decision in Naturalization Proceedings) within 30 days of the Form N-400 decision date',
+          checked: false,
+          nested: true,
+        },
+        {
+          label: 'If it is not filed within the 30 day window, the denial decision is final',
+          textOnly: true,
+          nested: true,
+        }
+      ]
+    }
+  ],
+  selected: null,
+  checked: false
+},
+
+
+{section: 'Sources'},
+{ label: <Link href="https://www.uscis.gov/citizenship/learn-about-citizenship/10-steps-to-naturalization" target="_blank" rel="noopener">10-Step Naturalization Process</Link>, textOnly: true },
+{ label: <Link href="https://www.uscis.gov/policy-manual/volume-12-part-b-chapter-4?" target="_blank" rel="noopener">Results of the Naturalization Exam</Link>, textOnly: true },
+
 ],
 
 8: [
