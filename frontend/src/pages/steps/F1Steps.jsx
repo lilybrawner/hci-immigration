@@ -9,8 +9,7 @@ export const F1steps = [
     { id: 6, label: 'Step 6: Attend your Visa Interview' }, 
     { id: 7, label: 'Step 7: Enter the United States' }, 
     { id: 8, label: 'Step 8: Maintain F-1 Visa Status' },
-    { id: 9, label: 'Step 9: Employment Options' }, 
-    { id: 10, label: 'Step 10: Graduation and Program Completion' }, 
+    { id: 9, label: 'Step 9: Graduation and Program Completion' }, 
 ]
 
 export const F1checklists = {
