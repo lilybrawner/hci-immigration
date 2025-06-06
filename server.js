@@ -9,6 +9,15 @@ app.use(express.json());
 const path = require('path');
 app.use(express.static(path.join(__dirname, 'public')));
 
+const routes = [
+  '/',
+  '/greencard',
+  '/visa',
+  '/spouse',
+  '/parenta',
+  '/parentc'
+];
+
 // Initialize the Google Cloud clients
 const ttsClient = new TextToSpeechClient();
 const translateClient = new Translate();
@@ -94,8 +103,10 @@ app.post('/api/speak', async (req, res) => {
 });
 
 // Serve React app for any unknown routes (to enable client side routing)
-app.get('/', (req, res) => {
-  res.sendFile(path.resolve(__dirname, 'public', 'index.html'));
+routes.forEach(route => {
+  app.get(route, (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'public', 'index.html'));
+  });
 });
 
 // Start the server on the appropriate port
