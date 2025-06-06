@@ -426,7 +426,20 @@ export const FAQ = {
         ], 
         6: [
             { question: 'Why was my application refused under Section 221(g)?', answer: 'It could be because your application was incomplete or more documentation is needed. If this is the case, you will be informed on what you need to provide. Your application may also need more administrative processing. In this circumstance, processing times can vary.'},
-            { question: 'Can my refusal under Section 221(g) (further administrative processing needed) be overturned?', answer: 'Yes. If additional documentation or information was requested from you, provide it within one year of the visa denial.'}
+            { question: 'Can my refusal under Section 221(g) (further administrative processing needed) be overturned?', answer: 'Yes. If additional documentation or information was requested from you, provide it within one year of the visa denial.'},
+            { question: 'What can I do if my visa is denied?', answer: 
+            (
+                <>
+                If your visa is denied, make sure you attain documentation stating why they denied it. If you’re eligible, you can apply for a waiver of ineligibility. If you were denied because you did not properly show an intent to return to your home country (INA Section 214(b)), you may be able to apply for an F-1 visa again at a later date. In this application, make sure you present new evidence to establish that you intend to return to your home country after completing your studies. Check{' '}
+                <Link
+                    href="https://travel.state.gov/content/travel/en/us-visas/visa-information-resources/visa-denials.html" 
+                    target="_blank" 
+                    rel="noopener"
+                >Visa Denials
+                </Link>{' '}
+                for more information.
+                </>
+            )},
         ], 
         7: [
             { question: 'Can I enter the US more than 30 days in advance?', answer: 

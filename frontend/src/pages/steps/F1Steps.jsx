@@ -292,7 +292,114 @@ label: 'Bank statements and other proof of finances', checked: false, nested: tr
           checked: false,
           nested: true
         },
-        { section: 'Visa Outcomes' },
+
+        {
+          id: 6.5,
+        label: 'Visa Outcomes',
+        type: 'dropdown',
+        options: [
+          {
+            label: 'My visa application was accepted',
+          children: [
+            {
+              id: '2.25.1',
+              label: 'Pay a visa insurance fee, if applicable to your nationality',
+              checked: false, 
+              nested: true
+            },
+            {
+              id: '2.25.3',
+              label: 'Note: Learn more through the U.S. Embassy or Consulate in your country',
+              textOnly: true,
+              nested: true,
+            },
+            {
+              id: '2.25.8',
+              label: 'Make arrangements for the return of the passport and visa to you',
+              checked: false,
+              nested: true,
+            },
+            {
+              id: '2.25.4',
+              label: 'If you have a spouse and unmarried, minor children that intend to reside in the US with you during your studies, they can apply for F-2 visas. Notify your school, receive an individual Form I-20 for your spouse and unmarried, minor children, and provide proof of relationship and a copy of your F-1 visa.',
+              checked: false,
+              nested: true,
+            },
+            {
+              id: '2.25.5',
+              label: 'Note: New student visas can be issued up to 365 days before the start date of a course of study, but you can only enter 30 days before the start date.',
+              textOnly: true,
+              nested: true,
+            },
+            {
+              id: '2.25.7',
+              label: 'Note: Continuing student visas can be issued at any time as long as enrollment continues to be qualified (SEVP-approved school or an institution SEVIS) and may enter the US at any time',
+              textOnly: true,
+              nested: true,
+            }
+          ],
+          },
+          {
+            label: 'My visa application was refused under INA Section 221(g))',
+          children: [
+            {
+              id: '2.22.7',
+              label: 'Receive notice of why your application was refused',
+              checked: false, 
+              nested: true
+            },
+            {
+              id: '2.22.6',
+              label: 'Note: It is for 1 of 2 reasons: Additional documentation or information is required OR It requires additional administrative processing (processing times can vary based on individual circumstances)',
+              textOnly: true,
+              nested: true,
+            },
+            {
+              id: '2.22.5',
+              label: 'Provide any further documentation or information that is required within one year from the visa refusal date, if applicable',
+              checked: false,
+              nested: true,
+            },
+            {
+              id: '2.22.4',
+              label: 'Note: If you do not provide the required information within one year, you will have to reapply for the visa and pay the application fee again.',
+              textOnly: true,
+              nested: true,
+            },
+            {
+              id: '2.22.3',
+              label: 'Wait to hear back on whether your application was approved',
+              checked: false,
+              nested: true,
+            }
+          ]
+          },
+          {
+            label: 'My visa application was denied',
+          children: [
+            {
+              id: '2.21.3',
+              label: 'Receive notice of which section of the law you were denied under, if applicable',
+              checked: false, 
+              nested: true
+            },
+            {
+              id: '2.21.4',
+              label: 'Apply for a waiver of ineligibility, if applicable',
+              checked: false,
+              nested: true,
+            },
+            {
+              id: '2.21.5',label: 'Note: F-1 visa denials are rare, but the most common is under INA Section 214(b). This means the applicant did not properly show that they will return to their home country after they complete their program in the US. Make sure you receive documentation of the denial, so if you can apply again for an F-1 visa, you can present new information to be approved.',
+              textOnly: true,
+              nested: true,
+            }
+          ]
+        }
+          ],
+          selected: null,
+        checked: false
+        },
         { section: 'Sources' }, 
         { label: <Link href="https://travel.state.gov/content/travel/en/us-visas/study/student-visa.html" target="_blank" rel="noopener">Student Visa Process</Link>, textOnly: true },
         { label: <Link href="https://shorelight.com/student-stories/student-visa-usa-f1/" target="_blank" rel="noopener">F-1 Visa for International Students: Requirements, Rules, Status</Link>, textOnly: true },
@@ -405,6 +512,93 @@ label: 'Bank statements and other proof of finances', checked: false, nested: tr
           ),
           textOnly: true,
         },
+
+        {
+          id: 8.7,
+          label: 'Types of Work Authorization (CPT & OPT)',
+          type: 'dropdown',
+          options: [
+            {
+              label: 'Curricular Practical Training (CPT) Eligibility and Process',
+              children: [
+                { label: 'Note: Occurs before the end date listed on Form I-20. The training directly relates to the student’s major area of study and is an integral part of the school’s established curriculum.', textOnly: true, nested: true },
+                { label: 'Note: Authorization is for one specific employer for a specific period of time. Students can have more than one CPT authorization at the same time.', textOnly: true, nested: true },
+                { label: 'Note: CPT authorization is only required if the training is in the US', textOnly: true, nested: true },
+                { label: 'I have been lawfully enrolled as a full-time student for at least one full academic year OR I am a student in graduate studies and my program requires earlier training', checked: false, nested: true },
+                { label: 'OR I am a student in graduate studies and my program requires earlier training', checked: false, nested: true },
+                { label: 'I am not studying English as a second language', checked: false, nested: true },
+                { label: 'I have secured a training position', checked: false, nested: true },
+                { label: 'Request CPT using your school’s process', checked: false, nested: true },
+                { label: 'Wait for your DSO to authorize your CPT in SEVIS, if you are eligible. Your DSO will print and sign your Form I-20 with CPT authorization', checked: false, nested: true },
+                { label: 'Begin work on or after your CPT start date', checked: false, nested: true },
+                { label: 'End all work before or on your CPT end date', checked: false, nested: true }
+              ]
+            },
+            {
+              label: 'Optional Practical Training (OPT): Pre-completion Eligibility and Requirements',
+              children: [
+                { label: 'Note: According to ICE, F-1 students can apply to receive up to 12 months of OPT employment authorization before completing their academic studies (pre-completion) and/or after completing their academic studies (post-completion)', textOnly: true, nested: true },
+                { label: 'All periods of pre-completion OPT will be deducted from the available period of post-completion OPT', textOnly: true, nested: true },
+                { label: 'You can work up to 20 hours per week while school is in session, and can work full time while school is not in session.', textOnly: true, nested: true },
+                { label: 'My temporary employment is directly related to my major area of study', checked: false, nested: true },
+                { label: 'I have been lawfully enrolled for one full academic year as a full-time student at my SEVP-certified institution', checked: false, nested: true },
+                { label: 'Note: This can still be satisfied if you had another nonimmigrant status during the year.', textOnly: true, nested: true },
+                { label: 'Request that your DSO recommend the OPT', checked: false, nested: true },
+                { label: 'Note: Your DSO will endorse your Form I-20 and note it in your SEVIS record', textOnly: true, nested: true },
+                { label: 'File Form I-765 with USCIS', checked: false, nested: true },
+                { label: 'Pay the required fee', checked: false, nested: true },
+                { label: 'Attach the required supporting documentation', checked: false, nested: true },
+                { label: 'Note: You must apply after your DSO enters the recommendation for OPT into your SEVIS record', textOnly: true, nested: true },
+                { label: 'You may apply up to 90 days before you complete a full academic year, as long as you don’t start your OPT employment until after you complete the one year', textOnly: true, nested: true }
+              ]
+            },
+            {
+              label: 'Optional Practical Training (OPT): Post-completion Eligibility and Requirements',
+              children: [
+                { label: 'Note: Once authorized for post-completion OPT, you must work at least 20 hours per week (part time status) or full time.', textOnly: true, nested: true },
+                { label: 'My temporary employment is directly related to my major area of study', checked: false, nested: true },
+                { label: 'Request that your DSO recommend the OPT', checked: false, nested: true },
+                { label: 'Note: Your DSO will endorse your Form I-20 and note it in your SEVIS record', textOnly: true, nested: true },
+                { label: 'File Form I-765 with USCIS', checked: false, nested: true },
+                { label: 'Pay the required fee', checked: false, nested: true },
+                { label: 'Attach the required supporting documentation', checked: false, nested: true },
+                { label: 'Note: You must apply within 30 days after your DSO enters the recommendation for OPT into your SEVIS record and not later than 60 days after you complete your degree. You may apply up to 90 days before you complete your degree.', textOnly: true, nested: true },
+                { label: 'You can not begin your OPT until after USCIS approves your Form I-765 and you receive your EAD', textOnly: true, nested: true }
+              ]
+            },
+            {
+              label: 'STEM OPT Extension Eligibility and Requirements',
+              children: [
+                { label: 'Note: For certain STEM degrees, you can apply for a 2 year extension of your post-completion OPT authorization', textOnly: true, nested: true },
+                { label: 'I am an F-1 student who received a degree included in ICE’s STEM Designated Degree Program List', checked: false, nested: true },
+                { label: 'I am employed by an employer who:', textOnly: true, nested: true },
+                { label: 'Is enrolled in and is using E-Verify', checked: false, nested: true },
+                { label: 'Remains in good standing with E-Verify', checked: false, nested: true },
+                { label: 'Has a valid EIN issued by the IRS for tax purposes', checked: false, nested: true },
+                { label: 'Will report material changes of my employment by submitting a modified Form I-983 to the DSO at the earliest available opportunity', checked: false, nested: true },
+                { label: 'Will report my termination of employment or departure to the DSO within 5 business days', checked: false, nested: true },
+                { label: 'Will implement a formal training program to build on my academic learning through practical experience', checked: false, nested: true },
+                { label: 'Will provide an OPT opportunity that is commensurate with those similarly situated US workers in duties, hours, and compensation', checked: false, nested: true },
+                { label: 'Note: See USCIS for further notes on Employer Requirements and Responsibilities.', textOnly: true, nested: true },
+                { label: 'I received an initial grant of post-completion OPT employment authorization based on my STEM degree and am currently in a valid period of it', checked: false, nested: true },
+                { label: 'Note: See USCIS’ Eligibility for the STEM OPT Extension for notes on previously attained STEM degrees and future STEM degrees', textOnly: true, nested: true },
+                { label: 'Submit Form I-765', checked: false, nested: true },
+                { label: 'The correct application fee', checked: false, nested: true },
+                { label: 'Your employer’s name as listed in E-Verify', checked: false, nested: true },
+                { label: 'Your employer’s E-Verify Company Identification Number or valid E-Verify Client Company Identification Number', checked: false, nested: true },
+                { label: 'Note: You must submit this within 60 days of the date your DSO enters the recommendation for OPT into your SEVIS record AND up to 90 days before your OPT employment authorization expires', textOnly: true, nested: true },
+                { label: 'Form I-20 endorsed by your DSO within the last 60 days', checked: false, nested: true },
+                { label: 'A copy of your STEM degree', checked: false, nested: true },
+                { label: 'Note: if your application is filed on time and your OPT expires while your extension is pending, USCIS will automatically extend your employment authorization for 180 days or until a decision is made on your application.', textOnly: true, nested: true },
+                { label: 'Note: For information on how transferring to another school or starting a different education level affects your OPT, go to the bottom of this USCIS page.', textOnly: true, nested: true }
+              ]
+            }
+          ],
+          selected: null,
+          checked: false
+        },
+        
+
         { section: 'Sources' }, 
         { label: <Link href="https://shorelight.com/student-stories/student-visa-usa-f1/" target="_blank" rel="noopener">F-1 Visa for International Students: Requirements, Rules, Status</Link>, textOnly: true },
         { label: <Link href="https://studyinthestates.dhs.gov/students/maintaining-status" target="_blank" rel="noopener">Maintaining Status</Link>, textOnly: true }
