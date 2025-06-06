@@ -41,7 +41,12 @@ export const pcChecklist = {
         { id: 1.201, label: 'If sponsoring a step-parent: your birth certificate (showing your birth parents) and the marriage certificate of your birth parent and step-parent (showing marriage before your 18th birthday). Include proof of termination of any prior marriages (divorce/death certificates) for your natural parent or step-parent.', checked: false, nested: true },
         { id: 1.21, label: 'If sponsoring an adoptive parent: adoption decree showing the adoption was finalized before you turned 16, and evidence of any prior custody if applicable.', checked: false, nested: true },
         { id: 1.22, label: 'Proof of Petitioner’s Age: Your birth certificate or passport (to show you are 21 or older).', checked: false },
-        { id: 1.23, label: 'Name Change Documents (if applicable): Legal documents for any name changes for you or your parent (marriage certificate, court order, etc.).', checked: false }
+        { id: 1.23, label: 'Name Change Documents (if applicable): Legal documents for any name changes for you or your parent (marriage certificate, court order, etc.).', checked: false },
+        { section: 'Links and Sources' },
+        { label: <Link href="https://www.uscis.gov/i-130" target="_blank" rel="noopener">USCIS Form I-130 main page</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://www.uscis.gov/sites/default/files/document/forms/i-130instr.pdf" target="_blank" rel="noopener">I-130 instructions (PDF)</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://www.uscis.gov/family/bring-parents-to-live-in-the-united-states" target="_blank" rel="noopener">USCIS – Bringing Parents (IR-5)</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://www.uscis.gov/forms/filing-guidance/tips-for-filing-forms-by-mail" target="_blank" rel="noopener">USCIS form-filing tips</Link>, textOnly: true, nested: false }
     ],
     2: [
         { section: 'Task Checklist' },
@@ -59,7 +64,12 @@ export const pcChecklist = {
         { id: 2.11, label: "Beneficiary’s civil documents: copy of your parent’s birth certificate (and marriage certificate if petition is for father or step-parent as described in Step 1). If names have changed, include legal name change documents.", checked: false },
         { id: 2.12, label: "Evidence of relationship: your birth certificate naming your parent (and for father/step-parent cases, marriage certificates or legitimation proof as required). If you are petitioning your father and were born out of wedlock, include proof of legitimation or evidence of a bona fide parent-child relationship before age 21(such as correspondence, photos, financial support).", checked: false },
         { id: 2.13, label: "Two passport-style photos of the petitioner and beneficiary (if specifically required). (USCIS no longer requires photos for I-130 petitions for parents, but double-check form instructions. Photos will be needed later for visa or adjustment steps.)", checked: false },
-        { id: 2.14, label: "Form G-1145 (optional): If filing by mail, you can attach Form G-1145 to request email/text notification when USCIS accepts your petition.", checked: false }
+        { id: 2.14, label: "Form G-1145 (optional): If filing by mail, you can attach Form G-1145 to request email/text notification when USCIS accepts your petition.", checked: false },
+        { section: 'Links and Sources' },
+        { label: <Link href="https://travel.state.gov/content/travel/en/us-visas/immigrate/the-immigrant-visa-process/step-2-your-case-nvc.html" target="_blank" rel="noopener">Step 2: NVC Processing (DOS)</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://www.uscis.gov/i-485" target="_blank" rel="noopener">USCIS Form I-485 page</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://www.uscis.gov/green-card/green-card-processes-and-procedures/concurrent-filing" target="_blank" rel="noopener">Concurrent-filing policy</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://ceac.state.gov/CEACStatTracker/Status.aspx?App=IV" target="_blank" rel="noopener">CEAC status-tracker</Link>, textOnly: true, nested: false }
     ],
     3: [
         { section: 'Task Checklist' },
@@ -75,7 +85,12 @@ export const pcChecklist = {
         { id: 3.101, label: "If your parent is outside the U.S., the approved petition will be forwarded to the National Visa Center (NVC) for the next steps. (NVC will contact you with a welcome letter – see Step 4.)", checked: false, nested: true },
         { section: 'Required Documents' },
         { id: 3.11, label: "USCIS Approval Notice: Keep the I-797 approval notice safe. You’ll need the receipt number and case details for NVC or for filing AOS.", checked: false },
-        { id: 3.12, label: "NVC Welcome Letter (Consular cases): This will be sent via email or mail a few weeks after I-130 approval. It contains your NVC Case Number and Invoice ID, which you’ll use to log in to the Consular Electronic Application Center (CEAC) for further processing.", checked: false }
+        { id: 3.12, label: "NVC Welcome Letter (Consular cases): This will be sent via email or mail a few weeks after I-130 approval. It contains your NVC Case Number and Invoice ID, which you’ll use to log in to the Consular Electronic Application Center (CEAC) for further processing.", checked: false },
+        { section: 'Links and Sources' },
+        { label: <Link href="https://travel.state.gov/content/travel/en/us-visas/immigrate/the-immigrant-visa-process/step-3-pay-fees.html" target="_blank" rel="noopener">Step 3: Pay Fees (DOS)</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://travel.state.gov/content/travel/en/us-visas/immigrate/nvc/immigrant-visas-processing-fees.html" target="_blank" rel="noopener">NVC fee-payment FAQ</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://www.uscis.gov/forms/uscis-fee-calculator" target="_blank" rel="noopener">USCIS fee-calculator</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://www.uscis.gov/forms/filing-fees" target="_blank" rel="noopener">USCIS fee schedule</Link>, textOnly: true, nested: false }
     ],
     4: [
         { section: 'Task Checklist' },
@@ -99,7 +114,12 @@ export const pcChecklist = {
         { section: 'Required Documents' },
         { id: 4.18, label: "NVC Welcome Letter: (with Case Number and Invoice ID).", checked: false },
         { id: 4.19, label: "Financial Sponsor Info: You’ll need your Social Security Number or Tax ID, and access to your recent financial documents when preparing the Affidavit of Support in Step 7.", checked: false },
-        { id: 4.201, label: "[The specific documents to submit to NVC (affidavit, civil docs) will be covered in Steps 7–8.]", checked: false }
+        { id: 4.201, label: "[The specific documents to submit to NVC (affidavit, civil docs) will be covered in Steps 7–8.]", checked: false },
+        { section: 'Links and Sources' },
+        { label: <Link href="https://travel.state.gov/content/travel/en/us-visas/immigrate/the-immigrant-visa-process/affidavit-of-support.html" target="_blank" rel="noopener">Affidavit-of-Support hub (DOS)</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://www.uscis.gov/i-864" target="_blank" rel="noopener">USCIS Form I-864 page</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://www.uscis.gov/sites/default/files/document/forms/i-864instr.pdf" target="_blank" rel="noopener">I-864 instructions (PDF)</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://www.uscis.gov/i-864p" target="_blank" rel="noopener">I-864P poverty-guidelines chart</Link>, textOnly: true, nested: false }
     ],
     5: [
         { section: 'Task Checklist' },
@@ -115,7 +135,12 @@ export const pcChecklist = {
         { id: 5.9, label: "U.S. Bank Routing Number and Account Number – for the account from which fees will be withdrawn.", checked: false },
         { id: 5.101, label: "Sufficient funds in the account to cover the fees (ensure the payment won’t bounce).", checked: false },
         { id: 5.11, label: "A printer or PDF saver (optional) to keep records of the payment confirmations.", checked: false },
-        { id: 5.12, label: "(No physical documents need to be sent for fees – it’s all online. Just keep the receipts.)", checked: false }
+        { id: 5.12, label: "(No physical documents need to be sent for fees – it’s all online. Just keep the receipts.)", checked: false },
+        { section: 'Links and Sources' },
+        { label: <Link href="https://travel.state.gov/content/travel/en/us-visas/immigrate/the-immigrant-visa-process/step-5-collect-financial-evidence.html" target="_blank" rel="noopener">Step 5: Collect Financial Docs (DOS)</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://www.irs.gov/individuals/get-transcript" target="_blank" rel="noopener">IRS – Request tax transcript</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://www.uscis.gov/policy-manual/volume-12-part-g-chapter-5" target="_blank" rel="noopener">USCIS assets-policy (I-864)</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://www.uscis.gov/forms/explore-my-options/affidavit-of-support-checklist" target="_blank" rel="noopener">USCIS I-864 evidence checklist</Link>, textOnly: true, nested: false }
     ],
     6: [
         { label: 'Now that your fees are paid (Step 5), the DS-260 Immigrant Visa Application becomes available in CEAC. This is the actual online form your parent (beneficiary) must submit to apply for the immigrant visa.', textOnly: true },
@@ -154,7 +179,12 @@ export const pcChecklist = {
         { id: 6.25, label: "Petitioner’s info: your name, address, contact, and relationship (son or daughter).", checked: false },
         { id: 6.26, label: "Immigrant visa address: Address in the U.S. where your parent plans to live and where the green card should be mailed (often your address).", checked: false },
         { id: 6.27, label: "Social media: usernames for any social media platforms your parent has used in the last 5 years (a newer requirement on visa applications).", checked: false },
-        { id: 6.28, label: "Contact info: email and phone for your parent. NVC/Embassy may use the email for communication.", checked: false }
+        { id: 6.28, label: "Contact info: email and phone for your parent. NVC/Embassy may use the email for communication.", checked: false },
+        { section: 'Links and Sources' },
+        { label: <Link href="https://travel.state.gov/content/travel/en/us-visas/immigrate/the-immigrant-visa-process/step-6-submit-a-visa-application.html" target="_blank" rel="noopener">DS-260 instructions (DOS)</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://travel.state.gov/content/dam/visas/pdfs/DS-260-Exemplar.pdf" target="_blank" rel="noopener">DS-260 exemplar PDF</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://ceac.state.gov" target="_blank" rel="noopener">CEAC portal</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://www.uscis.gov/i-485" target="_blank" rel="noopener">USCIS Form I-485</Link>, textOnly: true, nested: false }
     ],
     7: [
         { label: 'Purpose: The Affidavit of Support is a legally binding document to ensure your parent will not become a public charge. As the petitioner, you must submit this and demonstrate you have sufficient income or assets to support your parent at 125% of the federal poverty guidelines (income threshold depends on household size).', textOnly: true },
@@ -181,7 +211,12 @@ export const pcChecklist = {
         { id: 7.19, label: "Joint Sponsor’s I-864 and documents (if you have a joint sponsor) – similar set of documents for them.", checked: false },
         { id: 7.201, label: "Household Member’s I-864A and documents (if using household member income).", checked: false },
         { id: 7.21, label: "Proof of U.S. domicile (if needed): evidence that you maintain a U.S. residence or intend to resume domicile (for sponsors living abroad)", checked: false },
-        { id: 7.22, label: "Copy of sponsor’s U.S. passport or birth certificate: The embassy may want proof of the sponsor’s citizenship at the interview to verify the petitioner’s status and domicile. It’s good to have uploaded or have available a copy of your passport or certificate of naturalization as part of the supporting documents, although NVC doesn’t always explicitly ask for it in the upload list.)", checked: false }
+        { id: 7.22, label: "Copy of sponsor’s U.S. passport or birth certificate: The embassy may want proof of the sponsor’s citizenship at the interview to verify the petitioner’s status and domicile. It’s good to have uploaded or have available a copy of your passport or certificate of naturalization as part of the supporting documents, although NVC doesn’t always explicitly ask for it in the upload list.)", checked: false },
+        { section: 'Links and Sources' },
+        { label: <Link href="https://travel.state.gov/content/travel/en/us-visas/immigrate/the-immigrant-visa-process/step-7-collect-civil-documents.html" target="_blank" rel="noopener">Step 7: Civil Docs list (DOS)</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://travel.state.gov/content/travel/en/us-visas/Visa-Reciprocity-and-Civil-Documents-by-Country.html" target="_blank" rel="noopener">Reciprocity & Civil-Docs finder</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://www.uscis.gov/forms/forms-information/guidance-for-translators" target="_blank" rel="noopener">USCIS translation rules</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://www.uscis.gov/policy-manual/volume-7-part-a-chapter-6" target="_blank" rel="noopener">USCIS secondary-evidence policy</Link>, textOnly: true, nested: false }
     ],
     8: [
         { label: 'Purpose: These are the personal documents that prove your parent’s identity, family relationships, and any required background records. NVC requires scans of these documents, and the consulate will want to see originals at the interview.', textOnly: true },
@@ -210,7 +245,12 @@ export const pcChecklist = {
         { id: 8.21, label: "Copy of parent’s Passport (biographical page) – ensure passport will be valid for 6+ months beyond the interview.", checked: false },
         { id: 8.22, label: "Any other relevant civil docs – e.g., adoption decree (if parent is adoptive), legal name change documents, etc.", checked: false },
         { id: 8.23, label: "Certified Translations for any above not in English", checked: false },
-        { id: 8.24, label: "Original documents ready – you don’t send originals to NVC, but have them organized to bring to the interview.", checked: false }
+        { id: 8.24, label: "Original documents ready – you don’t send originals to NVC, but have them organized to bring to the interview.", checked: false },
+        { section: 'Links and Sources' },
+        { label: <Link href="https://travel.state.gov/content/travel/en/us-visas/immigrate/the-immigrant-visa-process/step-9-submit-documents-to-the-nvc.html" target="_blank" rel="noopener">Step 9: Submit Docs (DOS)</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://travel.state.gov/content/dam/visas/pdfs/scanning_guidelines.pdf" target="_blank" rel="noopener">NVC scanning-guidelines PDF</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://ceac.state.gov" target="_blank" rel="noopener">CEAC upload portal</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://travel.state.gov/content/travel/en/us-visas/immigrate/nvc/email.html" target="_blank" rel="noopener">NVC public-inquiry directions</Link>, textOnly: true, nested: false }
     ],
     9: [
         { label: 'Before the final interview, your parent must undergo a medical exam by an authorized physician to ensure they have required vaccinations and no inadmissible health conditions.', textOnly: true },
@@ -243,7 +283,12 @@ export const pcChecklist = {
         { id: 9.17, label: "Immunization records: any childhood or adult vaccine records to avoid re-vaccination.", checked: false },
         { id: 9.18, label: "Medical history list: medications, known health issues – to share with doctor honestly.", checked: false },
         { id: 9.19, label: "Cash/Credit for fee: payment as required by the clinic.", checked: false },
-        { id: 9.201, label: "2-4 passport photos (some doctors require photos to attach to the forms, though digital photo is often taken). Check clinic instructions.", checked: false }
+        { id: 9.201, label: "2-4 passport photos (some doctors require photos to attach to the forms, though digital photo is often taken). Check clinic instructions.", checked: false },
+        { section: 'Links and Sources' },
+        { label: <Link href="https://www.uscis.gov/forms/filing-guidance/preparing-for-your-biometric-services-appointment" target="_blank" rel="noopener">USCIS biometrics prep</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://my.uscis.gov/findadoctor" target="_blank" rel="noopener">Civil-surgeon locator (AOS)</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://travel.state.gov/content/travel/en/us-visas/immigrate/the-immigrant-visa-process/medical-examination.html" target="_blank" rel="noopener">DOS medical-exam guide</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://www.cdc.gov/immigrantrefugeehealth/panel-physician.html" target="_blank" rel="noopener">CDC panel-physician guidance</Link>, textOnly: true, nested: false }
     ],
     10: [
         { label: 'Now your parents are nearing the finish line. Preparation is key for the interview.', textOnly: true },
@@ -296,7 +341,12 @@ export const pcChecklist = {
         { id: 10.34, label: "Supporting evidence of relationship: In parent cases, usually the birth certificate suffices. Rarely, if there’s any adoption or unusual family situation, any custody or adoption papers, family photos, etc., could be useful – but usually not required.", checked: false },
         { id: 10.35, label: "Interpreter (if applicable): and their ID, if USCIS interview and non-English speaking.", checked: false },
         { id: 10.36, label: "Pen and notepad: sometimes useful to jot info or in case forms need to be filled at consulate (usually not, but good to have).", checked: false },
-        { id: 10.37, label: "Any other correspondence: For consular, print the CEAC confirmation for DS-260, and any NVC emails in case there’s confusion. For AOS, have your USCIS receipts handy.", checked: false }
+        { id: 10.37, label: "Any other correspondence: For consular, print the CEAC confirmation for DS-260, and any NVC emails in case there’s confusion. For AOS, have your USCIS receipts handy.", checked: false },
+        { section: 'Links and Sources' },
+        { label: <Link href="https://travel.state.gov/content/travel/en/us-visas/immigrate/the-immigrant-visa-process/step-10-preparing-for-your-interview.html" target="_blank" rel="noopener">Step 10: Prepare for Interview (DOS)</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://www.uscis.gov/green-card/after-we-grant-your-green-card/attend-your-appointment" target="_blank" rel="noopener">USCIS interview-day guidance (AOS)</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://www.uscis.gov/i-693" target="_blank" rel="noopener">USCIS Form I-693</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://travel.state.gov/content/dam/visas/PDF-other/Interview-Preparation-Checklist.pdf" target="_blank" rel="noopener">DOS interview checklist PDF</Link>, textOnly: true, nested: false }
     ],
     11: [
         { section: 'Task Checklist At Interview' },
@@ -310,7 +360,12 @@ export const pcChecklist = {
         { section: 'Post-Interview Outcome:' },
         { label: "If Approved: Congratulations! The visa is granted. You’ll proceed to Step 12 for entering the U.S.", textOnly: true, },
         { label: "If Pending/221(g): Address whatever is needed as quickly as possible. If it’s just administrative processing with no action required from you, then monitor the status online. Keep your parent’s petitioner contact info updated in case consulate needs to reach out.", textOnly: true, },
-        { label: "If Denied: In parent cases, denials are uncommon unless there’s a major issue (like ineligibility or misrepresentation). If it happens, the letter will explain if there’s an appeal or waiver.", textOnly: true, }
+        { label: "If Denied: In parent cases, denials are uncommon unless there’s a major issue (like ineligibility or misrepresentation). If it happens, the letter will explain if there’s an appeal or waiver.", textOnly: true, },
+        { section: 'Links and Sources' },
+        { label: <Link href="https://travel.state.gov/content/travel/en/us-visas/immigrate/the-immigrant-visa-process/interview.html" target="_blank" rel="noopener">Applicant-interview page (DOS)</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://travel.state.gov/content/travel/en/us-visas/visa-information-resources/administrative-processing-information.html" target="_blank" rel="noopener">Administrative-processing info</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://egov.uscis.gov/casestatus/landing.do" target="_blank" rel="noopener">USCIS online case-status</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://ceac.state.gov/ceac/" target="_blank" rel="noopener">CEAC visa-status portal</Link>, textOnly: true, nested: false }
     ],
     12: [
         { section: 'Task Checklist' },
@@ -329,6 +384,11 @@ export const pcChecklist = {
         { id: 12.13, label: 'Re-Entry and Trips Abroad: If your parent will travel abroad, trips under 6 months are generally fine. Trips over 6 months may raise questions of abandonment when re-entering; trips over 1 year without a Re-entry Permit can automatically trigger loss of residency. So, if your parent plans to be outside the U.S. for a long time (more than 6 months), consult about getting a re-entry permit (Form I-131, applied from within the U.S. before travel) to preserve status. They should ideally make the U.S. their primary home now.', checked: false },
         { id: 12.14, label: 'Benefits and Naturalization: As an LPR, your parent may qualify for certain benefits (like Medicare or Social Security if they worked enough, etc.) after some time, but note that using needs-based public assistance could invoke the I-864 obligations on you. They should consult before using any such benefits, though most federal benefits require 5 years of residency or citizenship. Importantly, after 5 years of being an LPR, your parent will be eligible to apply for U.S. citizenship (naturalization), provided they meet the residence and physical presence requirements (generally 30 months in US out of those 5 years, and no single trip out >6 months without preservation). If your parent wants to become a citizen, mark the date – they can file the N-400 application 90 days before the 5-year anniversary of residency. Naturalization will remove the need to renew the green card and also frees you from the affidavit of support obligations (since they’ll no longer be a “sponsored immigrant” once a citizen).', checked: false },
         { id: 12.15, label: 'Identification: Your parent should consider getting a state ID or driver’s license now that they are an LPR, which will be useful for daily identification. The green card itself is also an ID but safer to keep at home except when needed.', checked: false },
-        { id: 12.16, label: 'Integration: Help your parent get settled – such as adding them to a bank account, or getting them enrolled in health insurance (new LPRs can buy insurance and may qualify for certain programs). This goes beyond immigration, but it’s part of the journey.', checked: false }
+        { id: 12.16, label: 'Integration: Help your parent get settled – such as adding them to a bank account, or getting them enrolled in health insurance (new LPRs can buy insurance and may qualify for certain programs). This goes beyond immigration, but it’s part of the journey.', checked: false },
+        { section: 'Links and Sources' },
+        { label: <Link href="https://travel.state.gov/content/travel/en/us-visas/immigrate/the-immigrant-visa-process/after-the-interview.html" target="_blank" rel="noopener">After-the-Interview (DOS)</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://www.uscis.gov/file-online/uscis-immigrant-fee" target="_blank" rel="noopener">USCIS immigrant-fee payment</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://i94.cbp.dhs.gov/I94/" target="_blank" rel="noopener">CBP I-94 retrieval</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://www.uscis.gov/ar-11" target="_blank" rel="noopener">USCIS change-of-address (AR-11)</Link>, textOnly: true, nested: false }
     ]
 }

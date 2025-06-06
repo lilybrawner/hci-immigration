@@ -78,7 +78,11 @@ export const sChecklist = {
         { id: 1.45, label: 'English Translations: For any document not in English, provide a complete English translation, certified by the translator as accurate. Include the translator’s certification letter with the translation.', checked: false },
         { id: 1.46, label: 'Copies, Not Originals: Unless explicitly required (rare), submit photocopies of documents, not original civil documents. You will later need originals for the visa interview or adjustment interview, but for now, USCIS usually only needs copies. (If USCIS ever needs to see an original, they will request it.)', checked: false },
         { label: 'Note: Always refer to the latest USCIS Form I-130 instructions for any specific document requirements or updates. USCIS may update requirements, so using the official instructions as a final check is wise.', textOnly: true },
-
+        { section: 'Links and Sources' },
+        { label: <Link href="https://www.uscis.gov/i-130" target="_blank" rel="noopener">USCIS Form I-130 main page</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://www.uscis.gov/sites/default/files/document/forms/i-130instr.pdf" target="_blank" rel="noopener">I-130 official instructions (PDF)</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://travel.state.gov/content/travel/en/us-visas/immigrate/family-immigration/immigrant-visa-for-a-spouse.html" target="_blank" rel="noopener">DOS IR-1 / CR-1 overview</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://www.uscis.gov/forms/filing-guidance/tips-for-filing-forms-by-mail" target="_blank" rel="noopener">USCIS form-filing tips (mail)</Link>, textOnly: true, nested: false }
     ],
     2: [
         { section: 'Tasks' },
@@ -119,8 +123,12 @@ export const sChecklist = {
         { id: 2.24, label: 'Marriage certificate (official copy).', checked: false },
         { id: 2.25, label: 'Proof of termination of any prior marriages for either spouse (divorce decrees, annulments, or death certificates, if applicable).', checked: false },
         { id: 2.26, label: '(If available) Evidence of a bona fide marriage (e.g. joint financial records, photos together, affidavits from family/friends) – optional but recommended to establish the marriage is genuine.', checked: false },
-        { id: 2.27, label: 'Filing fee payment (check, money order, or credit card authorization if filing by mail; online payment if filing electronically).', checked: false }
-    ],
+        { id: 2.27, label: 'Filing fee payment (check, money order, or credit card authorization if filing by mail; online payment if filing electronically).', checked: false },
+        { section: 'Links and Sources' },
+        { label: <Link href="https://travel.state.gov/content/travel/en/us-visas/immigrate/the-immigrant-visa-process/step-2-your-case-nvc.html" target="_blank" rel="noopener">Step 2: NVC Processing (DOS)</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://www.uscis.gov/i-485" target="_blank" rel="noopener">USCIS Form I-485 page</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://www.uscis.gov/green-card/green-card-processes-and-procedures/concurrent-filing" target="_blank" rel="noopener">USCIS Concurrent-filing guidance</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://ceac.state.gov/CEACStatTracker/Status.aspx?App=IV" target="_blank" rel="noopener">CEAC IV status-checker</Link>, textOnly: true, nested: false }],
     3: [
         { section: 'Tasks' },
         { id: 3.1, label: 'Receive the Receipt Notice: After filing, USCIS will mail you a receipt notice (Form I-797C, Notice of Action) typically within a few weeks. This receipt includes a unique case number.', checked: false },
@@ -144,8 +152,12 @@ export const sChecklist = {
         { label: ' If you anticipate USCIS might request more proof (e.g., bona fide marriage evidence), start gathering those documents (updated bank statements, more photos, letters from friends, etc.) so you can respond quickly if asked.', textOnly: true, nested: true },
         { id: 3.11, label: 'Address Change Confirmation', checked: false },
         { section: 'Estimated Time of Completion' },
-        { label: 'This waiting step is largely dependent on USCIS’s workload. Receiving the I-130 approval can take several months to over a year (e.g. often around 9–15 months in recent times for U.S. citizen spouse petitions). The exact timeframe varies by USCIS service center and case complexity. There is little “to do” during this step except wait and periodically check status.', textOnly: true, }
-
+        { label: 'This waiting step is largely dependent on USCIS’s workload. Receiving the I-130 approval can take several months to over a year (e.g. often around 9–15 months in recent times for U.S. citizen spouse petitions). The exact timeframe varies by USCIS service center and case complexity. There is little “to do” during this step except wait and periodically check status.', textOnly: true, },
+        { section: 'Links and Sources' },
+        { label: <Link href="https://travel.state.gov/content/travel/en/us-visas/immigrate/the-immigrant-visa-process/step-3-pay-fees.html" target="_blank" rel="noopener">Step 3: Pay Fees (DOS)</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://travel.state.gov/content/travel/en/us-visas/immigrate/nvc/immigrant-visas-processing-fees.html" target="_blank" rel="noopener">NVC fee-payment FAQ</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://www.uscis.gov/forms/filing-fees" target="_blank" rel="noopener">USCIS fee-schedule</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://www.uscis.gov/forms/uscis-fee-calculator" target="_blank" rel="noopener">USCIS online fee-calculator</Link>, textOnly: true, nested: false }
     ],
     4: [
         { section: 'Tasks' },
@@ -185,7 +197,12 @@ export const sChecklist = {
         { id: 4.18, label: 'Have entered the U.S. lawfully (inspection at entry) and not be barred from adjusting certain visa overstays or violations are forgiven for immediate relatives', checked: false, nested: true },
         { id: 4.19, label: 'If there was illegal entry, AOS is generally not possible without leaving and seeking a waiver.', checked: false, nested: true },
         { id: 4.201, label: 'Also, the spouse should not have any serious criminal or immigration violation that makes them inadmissible.', checked: false, nested: true },
-        { id: 4.21, label: 'Most spousal applicants are eligible, but it’s good to double-check eligibility for adjustment (e.g., if the spouse ever worked without authorization, it is forgiven for immediate relatives).', checked: false, nested: true }
+        { id: 4.21, label: 'Most spousal applicants are eligible, but it’s good to double-check eligibility for adjustment (e.g., if the spouse ever worked without authorization, it is forgiven for immediate relatives).', checked: false, nested: true },
+        { section: 'Links and Sources' },
+        { label: <Link href="https://travel.state.gov/content/travel/en/us-visas/immigrate/the-immigrant-visa-process/affidavit-of-support.html" target="_blank" rel="noopener">Affidavit-of-Support hub (DOS)</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://www.uscis.gov/i-864" target="_blank" rel="noopener">USCIS Form I-864 page</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://www.uscis.gov/sites/default/files/document/forms/i-864instr.pdf" target="_blank" rel="noopener">I-864 instructions (PDF)</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://www.uscis.gov/i-864p" target="_blank" rel="noopener">I-864P poverty-guidelines chart</Link>, textOnly: true, nested: false }
     ],
     5: [
         { section: 'Tasks' },
@@ -230,7 +247,12 @@ export const sChecklist = {
         { label: 'For example, if the immigrant spouse has work income (in certain cases) or an adult child living in the household has income, their income can be included with a contract.', textOnly: true, nested: true },
         { id: 5.14, label: 'Legally Binding: The sponsor (and any joint sponsors) must be willing to accept legal responsibility – the I-864 is enforceable.', checked: false },
         { label: 'It stays in effect until the immigrant becomes a U.S. citizen, has 40 quarters of work (≈10 years) in the US, leaves the US permanently, or dies.', textOnly: true, nested: true },
-        { label: 'This is an obligation, so ensure anyone who signs knows the commitment.', textOnly: true, nested: true }
+        { label: 'This is an obligation, so ensure anyone who signs knows the commitment.', textOnly: true, nested: true },
+        { section: 'Links and Sources' },
+        { label: <Link href="https://travel.state.gov/content/travel/en/us-visas/immigrate/the-immigrant-visa-process/step-5-collect-financial-evidence.html" target="_blank" rel="noopener">Step 5: Collect Financial Docs (DOS)</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://www.irs.gov/individuals/get-transcript" target="_blank" rel="noopener">IRS – Request tax transcript</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://www.uscis.gov/policy-manual/volume-12-part-g-chapter-5" target="_blank" rel="noopener">USCIS assets-substitution policy</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://www.uscis.gov/forms/explore-my-options/affidavit-of-support-checklist" target="_blank" rel="noopener">USCIS I-864 evidence checklist</Link>, textOnly: true, nested: false }
     ],
     6: [
         { section: 'Tasks' },
@@ -276,7 +298,12 @@ export const sChecklist = {
         { label: 'Honesty on DS-260: The visa application will ask about inadmissibility factors (such as criminal history, immigration violations, misrepresentation, etc.).', textOnly: true, nested: true },
         { label: 'Eligibility to receive the visa depends on truthful disclosure. Certain answers (e.g., yes to previous overstays or crimes) won’t automatically disqualify you, but failing to disclose them can cause serious issues. The consular officer will ultimately determine eligibility at the interview, but a complete DS-260 and full set of documents ensures you’ve met the procedural eligibility for an interview.', textOnly: true, nested: true },
         { label: 'CSPA for Children: If a child is immigrating as a derivative, their age eligibility is determined by the Child Status Protection Act.', textOnly: true },
-        { label: 'Make sure to pay fees and submit the child’s documents timely to “lock in” their CSPA age if needed. For IR-2 child of a citizen, CSPA is less relevant since immediate relative children don’t age out if under 21 when filed, but for derivatives of resident petitions upgrading, it can be relevant.', textOnly: true, nested: true }
+        { label: 'Make sure to pay fees and submit the child’s documents timely to “lock in” their CSPA age if needed. For IR-2 child of a citizen, CSPA is less relevant since immediate relative children don’t age out if under 21 when filed, but for derivatives of resident petitions upgrading, it can be relevant.', textOnly: true, nested: true },
+        { section: 'Links and Sources' },
+        { label: <Link href="https://travel.state.gov/content/travel/en/us-visas/immigrate/the-immigrant-visa-process/step-6-submit-a-visa-application.html" target="_blank" rel="noopener">DS-260 instructions (DOS)</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://travel.state.gov/content/dam/visas/pdfs/DS-260-Exemplar.pdf" target="_blank" rel="noopener">DS-260 exemplar PDF</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://ceac.state.gov" target="_blank" rel="noopener">CEAC login portal</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://www.uscis.gov/i-485" target="_blank" rel="noopener">USCIS Form I-485</Link>, textOnly: true, nested: false }
     ],
     7: [
         { section: 'Tasks' },
@@ -314,6 +341,11 @@ export const sChecklist = {
         { label: 'The upcoming medical exam (Step 8) will evaluate this. Make sure you complete the exam and required vaccines; not doing so could delay visa issuance.', textOnly: true, nested: true },
         { label: 'No Changes in Qualifying Conditions: For example, the petitioner must remain a U.S. citizen.', textOnly: true },
         { label: 'If the petitioner were a permanent resident who became a U.S. citizen during the process, the case typically upgrades (which is positive). But if any key factor changed negatively (petitioner lost status or passed away – which can be handled under a different process), that would affect eligibility. For the majority, nothing changes – just ensure you update the consulate/USCIS if there’s something like a new address or the birth of a child, etc.', textOnly: true, nested: true },
+        { section: 'Links and Sources' },
+        { label: <Link href="https://travel.state.gov/content/travel/en/us-visas/immigrate/the-immigrant-visa-process/step-7-collect-civil-documents.html" target="_blank" rel="noopener">Step 7: Civil Docs list (DOS)</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://travel.state.gov/content/travel/en/us-visas/Visa-Reciprocity-and-Civil-Documents-by-Country.html" target="_blank" rel="noopener">Reciprocity & Civil-Docs finder</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://www.uscis.gov/forms/forms-information/guidance-for-translators" target="_blank" rel="noopener">USCIS translation requirements</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://www.cdc.gov/immigrantrefugeehealth/exams/ti/civil-documents.html" target="_blank" rel="noopener">CDC civil doc guidance (medical tie-in)</Link>, textOnly: true, nested: false }
     ],
     8: [
         { section: 'Tasks' },
@@ -347,7 +379,12 @@ export const sChecklist = {
         { label: 'Moral Character/Background: This is not directly part of the medical, but final prep involves ensuring nothing new jeopardizes eligibility (e.g., any new criminal issues).', textOnly: true },
         { label: 'At the interview, you’ll again affirm the truth of your DS-260 or I-485 answers. If something has changed (e.g., an arrest since filing), you must disclose it. If something has changed (e.g., an arrest since filing), you must disclose it. Eligibility can be affected by certain criminal or security issues, but those would typically have been screened earlier as well. Final prep is making sure you have documentation for any potentially complicating factors (e.g., court documents for past incidents, or evidence for any claimed waiver).', textOnly: true, nested: true },
         { label: 'Relationship Authenticity: In terms of eligibility at the interview, a big factor is convincing the officer your marriage is genuine.', textOnly: true },
-        { label: 'Your eligibility for an IR-1/CR-1 visa is directly tied to being an immediate relative spouse – a sham marriage would mean ineligibility.', textOnly: true, nested: true }
+        { label: 'Your eligibility for an IR-1/CR-1 visa is directly tied to being an immediate relative spouse – a sham marriage would mean ineligibility.', textOnly: true, nested: true },
+        { section: 'Links and Sources' },
+        { label: <Link href="https://travel.state.gov/content/travel/en/us-visas/immigrate/the-immigrant-visa-process/step-9-submit-documents-to-the-nvc.html" target="_blank" rel="noopener">Step 9: Submit Docs (DOS)</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://travel.state.gov/content/dam/visas/pdfs/scanning_guidelines.pdf" target="_blank" rel="noopener">NVC scanning-guidelines PDF</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://ceac.state.gov" target="_blank" rel="noopener">CEAC document-upload portal</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://travel.state.gov/content/travel/en/us-visas/immigrate/nvc/email.html" target="_blank" rel="noopener">NVC public-inquiry directions</Link>, textOnly: true, nested: false }
     ],
     9: [
         { section: 'Tasks' },
@@ -378,7 +415,12 @@ export const sChecklist = {
         { label: 'Immigrant Intent', textOnly: true },
         { label: 'By attending this interview, it’s assumed the beneficiary intends to immigrate (for consular cases). The officer might confirm that the beneficiary indeed plans to live in the U.S. (since an IR-1/CR-1 visa is for permanent residence, not just a visit). As long as you affirm that, it’s fine.', textOnly: true, nested: true },
         { label: 'No Changes in Circumstances', textOnly: true },
-        { label: 'The spouses should still be married and in a genuine relationship. If, hypothetically, a couple had separated or divorced after getting the petition approved, the applicant would no longer be eligible for the visa and should not proceed. The interview is essentially the last checkpoint for eligibility.', textOnly: true, nested: true }
+        { label: 'The spouses should still be married and in a genuine relationship. If, hypothetically, a couple had separated or divorced after getting the petition approved, the applicant would no longer be eligible for the visa and should not proceed. The interview is essentially the last checkpoint for eligibility.', textOnly: true, nested: true },
+        { section: 'Links and Sources' },
+        { label: <Link href="https://www.uscis.gov/forms/filing-guidance/preparing-for-your-biometric-services-appointment" target="_blank" rel="noopener">USCIS biometrics prep</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://my.uscis.gov/findadoctor" target="_blank" rel="noopener">Civil-surgeon locator (AOS)</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://travel.state.gov/content/travel/en/us-visas/immigrate/the-immigrant-visa-process/medical-examination.html" target="_blank" rel="noopener">DOS medical-exam guide</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://www.cdc.gov/immigrantrefugeehealth/panel-physician.html" target="_blank" rel="noopener">CDC panel-physician instructions</Link>, textOnly: true, nested: false }
     ],
     10: [
         { section: 'Task Checklist' },
@@ -401,7 +443,11 @@ export const sChecklist = {
         { label: 'Bring a government-issued ID and any tracking number or receipt when retrieving your passport. If a third party collects on your behalf, ensure proper authorization per consulate instructions.', textOnly: true, nested: true },
         { id: 10.9, label: 'USCIS RFE/NOID Response', checked: false },
         { label: 'If USCIS issues an RFE or NOID after your interview, compile the requested evidence (e.g., additional bona fide marriage proof) and submit it by the deadline (typically 30 days for NOID, 87 days for RFE) with the cover page provided.', textOnly: true, nested: true },
-
+        { section: 'Links and Sources' },
+        { label: <Link href="https://travel.state.gov/content/travel/en/us-visas/immigrate/the-immigrant-visa-process/step-10-preparing-for-your-interview.html" target="_blank" rel="noopener">Step 10: Prepare for Interview (DOS)</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://www.uscis.gov/green-card/after-we-grant-your-green-card/attend-your-appointment" target="_blank" rel="noopener">USCIS interview-day overview (AOS)</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://www.uscis.gov/i-693" target="_blank" rel="noopener">USCIS Form I-693 (medical)</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://travel.state.gov/content/dam/visas/PDF-other/Interview-Preparation-Checklist.pdf" target="_blank" rel="noopener">DOS interview checklist PDF</Link>, textOnly: true, nested: false }
     ],
     11: [
         { section: 'Task Checklist' },
@@ -437,6 +483,11 @@ export const sChecklist = {
         { label: "If you’re bringing in goods or cash over $10,000, declare appropriately.", textOnly: true, nested: true },
         { label: "There’s also a one-time exemption for moving household goods, etc., as a new immigrant (not taxed).", textOnly: true, nested: true },
         { label: "If you have a detailed list of items you shipped, you can present it if needed (usually not required at airport, more for land border or later shipments).", textOnly: true, nested: true },
+        { section: 'Links and Sources' },
+        { label: <Link href="https://travel.state.gov/content/travel/en/us-visas/immigrate/the-immigrant-visa-process/interview.html" target="_blank" rel="noopener">Applicant-interview page (DOS)</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://travel.state.gov/content/travel/en/us-visas/visa-information-resources/administrative-processing-information.html" target="_blank" rel="noopener">Administrative-processing info</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://egov.uscis.gov/casestatus/landing.do" target="_blank" rel="noopener">USCIS online case-status</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://ceac.state.gov/ceac/" target="_blank" rel="noopener">CEAC visa-status portal</Link>, textOnly: true, nested: false }
     ],
     12: [
         { section: 'Task Checklist' },
@@ -482,6 +533,11 @@ export const sChecklist = {
         { id: 12.12, label: 'Address Updates: Use USCIS online AR-11 form whenever you move. This is legally required for LPRs.', checked: false },
         { id: 12.13, label: 'Green Card Renewal: In 10 years (if IR-1) you’ll file Form I-90 to renew the card (a simple process, no interview usually). Conditional residents will be filing I-751 well before that.', checked: false },
         { id: 12.14, label: 'Preserve Evidence: It’s wise to continue keeping evidence of your marital relationship (joint taxes, photos, etc.), not only for I-751 if applicable, but also sometimes helpful for citizenship application to show you were living together for the 3-year rule.', checked: false },
-        { id: 12.15, label: 'Know Your Rights and Responsibilities: As a resident you can work in any job (no need for EAD), you can’t vote in federal elections (until citizenship), and you should avoid any actions that could jeopardize your status (e.g., crimes, long absences without re-entry permit). If you obey the law and make the U.S. your permanent home, your status is secure.', checked: false }
+        { id: 12.15, label: 'Know Your Rights and Responsibilities: As a resident you can work in any job (no need for EAD), you can’t vote in federal elections (until citizenship), and you should avoid any actions that could jeopardize your status (e.g., crimes, long absences without re-entry permit). If you obey the law and make the U.S. your permanent home, your status is secure.', checked: false },
+        { section: 'Links and Sources' },
+        { label: <Link href="https://travel.state.gov/content/travel/en/us-visas/immigrate/the-immigrant-visa-process/after-the-interview.html" target="_blank" rel="noopener">After-the-Interview (DOS)</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://www.uscis.gov/file-online/uscis-immigrant-fee" target="_blank" rel="noopener">USCIS immigrant-fee payment</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://i94.cbp.dhs.gov/I94/" target="_blank" rel="noopener">CBP I-94 retrieval (proof of entry)</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://www.uscis.gov/ar-11" target="_blank" rel="noopener">USCIS change-of-address (AR-11)</Link>, textOnly: true, nested: false }
     ]
 }

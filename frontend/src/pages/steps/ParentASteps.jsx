@@ -41,7 +41,12 @@ export const paChecklist = {
         { id: 1.201, label: 'If sponsoring a step-parent: your birth certificate (showing your birth parents) and the marriage certificate of your birth parent and step-parent (showing marriage before your 18th birthday). Include proof of termination of any prior marriages (divorce/death certificates) for your natural parent or step-parent.', checked: false, nested: true },
         { id: 1.21, label: 'If sponsoring an adoptive parent: adoption decree showing the adoption was finalized before you turned 16, and evidence of any prior custody if applicable.', checked: false, nested: true },
         { id: 1.22, label: 'Proof of Petitioner’s Age: Your birth certificate or passport (to show you are 21 or older).', checked: false },
-        { id: 1.23, label: 'Name Change Documents (if applicable): Legal documents for any name changes for you or your parent (marriage certificate, court order, etc.).', checked: false }
+        { id: 1.23, label: 'Name Change Documents (if applicable): Legal documents for any name changes for you or your parent (marriage certificate, court order, etc.).', checked: false },
+        { section: 'Links and Sources' },
+        { label: <Link href="https://www.uscis.gov/i-130" target="_blank" rel="noopener">USCIS Form I-130 main page</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://www.uscis.gov/sites/default/files/document/forms/i-130instr.pdf" target="_blank" rel="noopener">I-130 instructions (PDF)</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://www.uscis.gov/family/bring-parents-to-live-in-the-united-states" target="_blank" rel="noopener">USCIS – Bringing Parents (IR-5)</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://www.uscis.gov/forms/filing-guidance/tips-for-filing-forms-by-mail" target="_blank" rel="noopener">USCIS form-filing tips</Link>, textOnly: true, nested: false }
     ],
     2: [
         { section: 'Task Checklist' },
@@ -59,7 +64,12 @@ export const paChecklist = {
         { id: 2.11, label: 'Beneficiary’s civil documents: copy of your parent’s birth certificate (and marriage certificate if petition is for father or step-parent as described in Step 1). If names have changed, include legal name change documents.', checked: false },
         { id: 2.12, label: 'Evidence of relationship: your birth certificate naming your parent (and for father/step-parent cases, marriage certificates or legitimation proof as required). If you are petitioning your father and were born out of wedlock, include proof of legitimation or evidence of a bona fide parent-child relationship before age 21 (such as correspondence, photos, financial support).', checked: false },
         { id: 2.13, label: 'Two passport-style photos of the petitioner and beneficiary (if specifically required). (USCIS no longer requires photos for I-130 petitions for parents, but double-check form instructions. Photos will be needed later for visa or adjustment steps.)', checked: false },
-        { id: 2.14, label: 'Form G-1145 (optional): If filing by mail, you can attach Form G-1145 to request email/text notification when USCIS accepts your petition.', checked: false }
+        { id: 2.14, label: 'Form G-1145 (optional): If filing by mail, you can attach Form G-1145 to request email/text notification when USCIS accepts your petition.', checked: false },
+        { section: 'Links and Sources' },
+        { label: <Link href="https://travel.state.gov/content/travel/en/us-visas/immigrate/the-immigrant-visa-process/step-2-your-case-nvc.html" target="_blank" rel="noopener">Step 2: NVC Processing (DOS)</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://www.uscis.gov/i-485" target="_blank" rel="noopener">USCIS Form I-485 page</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://www.uscis.gov/green-card/green-card-processes-and-procedures/concurrent-filing" target="_blank" rel="noopener">Concurrent-filing policy</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://ceac.state.gov/CEACStatTracker/Status.aspx?App=IV" target="_blank" rel="noopener">CEAC status-tracker</Link>, textOnly: true, nested: false }
     ],
     3: [
         { section: 'Task Checklist' },
@@ -73,7 +83,12 @@ export const paChecklist = {
         { id: 3.9, label: 'Approval Notice: If USCIS approves the I-130, you (the petitioner) will get an approval notice by mail (Form I-797).', checked: false },
         { section: 'Required Documents' },
         { id: 3.11, label: 'USCIS Approval Notice: Keep the I-797 approval notice safe. You’ll need the receipt number and case details for NVC or for filing AOS.', checked: false },
-        { id: 3.12, label: 'Form I-485 & Supporting Docs: If not already filed, prepare the I-485 packet (Step 4) to submit with a copy of the I-130 approval notice.', checked: false }
+        { id: 3.12, label: 'Form I-485 & Supporting Docs: If not already filed, prepare the I-485 packet (Step 4) to submit with a copy of the I-130 approval notice.', checked: false },
+        { section: 'Links and Sources' },
+        { label: <Link href="https://travel.state.gov/content/travel/en/us-visas/immigrate/the-immigrant-visa-process/step-3-pay-fees.html" target="_blank" rel="noopener">Step 3: Pay Fees (DOS)</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://travel.state.gov/content/travel/en/us-visas/immigrate/nvc/immigrant-visas-processing-fees.html" target="_blank" rel="noopener">NVC fee-payment FAQ</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://www.uscis.gov/forms/uscis-fee-calculator" target="_blank" rel="noopener">USCIS fee-calculator</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://www.uscis.gov/forms/filing-fees" target="_blank" rel="noopener">USCIS fee schedule</Link>, textOnly: true, nested: false }
     ],
     4: [
         { section: 'Task Checklist' },
@@ -101,7 +116,12 @@ export const paChecklist = {
         { id: 4.21, label: 'Petitioner’s documents:', checked: false },
         { id: 4.22, label: 'Proof of citizenship', checked: false, nested: true },
         { id: 4.23, label: 'Any evidence already submitted with I-130 (to ensure the AOS file has it).', checked: false, nested: true },
-        { label: 'Fee payment: Check or money order for the I-485 fee (and biometrics), or credit card form if allowed. (Currently around $1,225 total for I-485 with biometrics, but verify current fee).', textOnly: true },
+        { label: 'Fee payment: Check or money order for the I-485 fee (and biometrics), or credit card form if allowed. (Currently around $1,225 total for I-485 with biometrics, but verify current fee).', textOnly: true }, ,
+        { section: 'Links and Sources' },
+        { label: <Link href="https://travel.state.gov/content/travel/en/us-visas/immigrate/the-immigrant-visa-process/affidavit-of-support.html" target="_blank" rel="noopener">Affidavit-of-Support hub (DOS)</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://www.uscis.gov/i-864" target="_blank" rel="noopener">USCIS Form I-864 page</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://www.uscis.gov/sites/default/files/document/forms/i-864instr.pdf" target="_blank" rel="noopener">I-864 instructions (PDF)</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://www.uscis.gov/i-864p" target="_blank" rel="noopener">I-864P poverty-guidelines chart</Link>, textOnly: true, nested: false }
     ],
     5: [
         { label: 'This step is largely Not Applicable – the main fees (I-130 and I-485 filing fees) are paid to USCIS at filing. However, note these AOS-related fee points:', textOnly: true },
@@ -114,7 +134,12 @@ export const paChecklist = {
         { id: 5.5, label: 'U.S. Bank Routing Number and Account Number – for the account from which fees will be withdrawn.', checked: false },
         { id: 5.6, label: 'Sufficient funds in the account to cover the fees (ensure the payment won’t bounce).', checked: false },
         { id: 5.7, label: 'A printer or PDF saver (optional) to keep records of the payment confirmations.', checked: false },
-        { id: 5.8, label: '(No physical documents need to be sent for fees – it’s all online. Just keep the receipts.)', checked: false }
+        { id: 5.8, label: '(No physical documents need to be sent for fees – it’s all online. Just keep the receipts.)', checked: false },
+        { section: 'Links and Sources' },
+        { label: <Link href="https://travel.state.gov/content/travel/en/us-visas/immigrate/the-immigrant-visa-process/step-5-collect-financial-evidence.html" target="_blank" rel="noopener">Step 5: Collect Financial Docs (DOS)</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://www.irs.gov/individuals/get-transcript" target="_blank" rel="noopener">IRS – Request tax transcript</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://www.uscis.gov/policy-manual/volume-12-part-g-chapter-5" target="_blank" rel="noopener">USCIS assets-policy (I-864)</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://www.uscis.gov/forms/explore-my-options/affidavit-of-support-checklist" target="_blank" rel="noopener">USCIS I-864 evidence checklist</Link>, textOnly: true, nested: false }
     ],
     6: [
         { id: 6.1, label: 'If you filed the I-485 in Step 4, you’ve essentially completed the “visa application” on the USCIS side. Your parent’s pending I-485 is their green card application. In this step, there’s nothing additional to submit for AOS except responding to any USCIS requests. (Skip to Step 7 for affidavit requirements, which you already handled in the I-485 packet.)', checked: false }
@@ -141,7 +166,12 @@ export const paChecklist = {
         { id: 7.15, label: 'Proof of assets (if using assets): bank statements for savings, property appraisals, etc., plus proof of ownership of those assets.', checked: false },
         { id: 7.16, label: 'Joint Sponsor’s I-864 and documents (if you have a joint sponsor) – similar set of documents for them.', checked: false },
         { id: 7.17, label: 'Household Member’s I-864A and documents (if using household member income).', checked: false },
-        { id: 7.18, label: 'Proof of U.S. domicile (if needed): evidence that you maintain a U.S. residence or intend to resume domicile (for sponsors living abroad)', checked: false }
+        { id: 7.18, label: 'Proof of U.S. domicile (if needed): evidence that you maintain a U.S. residence or intend to resume domicile (for sponsors living abroad)', checked: false },
+        { section: 'Links and Sources' },
+        { label: <Link href="https://travel.state.gov/content/travel/en/us-visas/immigrate/the-immigrant-visa-process/step-7-collect-civil-documents.html" target="_blank" rel="noopener">Step 7: Civil Docs list (DOS)</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://travel.state.gov/content/travel/en/us-visas/Visa-Reciprocity-and-Civil-Documents-by-Country.html" target="_blank" rel="noopener">Reciprocity & Civil-Docs finder</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://www.uscis.gov/forms/forms-information/guidance-for-translators" target="_blank" rel="noopener">USCIS translation rules</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://www.uscis.gov/policy-manual/volume-7-part-a-chapter-6" target="_blank" rel="noopener">USCIS secondary-evidence policy</Link>, textOnly: true, nested: false }
     ],
     8: [
         { label: 'Purpose: These are the personal documents that prove your parent’s identity, family relationships, and any required background records. Many of these were already submitted with the I-485. ', textOnly: true },
@@ -162,7 +192,12 @@ export const paChecklist = {
         { id: 8.13, label: 'Military Record – if applicable', checked: false },
         { id: 8.14, label: 'Petitioner’s Birth Certificate (your birth certificate, to prove relationship)', checked: false },
         { id: 8.15, label: 'Any other relevant civil docs – e.g., adoption decree (if parent is adoptive), legal name change documents, etc.', checked: false },
-        { id: 8.16, label: 'Certified Translations for any above not in English', checked: false }
+        { id: 8.16, label: 'Certified Translations for any above not in English', checked: false },
+        { section: 'Links and Sources' },
+        { label: <Link href="https://travel.state.gov/content/travel/en/us-visas/immigrate/the-immigrant-visa-process/step-9-submit-documents-to-the-nvc.html" target="_blank" rel="noopener">Step 9: Submit Docs (DOS)</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://travel.state.gov/content/dam/visas/pdfs/scanning_guidelines.pdf" target="_blank" rel="noopener">NVC scanning-guidelines PDF</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://ceac.state.gov" target="_blank" rel="noopener">CEAC upload portal</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://travel.state.gov/content/travel/en/us-visas/immigrate/nvc/email.html" target="_blank" rel="noopener">NVC public-inquiry directions</Link>, textOnly: true, nested: false }
     ],
     9: [
         { label: 'Before the final interview, your parent must undergo a medical exam by an authorized physician to ensure they have required vaccinations and no inadmissible health conditions.', textOnly: true },
@@ -195,7 +230,12 @@ export const paChecklist = {
         { id: 9.18, label: 'Immunization records: any childhood or adult vaccine records to avoid re-vaccination.', checked: false },
         { id: 9.19, label: 'Medical history list: medications, known health issues – to share with doctor honestly.', checked: false },
         { id: 9.201, label: 'Cash/Credit for fee: payment as required by the clinic.', checked: false },
-        { id: 9.21, label: '2-4 passport photos (some doctors require photos to attach to the forms, though digital photo is often taken). Check clinic instructions.', checked: false }
+        { id: 9.21, label: '2-4 passport photos (some doctors require photos to attach to the forms, though digital photo is often taken). Check clinic instructions.', checked: false },
+        { section: 'Links and Sources' },
+        { label: <Link href="https://www.uscis.gov/forms/filing-guidance/preparing-for-your-biometric-services-appointment" target="_blank" rel="noopener">USCIS biometrics prep</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://my.uscis.gov/findadoctor" target="_blank" rel="noopener">Civil-surgeon locator (AOS)</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://travel.state.gov/content/travel/en/us-visas/immigrate/the-immigrant-visa-process/medical-examination.html" target="_blank" rel="noopener">DOS medical-exam guide</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://www.cdc.gov/immigrantrefugeehealth/panel-physician.html" target="_blank" rel="noopener">CDC panel-physician guidance</Link>, textOnly: true, nested: false }
     ],
     10: [
         { label: 'Now your parents are nearing the finish line. Preparation is key for the interview.', textOnly: true },
@@ -250,8 +290,12 @@ export const paChecklist = {
         { id: 10.37, label: 'Financial updates: Recent pay stubs, job letter, latest tax return (optional but smart to have in case).', checked: false },
         { id: 10.38, label: 'Supporting evidence of relationship: In parent cases, usually the birth certificate suffices. Rarely, if there’s any adoption or unusual family situation, any custody or adoption papers, family photos, etc., could be useful – but usually not required.', checked: false },
         { id: 10.39, label: 'Interpreter (if applicable): and their ID, if USCIS interview and non-English speaking.', checked: false },
-        { id: 10.401, label: 'Pen and notepad: sometimes useful to jot info or in case forms need to be filled at consulate (usually not, but good to have).', checked: false }
-
+        { id: 10.401, label: 'Pen and notepad: sometimes useful to jot info or in case forms need to be filled at consulate (usually not, but good to have).', checked: false },
+        { section: 'Links and Sources' },
+        { label: <Link href="https://travel.state.gov/content/travel/en/us-visas/immigrate/the-immigrant-visa-process/step-10-preparing-for-your-interview.html" target="_blank" rel="noopener">Step 10: Prepare for Interview (DOS)</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://www.uscis.gov/green-card/after-we-grant-your-green-card/attend-your-appointment" target="_blank" rel="noopener">USCIS interview-day guidance (AOS)</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://www.uscis.gov/i-693" target="_blank" rel="noopener">USCIS Form I-693</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://travel.state.gov/content/dam/visas/PDF-other/Interview-Preparation-Checklist.pdf" target="_blank" rel="noopener">DOS interview checklist PDF</Link>, textOnly: true, nested: false }
     ],
     11: [
         { section: 'Task Checklist At Interview' },
@@ -264,6 +308,11 @@ export const paChecklist = {
         { label: 'If Approved: Congratulations! Your parent is now a permanent resident. USCIS may stamp the passport with a temporary I-551 stamp if immediate proof is needed (not always done; usually only if you request it for urgent travel/work). Otherwise, the welcome notice and card will come soon.', textOnly: true },
         { label: 'If Pending/221(g): Address whatever is needed as quickly as possible. If it’s just administrative processing with no action required from you, then monitor the status online. Keep your parent’s petitioner contact info updated in case consulate needs to reach out.', textOnly: true },
         { label: 'If Denied: In parent cases, denials are uncommon unless there’s a major issue (like ineligibility or misrepresentation). If it happens, the letter will explain if there’s an appeal or waiver. For I-485 denials, you can file a motion to reopen or appeal in some cases. For visa refusals under certain sections, sometimes a waiver can be applied for. Consult legal help if this occurs.', textOnly: true },
+        { section: 'Links and Sources' },
+        { label: <Link href="https://travel.state.gov/content/travel/en/us-visas/immigrate/the-immigrant-visa-process/interview.html" target="_blank" rel="noopener">Applicant-interview page (DOS)</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://travel.state.gov/content/travel/en/us-visas/visa-information-resources/administrative-processing-information.html" target="_blank" rel="noopener">Administrative-processing info</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://egov.uscis.gov/casestatus/landing.do" target="_blank" rel="noopener">USCIS online case-status</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://ceac.state.gov/ceac/" target="_blank" rel="noopener">CEAC visa-status portal</Link>, textOnly: true, nested: false }
     ],
     12: [
         { section: 'Task Checklist' },
@@ -277,6 +326,11 @@ export const paChecklist = {
         { id: 12.8, label: 'Re-Entry and Trips Abroad: If your parent will travel abroad, trips under 6 months are generally fine. Trips over 6 months may raise questions of abandonment when re-entering; trips over 1 year without a Re-entry Permit can automatically trigger loss of residency. So, if your parent plans to be outside the U.S. for a long time (more than 6 months), consult about getting a re-entry permit (Form I-131, applied from within the U.S. before travel) to preserve status. They should ideally make the U.S. their primary home now.', checked: false },
         { id: 12.9, label: 'Benefits and Naturalization: As an LPR, your parent may qualify for certain benefits (like Medicare or Social Security if they worked enough, etc.) after some time, but note that using needs-based public assistance could invoke the I-864 obligations on you. They should consult before using any such benefits, though most federal benefits require 5 years of residency or citizenship. Importantly, after 5 years of being an LPR, your parent will be eligible to apply for U.S. citizenship (naturalization)uscis.gov, provided they meet the residence and physical presence requirements (generally 30 months in US out of those 5 years, and no single trip out >6 months without preservation). If your parent wants to become a citizen, mark the date – they can file the N-400 application 90 days before the 5-year anniversary of residency. Naturalization will remove the need to renew the green card and also frees you from the affidavit of support obligations (since they’ll no longer be a “sponsored immigrant” once a citizen).', checked: false },
         { id: 12.101, label: 'Identification: Your parent should consider getting a state ID or driver’s license now that they are an LPR, which will be useful for daily identification. The green card itself is also an ID but safer to keep at home except when needed.', checked: false },
-        { id: 12.11, label: 'Integration: Help your parent get settled – such as adding them to a bank account, or getting them enrolled in health insurance (new LPRs can buy insurance and may qualify for certain programs). This goes beyond immigration, but it’s part of the journey.', checked: false }
+        { id: 12.11, label: 'Integration: Help your parent get settled – such as adding them to a bank account, or getting them enrolled in health insurance (new LPRs can buy insurance and may qualify for certain programs). This goes beyond immigration, but it’s part of the journey.', checked: false },
+        { section: 'Links and Sources' },
+        { label: <Link href="https://travel.state.gov/content/travel/en/us-visas/immigrate/the-immigrant-visa-process/after-the-interview.html" target="_blank" rel="noopener">After-the-Interview (DOS)</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://www.uscis.gov/file-online/uscis-immigrant-fee" target="_blank" rel="noopener">USCIS immigrant-fee payment</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://i94.cbp.dhs.gov/I94/" target="_blank" rel="noopener">CBP I-94 retrieval</Link>, textOnly: true, nested: false },
+        { label: <Link href="https://www.uscis.gov/ar-11" target="_blank" rel="noopener">USCIS change-of-address (AR-11)</Link>, textOnly: true, nested: false }
     ]
 }
