@@ -601,19 +601,14 @@ label: 'Bank statements and other proof of finances', checked: false, nested: tr
 
         { section: 'Sources' }, 
         { label: <Link href="https://shorelight.com/student-stories/student-visa-usa-f1/" target="_blank" rel="noopener">F-1 Visa for International Students: Requirements, Rules, Status</Link>, textOnly: true },
-        { label: <Link href="https://studyinthestates.dhs.gov/students/maintaining-status" target="_blank" rel="noopener">Maintaining Status</Link>, textOnly: true }
-      ],
-      9: [
-        { section: 'Step 9: Employment Options' },
-        { id: 9.1, label: '' }, 
-        { section: 'Sources' }, 
+        { label: <Link href="https://studyinthestates.dhs.gov/students/maintaining-status" target="_blank" rel="noopener">Maintaining Status</Link>, textOnly: true },
         { label: <Link href="https://www.uscis.gov/working-in-the-united-states/students-and-exchange-visitors/students-and-employment" target="_blank" rel="noopener">Students and Employment</Link>, textOnly: true },
         { label: <Link href="https://www.uscis.gov/working-in-the-united-states/students-and-exchange-visitors/optional-practical-training-opt-for-f-1-students" target="_blank" rel="noopener">Optional Practical Training (OPT) for F-1 Students</Link>, textOnly: true },
         { label: <Link href="https://www.uscis.gov/working-in-the-united-states/students-and-exchange-visitors/optional-practical-training-extension-for-stem-students-stem-opt" target="_blank" rel="noopener">Optional Practical Training Extension for STEM Students (STEM OPT)</Link>, textOnly: true },
         { label: <Link href="https://studyinthestates.dhs.gov/sevis-help-hub/student-records/fm-student-employment/f-1-curricular-practical-training-cpt" target="_blank" rel="noopener">Curricular Practical Training (CPT)</Link>, textOnly: true }
       ],
-      10: [
-        { section: 'Step 10: Graduation and Program Completion' },
+      9: [
+        { section: 'Step 9: Graduation and Program Completion' },
         {
           id: 10.1,
           label:
